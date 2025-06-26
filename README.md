@@ -27,3 +27,9 @@ KIIEX has developed a suite of APIs that embed all centralized and decentralized
 ### KYC / AML
 
 KIIEX is fully compliant within each jurisdiction. Users must adhere to KYC and AML standards and requirements.&#x20;
+
+## 🙋‍♂️ Contribution from Ubuntu (WSL)
+
+This section was added by @senjaparades using Ubuntu via Windows Subsystem for Linux (WSL).  
+It explains how to contribute to KiiChain's documentation using Git, terminal, and GitHub safely from Windows.
+
