@@ -10,9 +10,9 @@ description: >-
 
 KIIEX is an on-chain FX desk powering global payments, trading and finance solutions in an easy to use platform designed for everyone. Users, businesses or builders can use KIIEX by signing up for an account or connecting to APIs. KIIEX differs from other traditional platforms by its hybrid approach of sourcing liquidity and maintaining balances on-chain exposed to local currencies. KIIEX supports fiat swaps and payins/payouts via the pricing of local, non-dollar stablecoins and other tokenized real-world assets.&#x20;
 
-## Mengapa Berkontribusi ke Kiichain?
+## Why Contribute to Kiichain?
 
-Kiichain adalah proyek blockchain modular berbasis Cosmos SDK dengan dukungan smart contract via CosmWasm. Komunitas terbuka dan sistem reward (ORO) membuatnya ideal untuk developer yang ingin belajar sambil membangun.
+Kiichain is a modular blockchain project built on the Cosmos SDK with support for smart contracts via CosmWasm. Its open community and reward system (ORO) make it an ideal platform for developers who want to learn while building.
 
 ### Hybrid Matching Engine
 
