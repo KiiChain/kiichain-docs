@@ -43,3 +43,8 @@ The EVM module allows for mirrored EVM compatibility and for smart contracts to 
 ### IBC
 
 Inter-Blockchain Communication is a protocol that allows for cross chain communication and data transfers. It connects different blockchain networks to promote high levels of interoperability, scalability and communication. IBC can be implemented to any blockchain network as long as it conforms to its protocol guidelines. Currently, there are over 100 networks integrated into IBC. Read more about IBC [here](https://www.ibcprotocol.dev/).
+
+
+## 💡 Contributor Note
+
+This documentation is part of a contribution made to the Kiichain ecosystem as a community member.
