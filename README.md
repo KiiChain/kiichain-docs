@@ -16,7 +16,7 @@ At the core of KIIEX is a hybrid matching engine that is able to source on-chain
 
 ### Ramps&#x20;
 
-KIIEX has a full suite of on and off ramps enabling instant payins and payouts from its system. These ramps are both UI and API enabled with the ability to disperse directly or to third-party accounts while remaining 100% compliant.&#x20;
+KIIEX has a full suite of on- and off-ramps enabling instant pay-ins/pay-outs. These ramps are both UI- and API-enabled, with the ability to disburse directly or to third-party accounts while maintaining full compliance.&#x20;
 
 ### Connect to APIs
 
