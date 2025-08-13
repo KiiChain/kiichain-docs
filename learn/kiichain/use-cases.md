@@ -9,7 +9,7 @@ description: >-
 
 ### Stablecoin FX powerhouse
 
-Traditional FX operations are constrained by traditional finance (TradFi) banking hours (often 8 am to 1 pm local time). This limited window on business days restricts when businesses and users can engage in FX operations. With KiiChain, users can perform compliant, fast, and affordable FX transactions and receive their funds in real time.&#x20;
+Traditional FX operations are constrained by traditional finance (TradFi) banking hours (often 8 am to 1 pm local time). This limited window on business days restricts when businesses and users can engage in FX operations. With KiiChain, users can perform compliant, fast, and affordable FX transactions and receive their funds in real time.
 
 ### Unified Liquidity for Trading and Payments&#x20;
 
@@ -47,4 +47,4 @@ Emerging markets suffer from a multi-trillion dollar credit gap. When businesses
 
 The B2B remittance market transacts over hundreds of billions USD annually. These importers and exporters either win or lose on spot or forward contract settlements. By each counterparty posting liquidity via a smart contract on the blockchain, users can eliminate losses by sharing in any FX swings.
 
-\
+
