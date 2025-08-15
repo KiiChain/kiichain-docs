@@ -25,7 +25,7 @@ Imported and exported goods are one of the major drivers of GDP within Latin Ame
 
 ### Tokenization of Real Estate (RWA)
 
-Asset fractionalization and ownership is becoming more imperative than ever before in markets with wealth fragmentation, high inflation and high interest rates. Real estate and asset infrastructure fractionalization allows users to own yield bearing, inflation protected, assets that cannot be owned by these users in whole. By democratizing the ownership process, liquidity can extend to other markets and users who would not otherwise have access prior.&#x20;
+Asset fractionalization and ownership are becoming more important than ever in markets with wealth fragmentation, high inflation, and high interest rates. Real estate and infrastructure asset fractionalization allows users to own yield-bearing, inflation-protected assets that they could not otherwise own in full. By democratizing the ownership process, liquidity can extend to other markets and users who previously had no access.
 
 ### Tokenization of Debt and Equities (RWA)
 
