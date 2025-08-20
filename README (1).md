@@ -1,5 +1,5 @@
 ---
-description: >-
+ description: >-
   KiiChain is the first FX layer 1 AppChain built for stablecoins and RWAs.
   KiiChain empowers users, developers and businesses who are building the future
   of finance in emerging markets.
@@ -9,13 +9,13 @@ description: >-
 
 ### What is KiiChain?
 
+
 KiiChain is a layer 1 blockchain built with the Cosmos SDK. It is an AppChain built as an abstraction layer for utility and liquidity for stablecoins and RWAs. It blends EVM compatibility with multi-chain connectivity to create a network that is highly interoperable, scalable and easy to use. Its design purpose is to onboard the next generation of developers in emerging markets who are building the best use-cases for real-world users.
 
 ### KiiChain Powers KIIEX
 
 KIIEX is a cross-border payment and trading platform bringing institutional liquidity and\
 immediate settlement to the most popular FX and RWA pairs using non-dollar stablecoins.&#x20;
-
 ### Cosmos SDK
 
 The Cosmos SDK is an open-source framework for building multi-asset public Proof-of-Stake (PoS) blockchains, like the Cosmos Hub.The goal of the Cosmos SDK is to allow developers to easily create custom blockchains from scratch that can natively interoperate with other blockchains. We envision the Cosmos SDK as the npm-like framework to build secure blockchain applications on top of CometBFT. SDK-based blockchains are built out of composable modules, most of which are open-source and readily available for any developers to use. The Cosmos SDK is a capabilities-based system that allows developers to better reason about the security of interactions between modules. Learn more about Cosmos [here](https://docs.cosmos.network/).
