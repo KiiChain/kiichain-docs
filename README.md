@@ -6,10 +6,8 @@ description: >-
 
 # KiiChain Documentation
 
-[![GitHub stars](https://img.shields.io/github/stars/KiiChain/kiichain-docs?style=social)](https://github.com/KiiChain/kiichain-docs/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/KiiChain/kiichain-docs?style=social)](https://github.com/KiiChain/kiichain-docs/network/members)
-[![GitHub issues](https://img.shields.io/github/issues/KiiChain/kiichain-docs)](https://github.com/KiiChain/kiichain-docs/issues)
-[![GitHub license](https://img.shields.io/github/license/KiiChain/kiichain-docs)](./LICENSE)
+[![Stars](https://img.shields.io/github/stars/KiiChain/kiichain-docs?style=flat&logo=github)](https://github.com/KiiChain/kiichain-docs/stargazers) [![Forks](https://img.shields.io/github/forks/KiiChain/kiichain-docs?style
+
 
 # What is Kii?
 
