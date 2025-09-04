@@ -4,6 +4,13 @@ description: >-
   onchain FX trading for cross-border payments.
 ---
 
+# KiiChain Documentation
+
+[![GitHub stars](https://img.shields.io/github/stars/KiiChain/kiichain-docs?style=social)](https://github.com/KiiChain/kiichain-docs/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/KiiChain/kiichain-docs?style=social)](https://github.com/KiiChain/kiichain-docs/network/members)
+[![GitHub issues](https://img.shields.io/github/issues/KiiChain/kiichain-docs)](https://github.com/KiiChain/kiichain-docs/issues)
+[![GitHub license](https://img.shields.io/github/license/KiiChain/kiichain-docs)](./LICENSE)
+
 # What is Kii?
 
 ### What is Kii
@@ -27,3 +34,4 @@ Kii has developed a suite of APIs that embed all centralized and decentralized f
 ### KYC / AML
 
 Kii complies fully with regulations in each jurisdiction. Users must adhere to KYC and AML standards and requirements.
+
