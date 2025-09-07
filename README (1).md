@@ -5,15 +5,13 @@ description: >-
   of finance in emerging markets.
 ---
 
-# What is KiiChain?
-
 ### What is KiiChain?
 
 KiiChain is a layer 1 blockchain built with the Cosmos SDK. It is an AppChain built as an abstraction layer for utility and liquidity for stablecoins and RWAs. It blends EVM compatibility with multi-chain connectivity to create a network that is highly interoperable, scalable and easy to use. Its design purpose is to onboard the next generation of developers in emerging markets who are building the best use-cases for real-world users.
 
 ### KiiChain Powers KIIEX
 
-KIIEX is a cross-border payment and trading platform bringing institutional liquidity and\
+KIIEX is a cross-border payment and trading platform bringing institutional liquidity and
 immediate settlement to the most popular FX and RWA pairs using non-dollar stablecoins.&#x20;
 
 ### Cosmos SDK
@@ -36,7 +34,7 @@ The Kii RWA Protocol sets standardization of Real World Asset (RWA) tokenization
 
 The Kii PayFi Module is a gas-optimized payment system for merchant transactions with specialized fee handling along with a Paymaster System to grant gas funds for DeFi actions via protocols. The module is developed for both web3 and web2 companies to incentivize the migration of their revenue and payment models to on-chain functions. Included in the module, is a Defi protocol that sets standards for TVL based loans, collateral management, interest models, and liquidity systems. Advanced features include revenue lending, invoicing financing, payment scheduling and TVL based credit card financing through community Payfi pools. This module is still in development and will be deployed in the coming weeks.
 
-### &#x20;EVM Module
+### EVM Module
 
 The EVM module allows for mirrored EVM compatibility and for smart contracts to be deployed in Solidity to the network. This means it can run all existing Ethereum dApps and smart contracts without needing any changes. It achieves this with a high-performance Ethereum Virtual Machine (EVM) that is optimized for speed and reliability. Thanks to its modular, plugin-based design, it allows any host blockchain to execute Ethereum transactions and smart contracts.
 
