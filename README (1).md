@@ -43,3 +43,13 @@ The EVM module allows for mirrored EVM compatibility and for smart contracts to 
 ### IBC
 
 Inter-Blockchain Communication is a protocol that allows for cross chain communication and data transfers. It connects different blockchain networks to promote high levels of interoperability, scalability and communication. IBC can be implemented to any blockchain network as long as it conforms to its protocol guidelines. Currently, there are over 100 networks integrated into IBC. Read more about IBC [here](https://www.ibcprotocol.dev/).
+### What is KiiChain?
+
+KiiChain is a layer 1 blockchain built with the Cosmos SDK. It is an AppChain built as an abstraction layer for utility and liquidity for stablecoins and RWAs
+### KiiChain Powers KIIEX
+
+KIIEX is a cross-border payment and trading platform bringing institutional liquidity and\
+immediate settlement to the most popular FX and RWA pairs using non-dollar stablecoins.&#x20;
+### Kii Payfi Module
+
+The Kii PayFi Module is a gas-optimized payment system for merchant transactions with specialized fee handling along with a Paymaster System to grant gas funds for DeFi actions via protocols.
