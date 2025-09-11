@@ -1,4 +1,5 @@
----
+---what is kiichain
+KiiChain is a Layer-1 (L1) blockchain solution built on the Cosmos SDK and designed specifically for the future of finance in emerging markets. The project integrates business-to-business (B2B) payment infrastructure and real-world asset tokenization.
 description: >-
   KiiChain is the first FX layer 1 AppChain built for stablecoins and RWAs.
   KiiChain empowers users, developers and businesses who are building the future
