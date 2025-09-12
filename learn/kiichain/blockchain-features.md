@@ -7,7 +7,7 @@ hidden: true
 
 ### Building on the Cosmos SDK
 
-Cosmos is a network of independent parallel blockchains that are each powered by classical BFT consensus algorithms like Tendermint 1. KiiChain is its own independent layer 1 Blockchain that will connect to the Cosmos Hub to take advantage of its benefits.
+Cosmos is a network of independent parallel blockchains that are each powered by classical BFT consensus algorithms like Tendermint (CometBFT). KiiChain is its own independent layer 1 Blockchain that will connect to the Cosmos Hub to take advantage of its benefits.
 
 The Cosmos Hub is the inaugural blockchain in this network and serves as a pivotal connection point to various other blockchains (referred herein as Zones), including KiiChain, through the novel and innovative Inter-Blockchain Communication (IBC) protocol. It maintains a record of multiple token types and their quantities across all linked Zones. Thanks to this system, tokens can be transferred swiftly and securely between Zones without requiring a direct exchange, as all transfers between zones are channeled through the Cosmos Hub.
 
