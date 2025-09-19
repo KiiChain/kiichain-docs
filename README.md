@@ -6,7 +6,7 @@ description: >-
 
 # KiiChain Documentation
 
-[![Stars](https://img.shields.io/github/stars/KiiChain/kiichain-docs?style=flat&logo=github)](https://github.com/KiiChain/kiichain-docs/stargazers) 
+[![Stars](https://img.shields.io/github/stars/KiiChain/kiichain-docs?style=flat&logo=github)](https://github.com/KiiChain/kiichain-docs/stargazers)
 [![Forks](https://img.shields.io/github/forks/KiiChain/kiichain-docs?style=flat&logo=github)](https://github.com/KiiChain/kiichain-docs/forks)
 
 ---
@@ -29,11 +29,20 @@ Kii has developed a suite of APIs that embed all centralized and decentralized f
 
 * [Kii APIs](https://docs.kiiglobal.io/docs/connect-to-kiiex/connect-to-kiiex-apis)
 
+To quickly get started with these docs, you can also run them locally:
+
+    git clone https://github.com/KiiChain/kiichain-docs.git
+    cd kiichain-docs
+    npm install
+    npm run dev
+
+After running the last command, open http://localhost:3000 in your browser to preview the docs.
+
 ## KYC / AML
 
 Kii complies fully with regulations in each jurisdiction. Users must adhere to KYC and AML standards and requirements.
 
 ---
 
-📄 [LICENSE](https://github.com/KiiChain/kiichain-docs/blob/main/LICENSE)
+📄 LICENSE: https://github.com/KiiChain/kiichain-docs/blob/main/LICENSE
 
