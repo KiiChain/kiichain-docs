@@ -1,45 +1,145 @@
+# 📖 KiiChain Overview  
+
+## 📑 Table of Contents  
+- [What is KiiChain?](#what-is-kiichain)  
+- [✨ Key Features](#-key-features)  
+  - [Core Technology](#-core-technology)  
+  - [Specialized Modules](#-specialized-modules)  
+- [💱 KIIEX](#-kiiex)  
+- [🧪 Build on KiiChain – Testnet Oro](#-build-on-kiichain--testnet-oro)  
+  - [Source Code](#-source-code)  
+  - [Endpoints](#-endpoints)  
+  - [Chain Information](#-chain-information)  
+  - [How to Join](#-how-to-join)  
+  - [Faucet](#-faucet)  
+  - [Explorer](#-explorer)  
+  - [Developer Tools](#-developer-tools)  
+  - [Address Formats](#-address-formats)  
+  - [KII Token](#-kii-token)  
+
 ---
-description: >-
-  KiiChain is the first FX layer 1 AppChain built for stablecoins and RWAs.
-  KiiChain empowers users, developers and businesses who are building the future
-  of finance in emerging markets.
+
+## What is KiiChain?  
+KiiChain is the first **FX Layer 1 AppChain** built for stablecoins and RWAs.  
+It empowers users, developers, and businesses who are building the future of finance in **emerging markets**.  
+
+KiiChain is a **Layer 1 blockchain** built with the **Cosmos SDK**.  
+It is an AppChain designed as an abstraction layer for **utility and liquidity for stablecoins and RWAs**.  
+It combines **EVM compatibility** with **multi-chain connectivity**, making the network highly interoperable, scalable, and easy to use.  
+
+Its purpose is to onboard the next generation of developers in emerging markets who are building the best use-cases for real-world users.  
+
 ---
 
-# What is KiiChain?
+## ✨ Key Features  
 
-### What is KiiChain?
+### 🔹 Core Technology  
+- **Cosmos SDK** → open-source PoS framework for modular blockchain development  
+- **Comet BFT (ex-Tendermint Core)** → consensus with fast transaction finality and high throughput  
+- **Proof-of-Stake** → validators are chosen by staking KII tokens, delegators can participate  
+- **IBC (Inter-Blockchain Communication)** → interoperability with 100+ integrated networks  
 
-KiiChain is a layer 1 blockchain built with the Cosmos SDK. It is an AppChain built as an abstraction layer for utility and liquidity for stablecoins and RWAs. It blends EVM compatibility with multi-chain connectivity to create a network that is highly interoperable, scalable and easy to use. Its design purpose is to onboard the next generation of developers in emerging markets who are building the best use-cases for real-world users.
+### 🔹 Specialized Modules  
+- **Kii RWA Protocol**  
+  - Standardizes tokenization of RWAs using **T-REX protocol**  
+  - Smart contracts powered by **CosmWasm**, mirrored to **ERC tokens**  
+  - Includes **on-chain KYC, KYB, and asset verification**  
+  - Creates a unified liquidity layer for RWA tokens  
 
-### KiiChain Powers KIIEX
+- **Kii PayFi Module** *(in development)*  
+  - Gas-optimized merchant payment system with Paymaster support  
+  - Supports **TVL-based loans, collateral management, liquidity systems**  
+  - Advanced features: **revenue lending, invoice financing, payment scheduling, TVL-based credit card financing**  
 
-KIIEX is a cross-border payment and trading platform bringing institutional liquidity and\
-immediate settlement to the most popular FX and RWA pairs using non-dollar stablecoins.&#x20;
+- **EVM Module**  
+  - Full Solidity compatibility  
+  - Can run Ethereum dApps and smart contracts without changes  
 
-### Cosmos SDK
+---
 
-The Cosmos SDK is an open-source framework for building multi-asset public Proof-of-Stake (PoS) blockchains, like the Cosmos Hub.The goal of the Cosmos SDK is to allow developers to easily create custom blockchains from scratch that can natively interoperate with other blockchains. We envision the Cosmos SDK as the npm-like framework to build secure blockchain applications on top of CometBFT. SDK-based blockchains are built out of composable modules, most of which are open-source and readily available for any developers to use. The Cosmos SDK is a capabilities-based system that allows developers to better reason about the security of interactions between modules. Learn more about Cosmos [here](https://docs.cosmos.network/).
+## 💱 KIIEX  
+KIIEX is a **cross-border payment and trading platform** powered by KiiChain.  
+- Brings **institutional liquidity** and **instant settlement**  
+- Focuses on popular **FX and RWA pairs** using **non-USD stablecoins**  
 
-### Comet BFT & Tendermint Core
+---
 
-Comet BFT (Byzantine Fault Tolerant) is the upgraded version of Tendermint Core, the Interchain's consensus mechanism that powers Cosmos SDK blockchain systems. Comet BFT has a modular architecture that separates the consensus engine from the application layer, allowing developers to build custom blockchain applications easily. It offers fast transaction finality and high throughput, making it ideal for applications that require quick and reliable performance. Learn more about Comet BFT [here](https://cometbft.com/).
+# 🧪 Build on KiiChain – Testnet Oro  
 
-### Proof-of-Stake
+KiiChain is a **peer-to-peer decentralized EVM-compatible network** built with the **Cosmos SDK**.  
+The public testnet is called **KiiChain Testnet Oro**.  
 
-KiiChain is a Proof-of-Stake blockchain. PoS selects validators based on the number of tokens they hold and are willing to "stake" as collateral for servicing and securing the network. Delegators, or individual "stakers", can delegate their tokens to any specific validator that meets the requirements.
+👉 **Testnet Oro is a permanent testnet** with **smart contract functionality and EVM compatibility**.  
+All **Hackathons, Builds, Airdrops, and test deployments** should be done on this network.  
 
-### Kii RWA Protocol
+---
 
-The Kii RWA Protocol sets standardization of Real World Asset (RWA) tokenization through the T-REX (Token for Regulated EXchanges) protocol using CosmWasm smart contracts on KiiChain that are simultaneously mirrored to ERC tokens. The T-REX protocol is designed for compliant issuance and management of security tokens on blockchain networks. Apart from token standards, the protocol defines on-chain KYC, KYB and asset verification. The Kii RWA protocol on KiiChain is creating an interoperable unified liquidity layer for RWA tokens.
+## 🔹 Source Code  
+The source code for Testnet Oro can be found here: **[KiiChain Repository](#)**  
 
-### Kii Payfi Module
+---
 
-The Kii PayFi Module is a gas-optimized payment system for merchant transactions with specialized fee handling along with a Paymaster System to grant gas funds for DeFi actions via protocols. The module is developed for both web3 and web2 companies to incentivize the migration of their revenue and payment models to on-chain functions. Included in the module, is a Defi protocol that sets standards for TVL based loans, collateral management, interest models, and liquidity systems. Advanced features include revenue lending, invoicing financing, payment scheduling and TVL based credit card financing through community Payfi pools. This module is still in development and will be deployed in the coming weeks.
+## 🔹 Endpoints  
 
-### &#x20;EVM Module
+**Sentry #1**  
+- RPC: `https://rpc.uno.sentry.testnet.v3.kiivalidator.com/`  
+- REST (LCD): `https://lcd.uno.sentry.testnet.v3.kiivalidator.com/`  
+- GRPC: `grpc.uno.sentry.testnet.v3.kiivalidator.com:443`  
+- JSON-RPC (EVM): `https://json-rpc.uno.sentry.testnet.v3.kiivalidator.com/`  
+- Peer: `5b6aa55124c0fd28e47d7da091a69973964a9fe1@uno.sentry.testnet.v3.kiivalidator.com:26656`  
 
-The EVM module allows for mirrored EVM compatibility and for smart contracts to be deployed in Solidity to the network. This means it can run all existing Ethereum dApps and smart contracts without needing any changes. It achieves this with a high-performance Ethereum Virtual Machine (EVM) that is optimized for speed and reliability. Thanks to its modular, plugin-based design, it allows any host blockchain to execute Ethereum transactions and smart contracts.
+**Sentry #2**  
+- RPC: `https://rpc.dos.sentry.testnet.v3.kiivalidator.com/`  
+- REST (LCD): `https://lcd.dos.sentry.testnet.v3.kiivalidator.com/`  
+- GRPC: `grpc.dos.sentry.testnet.v3.kiivalidator.com:443`  
+- JSON-RPC (EVM): `https://json-rpc.dos.sentry.testnet.v3.kiivalidator.com/`  
+- Peer: `5e6b283c8879e8d1b0866bda20949f9886aff967@dos.sentry.testnet.v3.kiivalidator.com:26656`  
 
-### IBC
+⚠️ Currently, there are **no seed nodes or persistent peers** available to the public.  
 
-Inter-Blockchain Communication is a protocol that allows for cross chain communication and data transfers. It connects different blockchain networks to promote high levels of interoperability, scalability and communication. IBC can be implemented to any blockchain network as long as it conforms to its protocol guidelines. Currently, there are over 100 networks integrated into IBC. Read more about IBC [here](https://www.ibcprotocol.dev/).
+---
+
+## 🔹 Chain Information  
+- **Chain ID:** `oro_1336-1`  
+- **Total Supply:** 1.8B Kii  
+- **Token Denom:** `akii`  
+- **EVM Chain ID:** 1336  
+- **Bech32 Prefix:** `kii`  
+
+---
+
+## 🔹 How to Join  
+Step-by-step instructions are available here: **[Guide](#)**  
+
+---
+
+## 🔹 Faucet  
+- **Explorer Faucet:** [KiiChain Explorer Faucet](#)  
+- **Discord Faucet:** [Join Discord](#)  
+  > More details on how to use the Discord faucet: **[Testnet Faucet](#)**  
+
+---
+
+## 🔹 Explorer  
+Explore the network here: **[Testnet Oro Explorer](#)**  
+
+---
+
+## 🔹 Developer Tools  
+Guides and tools for developers:  
+- RWA Protocol  
+- Deploying a Smart Contract  
+- Deploying a dApp  
+
+---
+
+## 🔹 Address Formats  
+Testnet Oro features a **mirrored EVM-CW smart contract module**:  
+- **CosmWasm (CW):** `kii123abc...`  
+- **EVM:** `0x123abc...`  
+
+This ensures **seamless interoperability** with Ethereum-based tools and Cosmos infrastructure.  
+
+---
+
+## 🔹
