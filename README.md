@@ -1,29 +1,21 @@
----
+;---
 description: >-
   Kii is a hybrid centralized-decentralized exchange platform designed for 24/7
   onchain FX trading for cross-border payments.
 ---
 
-# What is Kii?
+What is Kii?
+Kii is an on-chain FX desk that makes global payments, trading, and finance easy for everyone—whether you’re a user, business, or builder. You can use Kii by creating an account or connecting through its APIs.
 
-### What is Kii
+Unlike traditional platforms, Kii used a hybrid model, which sources liquidity on-chain while keeping balances exposed to local currencies. It supports fiat swaps and payouts using local stablecoins and tokenized real-world assets.
 
-Kii is an onchain FX desk powering global payments, trading and finance solutions in an easy-to-use platform designed for everyone. Users, businesses or builders can use Kii by signing up for an account or connecting to APIs. Kii differs from other traditional platforms by its hybrid approach of sourcing liquidity and maintaining balances onchain exposed to local currencies. Kii supports fiat swaps and payins/payouts via the pricing of local, non-dollar stablecoins and other tokenized real-world assets.
+Key Features:
 
-### Hybrid Matching Engine
+Hybrid Matching Engine: Finds liquidity across blockchains and uses centralized pricing to rebalance, ensuring 24/7 deep liquidity.
 
-At the core of Kii is a hybrid matching engine that is able to source onchain liquidity across any blockchain ecosystem while using centralized pricing to hedge and rebalance onchain positions. The result is an ultra-liquid layer that can operate 24/7 on certain pairs that only have liquidity during traditional business hours.
+Ramps: Fast on/off ramps for instant pay-ins and payouts, available via UI or API, and fully compliant.
 
-### Ramps
+APIs: Unified APIs that combine centralized and decentralized features, making it easy for apps and businesses to integrate.
 
-Kii has a full suite of on and off ramps enabling instant payins and payouts from its system. These ramps are both UI and API enabled with the ability to disperse directly or to third-party accounts while remaining 100% compliant.
-
-### Connect to APIs
-
-Kii has developed a suite of APIs that embed all centralized and decentralized functionalities into a single set of APIs that any application can use. For more information on the APIs, visit:
-
-* [Kii APIs](https://docs.kiiglobal.io/docs/connect-to-kiiex/connect-to-kiiex-apis)
-
-### KYC / AML
-
+Compliance: Fully regulated with KYC and AML requirements.
 Kii complies fully with regulations in each jurisdiction. Users must adhere to KYC and AML standards and requirements.
