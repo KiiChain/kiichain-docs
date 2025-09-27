@@ -10,9 +10,9 @@ matrix:
   pipeline:
   - pyspelling.filters.markdown:
       markdown_extensions:
-      - markdown.extensions.extra:
+      - markdown.extensions.extra
   - pyspelling.filters.html:
-      comments: True
+      comments: true
       attributes:
       - alt
       ignores:
@@ -20,7 +20,7 @@ matrix:
       - 'code'
       - 'pre'
       - 'blockquote'
-  pyspelling.filters.context:
+  - pyspelling.filters.context:
       context_visible_first: true
       escapes: \\[\\`~]
       delimiters:
