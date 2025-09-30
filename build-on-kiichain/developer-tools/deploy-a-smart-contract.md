@@ -214,95 +214,15 @@ forge script script/Counter.s.sol:CounterScript --fork-url https://json-rpc.uno.
 
 A success message should appear.
 
-### Deploy with Thirdweb
-
-In this example, we will create a ERC721 (Non fungible token).
-
-#### 1. Create an account
-
-Create an account in thirdweb, create an API key [here](https://thirdweb.com/dashboard/settings/api-keys), and link your wallet.
-
-Store the API key in a secure place.
-
-#### 2. Create a project
-
-```bash
-npx thirdweb create
-```
-
-A message appears
-
-```bash
-Need to install the following packages:
-thirdweb@5.46.1
-Ok to proceed? (y) y
-```
-
-After the installation this screen should appear, select “Contract”
-
-```bash
-    $$\\     $$\\       $$\\                 $$\\                         $$\\
-    $$ |    $$ |      \\__|                $$ |                        $$ |
-  $$$$$$\\   $$$$$$$\\  $$\\  $$$$$$\\   $$$$$$$ |$$\\  $$\\  $$\\  $$$$$$\\  $$$$$$$\\
-  \\_$$  _|  $$  __$$\\ $$ |$$  __$$\\ $$  __$$ |$$ | $$ | $$ |$$  __$$\\ $$  __$$\\
-    $$ |    $$ |  $$ |$$ |$$ |  \\__|$$ /  $$ |$$ | $$ | $$ |$$$$$$$$ |$$ |  $$ |
-    $$ |$$\\ $$ |  $$ |$$ |$$ |      $$ |  $$ |$$ | $$ | $$ |$$   ____|$$ |  $$ |
-    \\$$$$  |$$ |  $$ |$$ |$$ |      \\$$$$$$$ |\\$$$$$\\$$$$  |\\$$$$$$$\\ $$$$$$$  |
-     \\____/ \\__|  \\__|\\__|\\__|       \\_______| \\_____\\____/  \\_______|\\_______/
-
- 💎 thirdweb v0.14.12 💎
-
-? What type of project do you want to create? » - Use arrow-keys. Return to submit.
-    App
->   Contract
-    Dynamic Contract Extension
-```
-
-Select the following options:
-
-```bash
-√ What type of project do you want to create? » Contract
-√ What is your project named? ... ERC721-Example
-√ What framework do you want to use? » Forge
-√ What will be the name of your new smart contract? ... MyContract
-√ What type of contract do you want to start from? » ERC721
-√ What extensions do you want to add to your contract? » None
-```
-
-#### 3. Write a smart contract and deploy
-
-Enter the directory and run the following command:
-
-```bash
-cd erc721-example
-npx thirdweb deploy -k yourApiKey
-```
-
-Open the link and fill in the fields.
-
-<figure><img src="../../.gitbook/assets/image (20) (1).png" alt="" width="563"><figcaption></figcaption></figure>
-
-In chain choose
-
-add Custom Network
-
-<figure><img src="../../.gitbook/assets/image (21) (1).png" alt="" width="364"><figcaption></figcaption></figure>
-
-Finally, select Deploy Now and accept the transaction in your wallet.
-
-### Confirming Smart Contract on Explorer App
-
-Remember that you can check the smart contracts Deployed [here](https://app.kiiglobal.io/smart-contracts).
-
 ### Troubleshooting — Remix on Oro (Testnet, Chain ID 1336)
 
 If a Remix deploy shows **“Transaction mined but execution failed (status 0x0)”**, set:
-- **Solidity Compiler → EVM Version = `london`**
-- **Optimizer: enabled (200 runs)**
-- **Disable `viaIR`** (if it was enabled)
 
-Re-compile, then deploy again on **KiiChain Testnet (Oro, chainId 1336)**.
-This avoids newer EVM opcodes not yet supported by Oro.
+* **Solidity Compiler → EVM Version = `london`**
+* **Optimizer: enabled (200 runs)**
+* **Disable `viaIR`** (if it was enabled)
+
+Re-compile, then deploy again on **KiiChain Testnet (Oro, chainId 1336)**. This avoids newer EVM opcodes not yet supported by Oro.
 
 #### Hardhat — KiiChain Oro Network
 
@@ -323,3 +243,4 @@ const config: HardhatUserConfig = {
 };
 export default config;
 
+```
