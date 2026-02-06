@@ -13,6 +13,10 @@ This allows them to:
 * Create a transfer of their denom between any two accounts
 * Change the admin. In the future, more admin capabilities may be added. Admins can choose to share admin privileges with other accounts using the authz module. The `ChangeAdmin` functionality, allows changing the master admin account, or even setting it to `""`, meaning no account has admin privileges for the asset.
 
+### Interaction with other modules
+
+<table><thead><tr><th width="188.83331298828125">Module</th><th>Interaction</th></tr></thead><tbody><tr><td>Account</td><td>Finds module accounts when they are used by tokens</td></tr><tr><td>Bank</td><td>Mint, burn and intermediate tokens. Checks blocked addresses.</td></tr><tr><td>Community pool</td><td>Fees for denom creation go to the community pool</td></tr></tbody></table>
+
 ### Messages
 
 #### CreateDenom

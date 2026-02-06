@@ -14,4 +14,4 @@ The Kii blueprint saw expansion within its product and app suite, incorporating 
 
 The product suite provides institutional infrastructure and liquidity, connecting global players to local operators. KiiChain is EVM compatible and supports smart contracts in both Solidity and Rust. It’s a permissionless ecosystem for open finance, where web2 and web3 developers can build a wide variety of dApps and protocols.
 
-\
+<br>

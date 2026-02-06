@@ -24,6 +24,10 @@ In its code, the module changes the fee-paying ante handlers to allow payment of
   * This allows for easy conversion when paying fees
   * And allows for easy querying
 
+### Interaction with other modules
+
+<table><thead><tr><th width="141.16668701171875">Module</th><th>Interaction</th></tr></thead><tbody><tr><td>Bank</td><td>Used to check sufficient balance from signer</td></tr><tr><td>ERC20</td><td>Converts balance from alternate tokens used as fee</td></tr><tr><td>Oracle</td><td>Provides information for exchange rate used in token conversion</td></tr></tbody></table>
+
 #### Price calculation
 
 The price calculation happens at the beginning of each block:

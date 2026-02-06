@@ -35,6 +35,10 @@ The Exchange Vote is done as following:
 4. If no vote is submitted by a validator in the current voting period, the module will slash the validator's stake according to the `slash_fraction` parameter
 5. The final exchange rate is stored on-chain and can be queried by other modules or smart contracts
 
+### Interaction with other modules
+
+<table><thead><tr><th width="155.83331298828125">Module</th><th>Interaction</th></tr></thead><tbody><tr><td>Account</td><td>Enforces oracle module account</td></tr><tr><td>Bank</td><td>Checks balances and update denom metadata of tokens</td></tr><tr><td>Staking</td><td>Fetches validator information for tally and potentially slash them on misbehavior</td></tr><tr><td>Price feed</td><td>External tool that fetches and calculates prices</td></tr></tbody></table>
+
 ### State
 
 These are the most important state types used by the Oracle module:

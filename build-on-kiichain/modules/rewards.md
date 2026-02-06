@@ -9,6 +9,10 @@ The rewards module adds the distribution of rewards from a specific community po
 3. At the end of every block, a linear % of the reward will be forwarded for distribution
 4. When the end time of the release is reached, all rewards will have been given away, and it will go inactive
 
+### Interaction with other modules
+
+<table><thead><tr><th width="181.5">Module</th><th>Interaction</th></tr></thead><tbody><tr><td>Bank</td><td>Adds and removes funds from community pool; sends tokens from reward module to fee collector</td></tr><tr><td>Community pool</td><td>Specific pool for the module that receives and holds tokens for the module</td></tr><tr><td>Distribution</td><td>Reward is sent to fee collector that spreads it to validators</td></tr></tbody></table>
+
 ### Internal state
 
 To properly release on time, calculate rewards, and keep track, we have a RewardReleaser with the following internal information:

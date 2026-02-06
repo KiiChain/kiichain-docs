@@ -84,7 +84,7 @@ You can find guides to the testnet at our [Developer Tools](testnet-oro.md#devel
 
 Rest endpoints for the testnet Oro can be found here:
 
-* [Endpoints](broken-reference)
+* [Endpoints](/broken/pages/eFlbymQFODJfNUyUpyRT)
 
 ## **EVM / CW Addresses**
 

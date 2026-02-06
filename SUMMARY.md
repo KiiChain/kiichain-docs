@@ -87,16 +87,15 @@
   * [Resources](build-on-kiichain/developer-tools/resources.md)
   * [Precompiled Contracts](build-on-kiichain/developer-tools/precompiled-contracts.md)
 * [Smart Contracts](build-on-kiichain/smart-contracts.md)
+* [Wasmbindings](build-on-kiichain/wasmbindings.md)
 * [Modules](build-on-kiichain/modules/README.md)
   * [TokenFactory](build-on-kiichain/modules/tokenfactory.md)
   * [EVM](build-on-kiichain/modules/evm.md)
   * [Rewards](build-on-kiichain/modules/rewards.md)
   * [Oracle](build-on-kiichain/modules/oracle.md)
   * [Fee Abstraction](build-on-kiichain/modules/fee-abstraction.md)
-
-***
-
-* [Precompiled contracts](precompiled-contracts.md)
+* [Precompiled contracts](build-on-kiichain/precompiled-contracts/README.md)
+  * [Oracle Precompile](build-on-kiichain/precompiled-contracts/oracle-precompile.md)
 
 ## Validate the Network
 

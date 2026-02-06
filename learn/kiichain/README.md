@@ -16,4 +16,4 @@ Although economically a very large industry, emerging markets don't just thrive 
 
 KiiChain is unwaveringly committed to delivering high-performance, interconnected, and ultra-secure blockchain solutions as a driver in economic development in emerging markets in an effort to improve communication and globalization. At the heart of our technological prowess is the CometBFT mechanism, a solution for problems that exist in the economy, particularly emerging economies and Latin America. However, more than just a blockchain, Kii Global has built an infrastructure ecosystem of solutions designed to unify blockchain liquidity and its participants, in an effort to directly solve some of the biggest economic challenges in the region.
 
-\
+<br>
