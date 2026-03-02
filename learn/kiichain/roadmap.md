@@ -30,7 +30,7 @@ Q4: Started KiiChain Testnet V3 upgrades with new EVM module, RWA protocol, Orac
 
 ### 2025
 
-Q1
+Q1:
 
 * Incentivized testnet, XP and Oro rewards, featuring onchain tasks and partnerships ([https://kiichain.io/testnet](https://kiichain.io/testnet)).
 * KIIEX version 2.0 released with new UI/UX and third party ramp features.
@@ -58,17 +58,21 @@ Q4:
 
 Q1:
 
-* Public Mainnet, public sale and TGE.
+* Hacken Audit on Private Mainnet.
 * KIIEX 3.0 Beta.
 
 Q2:
 
+* Public Mainnet, public sale and TGE.
 * KIIEX 3.0 Prod.
-* Cold storage debit/credit cards.
 
-Q3 & Q4:
+Q3:
 
 * International expansion, supporting new onchain FX territories.
-* KIIEX product development.
+* Smart contract enabled debit cards.
+
+Q4:
+
 * KiiChain ecosystem development and module feature add-ons.&#x20;
+* Kii product growth.
 
