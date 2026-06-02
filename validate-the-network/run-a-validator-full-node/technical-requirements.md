@@ -4,9 +4,15 @@ description: For hardware and software protocols.
 
 # Technical requirements
 
-### What are hardware requirements? <a href="#what-are-hardware-requirements" id="what-are-hardware-requirements"></a>
+### Recommended configuration
 
-A modest level of hardware specifications is initially required and rises as network use increases. Participating in the testnet is the best way to learn more.&#x20;
+For optimal performance, we recommend:
+
+* 4 vCPU x86\_64
+* 8 GB RAM
+* 1 TB NVME SSD
+
+A modest level of hardware specifications is initially required and rises as network use increases.
 
 Validators are recommended to set up sentry nodes to protect your validator node from DDoS attacks.
 
