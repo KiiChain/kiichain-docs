@@ -51,6 +51,7 @@
 
 * [Developer Hub](build-on-kiichain/developer-hub.md)
 * [Testnet Oro](build-on-kiichain/testnet-oro.md)
+* [Endpoints - EVM](build-on-kiichain/endpoints-evm.md)
 * [Endpoints - Cosmos](build-on-kiichain/endpoints-cosmos/README.md)
   * [EVM](build-on-kiichain/endpoints-cosmos/evm/README.md)
     * [VM](build-on-kiichain/endpoints-cosmos/evm/vm.md)
