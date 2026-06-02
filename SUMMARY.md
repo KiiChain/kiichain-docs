@@ -114,6 +114,7 @@
   * [Incentive](validate-the-network/run-a-validator-full-node/incentive.md)
   * [Technical requirements](validate-the-network/run-a-validator-full-node/technical-requirements.md)
   * [Validator Security](validate-the-network/run-a-validator-full-node/validator-security.md)
+  * [Further guides](validate-the-network/run-a-validator-full-node/further-guides.md)
 * [Economics](validate-the-network/economics/README.md)
   * [Staking Requirements](validate-the-network/economics/staking-requirements.md)
   * [Delegation / Staking](validate-the-network/economics/delegation-staking.md)
