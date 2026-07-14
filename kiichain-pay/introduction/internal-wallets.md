@@ -13,10 +13,10 @@ Alongside these on-chain wallets, KiiChain Pay keeps an **internal ledger** that
 
 ## What a Kii Wallet is
 
-* An **embedded wallet** created and secured by Privy, one **per account, per supported chain**.
-* **Supported chain types:** EVM (Ethereum-compatible, including KiiChain), Cosmos, Solana, Tron, and Bitcoin (SegWit).
-* **Non-custodial:** keys live with Privy and belong to the user. To let your backend transact from a wallet, the user must first [delegate it](privy-delegated-access.md) to the platform signer.
-* **Gas-sponsored:** every Kii Wallet operation is paid for by KiiChain Pay, so users never need native gas tokens.
+- An **embedded wallet** created and secured by Privy, one **per account, per supported chain**.
+- **Supported chain types:** EVM (Ethereum-compatible, including KiiChain), Cosmos, Solana, Tron, and Bitcoin (SegWit).
+- **Non-custodial:** keys live with Privy and belong to the user. To let your backend transact from a wallet, the user must first [delegate it](privy-delegated-access.md) to the platform signer.
+- **Gas-sponsored:** every Kii Wallet operation is paid for by KiiChain Pay, so users never need native gas tokens.
 
 {% hint style="info" %}
 Kii Wallets are provisioned **automatically when KYC is approved** — not at signup. An account at level 0 (no KYC) has no wallets yet. See [KYC](kyc.md).
@@ -37,10 +37,10 @@ This split is why a swap or off-ramp can reserve funds (`locked`) the instant yo
 
 The Kii Wallet is the on-chain endpoint for every value flow:
 
-* **Deposits** — receive crypto to the wallet address, or fund a fiat **virtual account** via an on-ramp provider.
-* **Withdrawals** — send crypto to an external address, or off-ramp to a bank account through a provider.
-* **Swaps / FX** — settle on-chain through KiiChain Pay's settlement contracts, with the platform signing on the delegated wallet's behalf.
-* **On-ramps / off-ramps** — bridge fiat and crypto through integrated providers.
+- **Deposits** — receive crypto to the wallet address, or fund a fiat **virtual account** via an on-ramp provider.
+- **Withdrawals** — send crypto to an external address, or off-ramp to a bank account through a provider.
+- **Swaps / FX** — settle on-chain through KiiChain Pay's settlement contracts, with the platform signing on the delegated wallet's behalf.
+- **On-ramps / off-ramps** — bridge fiat and crypto through integrated providers.
 
 See the [Guides](../guides/README.md) for end-to-end [on-ramp](../guides/quick-start/creating-an-on-ramp.md), [off-ramp](../guides/quick-start/creating-an-off-ramp.md), and [FX swap](../guides/quick-start/creating-an-fx-swap.md) walkthroughs.
 
@@ -62,5 +62,5 @@ In the app, the Kii Wallet and its balances are shown in the wallet area of the 
 
 ## Next steps
 
-* [Privy delegated access](privy-delegated-access.md) — let your backend sign wallet operations.
-* [KYC](kyc.md) — required before wallets are provisioned.
+- [Privy delegated access](privy-delegated-access.md) — let your backend sign wallet operations.
+- [KYC](kyc.md) — required before wallets are provisioned.
