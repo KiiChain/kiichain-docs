@@ -9,10 +9,10 @@ description: >-
 
 **KiiChain Pay** (formerly KiiEx) is the payments and foreign-exchange layer of the Kii ecosystem. It lets you move value between **fiat and crypto**, run **FX** and **DEX** swaps, and operate **on-ramps** and **off-ramps** — mixing on-chain and off-chain operations behind one programmatic interface.
 
-The product is **non-custodial**: every user gets their own embedded wallet whose keys are held by our wallet provider and owned by the user, never by KiiChain Pay. You orchestrate operations through the API; users authorize the platform to act on their behalf through an explicit, revocable delegation.
+The product is **non-custodial**: every KYC-verified account gets its own embedded **Kii Wallet** whose keys are held by our wallet provider and owned by the user, never by KiiChain Pay. To automate on-chain operations from a Kii Wallet, the user grants the platform an explicit **delegation** to sign on its behalf.
 
 {% hint style="info" %}
-The KiiChain Pay web app lives at [https://pay.kiichain.io](https://pay.kiichain.io). This documentation is written for **integrating KiiChain Pay programmatically** — you'll generate API keys, provision wallets for your users, and drive FX, ramps and swaps from your own backend.
+The KiiChain Pay web app lives at [https://pay.kiichain.io](https://pay.kiichain.io). This documentation is for **third parties automating KiiChain Pay** — integrating it into your own systems. You'll generate API keys, delegate your wallet, and drive FX, ramps and swaps from your own backend.
 {% endhint %}
 
 ## Core concepts
@@ -63,7 +63,7 @@ flowchart LR
 6. **Integrate** — build on-ramps, off-ramps and FX swaps via the API. See the [Guides](../guides/README.md) and [API Reference](../api-reference/README.md).
 
 {% hint style="info" %}
-This is the full path for server-driven flows that use a **Kii Wallet**. Users who bring their **own external wallet** sign transactions themselves, so they can skip delegation (step 4). And **DEX swaps** need none of it — no KYC and no authenticated user; a user can swap anonymously straight from an external wallet.
+Using your **own external wallet**? You sign transactions yourself — skip delegation (step 4). (**DEX swaps** need none of this flow at all.)
 {% endhint %}
 
 ## Environments

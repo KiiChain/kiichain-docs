@@ -16,7 +16,7 @@ KYC gates **Kii Wallets, fiat on-/off-ramps and limits** — not the chain itsel
 There are **two independent verification flows**:
 
 1. **System KYC** — KiiChain Pay's own identity verification. Sets your **account level** and platform-wide limits. **Every account completes this.**
-2. **Provider KYC / KYB** — extra verification that a specific on-/off-ramp provider may require. **Most integrators never need this.** It applies only in very specific cases and countries, and KiiChain Pay prompts you when it does — most of the time you don't need to think about it.
+2. **Provider KYC / KYB** — occasional extra verification a specific provider may require, and only in certain cases and countries. **Most integrators never need it.** Covered [below](#provider-kyc-kyb).
 
 ## System KYC
 

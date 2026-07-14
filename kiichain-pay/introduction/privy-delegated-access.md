@@ -12,16 +12,16 @@ Because Kii Wallets are [non-custodial](internal-wallets.md), KiiChain Pay canno
 Delegation is built on [Privy](https://privy.io)'s **session signers**. It is explicit, granted by the user, and required for any wallet-scoped API operation.
 
 {% hint style="info" %}
-Delegation applies **only to Kii Wallets**. If a user transacts with their own external wallet, they sign each transaction themselves — no delegation needed — and **DEX swaps** need neither delegation nor KYC.
+Delegation applies **only to Kii Wallets**. A user transacting with their own external wallet signs each transaction themselves — no delegation needed.
 {% endhint %}
 
 ## Why delegate
 
 Without delegation, every on-chain action would need the user to sign in real time — impractical for automated, server-driven payments and FX. With delegation:
 
-* Your backend can execute swaps, off-ramps and transfers from the user's Kii Wallet via the API.
-* No per-transaction signing prompt.
-* Transactions remain **gas-sponsored** by KiiChain Pay.
+- Your backend can execute swaps, off-ramps and transfers from the user's Kii Wallet via the API.
+- No per-transaction signing prompt.
+- Transactions remain **gas-sponsored** by KiiChain Pay.
 
 {% hint style="info" %}
 Delegation authorizes **signing on the user's own wallet**. Funds still move only to the destinations your API calls specify; the platform signs on the user's behalf, it does not take custody of the keys.
@@ -55,11 +55,11 @@ After confirming, the wallet shows a **delegation active** state:
 
 ## What delegation unlocks
 
-Once a wallet is delegated, API operations authenticated with your API key can sign transactions **from that user's delegated wallet** server-side — for example FX swaps and off-ramp settlements. Wallet-scoped operations will return an error if the wallet has not been delegated.
+With a delegated wallet, wallet-scoped API operations — FX swaps, off-ramp settlements — are signed server-side from that user's wallet. Without delegation, those operations return an error.
 
-The [upcoming "send tokens from a Kii Wallet" endpoint](internal-wallets.md#accessing-wallets-via-the-api) will likewise require delegation.
+The [upcoming "send tokens from a Kii Wallet" endpoint](internal-wallets.md#accessing-wallets-via-the-api) will also require delegation.
 
 ## Next steps
 
-* [Generating API keys](generating-api-keys.md) — the key that authorizes delegated operations.
-* [Creating an FX swap](../guides/quick-start/creating-an-fx-swap.md) — a delegated operation end to end.
+- [Generating API keys](generating-api-keys.md) — the key that authorizes delegated operations.
+- [Creating an FX swap](../guides/quick-start/creating-an-fx-swap.md) — a delegated operation end to end.
