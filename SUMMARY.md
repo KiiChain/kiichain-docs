@@ -28,6 +28,21 @@
 
 * [Kii Ambassadors](kii-ambassadors.md)
 
+## KiiChain Pay
+
+* [Introduction](kiichain-pay/introduction/README.md)
+  * [Generating API keys](kiichain-pay/introduction/generating-api-keys.md)
+  * [Internal wallets](kiichain-pay/introduction/internal-wallets.md)
+  * [Privy delegated access](kiichain-pay/introduction/privy-delegated-access.md)
+  * [KYC](kiichain-pay/introduction/kyc.md)
+* [Guides](kiichain-pay/guides/README.md)
+  * [Quick Start](kiichain-pay/guides/quick-start/README.md)
+    * [Creating an on-ramp](kiichain-pay/guides/quick-start/creating-an-on-ramp.md)
+    * [Creating an off-ramp](kiichain-pay/guides/quick-start/creating-an-off-ramp.md)
+    * [Creating an FX swap](kiichain-pay/guides/quick-start/creating-an-fx-swap.md)
+* [API Reference](kiichain-pay/api-reference/README.md)
+  * [Users](kiichain-pay/api-reference/users.md)
+
 ## CONNECT TO KIIEX
 
 * [Set up your Kii Account](connect-to-kiiex/set-up-your-kiiex-account/README.md)
