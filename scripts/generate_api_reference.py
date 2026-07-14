@@ -13,7 +13,6 @@ from pathlib import Path
 
 # Set the default variables for the script
 DOCS_ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_SWAGGER = Path("/home/korok/kii/kiiex-backend/docs/openapi/kiiex_openapi_public.swagger.json")
 DEFAULT_API_REF_DIR = DOCS_ROOT / "kiichain-pay" / "api-reference"
 DEFAULT_SUMMARY_FILE = DOCS_ROOT / "SUMMARY.md"
 SPEC_NAME = "kiichain-pay-swagger"
@@ -49,6 +48,12 @@ def sort_endpoints(endpoints: list[tuple[str, str]]) -> list[tuple[str, str]]:
 # Helper function to clear old pages
 # This clean all the generated pages in the api_ref_dir except for README.md
 def clear_old_pages(api_ref_dir: Path, dry_run: bool) -> None:
+    # Check if we are under the docs root
+    try:
+        api_ref_dir.relative_to(DOCS_ROOT)
+    except ValueError:
+        raise SystemExit(f"Refusing to delete markdown files outside docs root: {api_ref_dir}")
+
     for md_file in api_ref_dir.glob("*.md"):
         if md_file.name == "README.md":
             continue
@@ -118,7 +123,7 @@ def update_summary(summary_file: Path, api_ref_dir: Path, modules: dict[str, lis
 def main() -> None:
     # Parse the command line arguments
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--swagger", type=Path, default=DEFAULT_SWAGGER, help="Path to swagger.json")
+    parser.add_argument("--swagger", type=Path, required=True, help="Path to Swagger/OpenAPI JSON file")
     parser.add_argument("--api-ref-dir", type=Path, default=DEFAULT_API_REF_DIR, help="Output directory for generated pages")
     parser.add_argument("--summary", type=Path, default=DEFAULT_SUMMARY_FILE, help="Path to SUMMARY.md")
     parser.add_argument("--skip-summary", action="store_true", help="Do not touch SUMMARY.md")
