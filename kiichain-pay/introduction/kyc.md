@@ -9,10 +9,10 @@ description: >-
 
 KYC (Know Your Customer) is the gate that unlocks KiiChain Pay for an account. Until an account is verified it has **no wallets, no limits, and no access** to move funds. Completing KYC provisions the account's [Kii Wallets](internal-wallets.md) and sets its transaction limits.
 
-There are **two independent verification flows**, and most integrators will encounter both:
+There are **two independent verification flows**:
 
-1. **System KYC** — KiiChain Pay's own identity verification. Sets your **account level** and platform-wide limits.
-2. **Provider KYC / KYB** — additional verification required by individual on-/off-ramp providers before you can use that provider.
+1. **System KYC** — KiiChain Pay's own identity verification. Sets your **account level** and platform-wide limits. **Every account completes this.**
+2. **Provider KYC / KYB** — extra verification that a specific on-/off-ramp provider may require. **Most integrators never need this.** It applies only in very specific cases and countries, and KiiChain Pay prompts you when it does — most of the time you don't need to think about it.
 
 ## System KYC
 
@@ -57,28 +57,32 @@ When the review is approved, the account's level and type are set and its **Kii 
 
 ### Individual vs. company
 
-* **Individual** verification requires personal identity documents.
-* **Company** verification (KYB) additionally requires a **company name** and company documentation, and typically covers the authorized representative and the business itself. Company accounts receive higher limits (see the table above).
+- **Individual** verification requires personal identity documents.
+- **Company** verification (KYB) additionally requires a **company name** and company documentation, and typically covers the authorized representative and the business itself. Company accounts receive higher limits (see the table above).
 
 ### KYC status
 
-The dashboard surfaces a status for the verification — for example *not started*, *pending*, *completed*, *verified*, or *rejected* — with a contextual banner guiding the next step. A rejection may be final or ask the user to resubmit with better documents.
+The dashboard surfaces a status for the verification — for example _not started_, _pending_, _completed_, _verified_, or _rejected_ — with a contextual banner guiding the next step. A rejection may be final or ask the user to resubmit with better documents.
 
 ## Provider KYC / KYB
 
-On- and off-ramp providers are third parties with their **own** compliance requirements. Before an account can transact through a given provider, it must complete that provider's KYC (or KYB, for companies) — this is **separate** from system KYC above.
+{% hint style="info" %}
+**Most integrators can skip this.** System KYC (above) is all you need in the common case. Provider KYC is required only in very specific cases and specific countries, where a third-party on-/off-ramp provider imposes its own compliance requirements. **You don't need to seek it out in advance** — when a transaction needs it, KiiChain Pay prompts you to complete that provider's verification.
+{% endhint %}
 
-In the app, the **KYC** page has a **Providers** tab listing each provider with its verification status (e.g. *pending*, *processing*, *verified*, *rejected*).
+Some on- and off-ramp providers are third parties with their **own** compliance requirements. In those cases, an account must complete that provider's KYC (or KYB, for companies) before transacting through it — this is **separate** from system KYC above, and it's requested only when needed.
+
+When it applies, the **KYC** page's **Providers** tab lists the relevant provider with its verification status (e.g. _pending_, _processing_, _verified_, _rejected_).
 
 <figure><img src="../../.gitbook/assets/kiichain-pay-provider-kyc.png" alt=""><figcaption><p><strong>📸 Screenshot needed:</strong> The Providers tab of the KYC page, listing providers with their KYC status badges.</p></figcaption></figure>
 
-Starting provider verification opens the provider's flow (a redirect rather than an embedded SDK). **Company (KYB)** accounts complete an extra step — an authorized-representative flow plus a basic company-data step — whereas individuals complete a single flow.
+When prompted, starting provider verification opens the provider's flow (a redirect rather than an embedded SDK). **Company (KYB)** accounts complete an extra step — an authorized-representative flow plus a basic company-data step — whereas individuals complete a single flow.
 
 {% hint style="info" %}
-Provider verification is per provider: verifying with one on-ramp provider does not verify you with another. Check each provider's status before routing a transaction through it.
+Provider verification is per provider: verifying with one provider does not verify you with another. When a provider is required, check its status before routing a transaction through it.
 {% endhint %}
 
 ## Next steps
 
-* [Internal wallets](internal-wallets.md) — provisioned automatically once system KYC is approved.
-* [Creating an on-ramp](../guides/quick-start/creating-an-on-ramp.md) — where provider KYC comes into play.
+- [Internal wallets](internal-wallets.md) — provisioned automatically once system KYC is approved.
+- [Creating an on-ramp](../guides/quick-start/creating-an-on-ramp.md) — where provider KYC may come into play.
