@@ -204,6 +204,9 @@ func KiiRequest(method, path string, body []byte) (*http.Response, error) {
 		if err != nil {
 			return nil, err
 		}
+		if len(priv) != ed25519.PrivateKeySize {
+			return nil, fmt.Errorf("invalid priv_key: got %d bytes, want %d", len(priv), ed25519.PrivateKeySize)
+		}
 		sig := ed25519.Sign(ed25519.PrivateKey(priv), []byte(payload))
 		req.Header.Set("x-signature", base64.RawURLEncoding.EncodeToString(sig))
 		req.Header.Set("Content-Type", "application/json")

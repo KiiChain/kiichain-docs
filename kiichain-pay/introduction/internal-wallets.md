@@ -41,7 +41,7 @@ Every flow works with **either** a Kii Wallet or a user's own external wallet:
 
 - **Deposits** — receive crypto to the wallet address, or fund a fiat **virtual account** via an on-ramp provider.
 - **Withdrawals** — send crypto to an external address, or off-ramp to a bank account through a provider.
-- **On-ramps, off-ramps & FX swaps** — bridge fiat and crypto, or swap between assets. These settle on-chain through KiiChain Pay's settlement contracts and are tracked as an **activity** (internally, a _ticket_). With a delegated Kii Wallet the platform signs on the user's behalf; with an external wallet the user signs.
+- **On-ramps, off-ramps & FX swaps** — bridge fiat and crypto, or swap between assets. The crypto leg settles on-chain through KiiChain Pay's settlement contracts, while the fiat leg moves over provider rails and is reconciled in the internal ledger. Each is tracked as an **activity** (internally, a _ticket_). With a delegated Kii Wallet the platform signs on the user's behalf; with an external wallet the user signs.
 - **DEX swaps** — swap tokens directly on-chain through the DEX. **No authenticated user and no KYC are required**: a user can run a DEX swap anonymously from any external wallet, and it creates **no activity**. Sponsored gas applies only to Kii Wallets.
 
 See the [Guides](../guides/README.md) for end-to-end [on-ramp](../guides/quick-start/creating-an-on-ramp.md), [off-ramp](../guides/quick-start/creating-an-off-ramp.md), and [FX swap](../guides/quick-start/creating-an-fx-swap.md) walkthroughs.
