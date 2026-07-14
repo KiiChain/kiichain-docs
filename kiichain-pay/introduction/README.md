@@ -18,12 +18,13 @@ The KiiChain Pay web app lives at [https://pay.kiichain.io](https://pay.kiichain
 ## Core concepts
 
 <table><thead><tr><th width="220">Concept</th><th>What it means</th></tr></thead><tbody>
-<tr><td><strong>Non-custodial by design</strong></td><td>User funds sit in embedded wallets (branded <strong>Kii Wallet</strong>) whose private keys are managed by Privy and owned by the user. KiiChain Pay never stores a private key.</td></tr>
-<tr><td><strong>Internal wallets (Kii Wallet)</strong></td><td>One embedded wallet per account, per supported chain (EVM, Cosmos, Solana, Tron, Bitcoin). Provisioned automatically once KYC is approved. See <a href="internal-wallets.md">Internal wallets</a>.</td></tr>
+<tr><td><strong>Non-custodial by design</strong></td><td>Users transact from a non-custodial wallet — the embedded <strong>Kii Wallet</strong> (keys managed by Privy, owned by the user) or their <strong>own external wallet</strong>. KiiChain Pay never holds a private key.</td></tr>
+<tr><td><strong>Internal wallets (Kii Wallet)</strong></td><td><strong>Optional.</strong> A convenience embedded wallet — one per account, per supported chain (EVM, Cosmos, Solana, Tron, Bitcoin), with sponsored gas and no key management. Users can bring their own external wallet instead; on-ramps, off-ramps and FX swaps work the same either way. Provisioned automatically once KYC is approved. See <a href="internal-wallets.md">Internal wallets</a>.</td></tr>
 <tr><td><strong>Delegated access</strong></td><td>A user delegates their Kii Wallet to the platform's signer so you can sign and broadcast transactions server-side — no per-transaction signing prompt. See <a href="privy-delegated-access.md">Privy delegated access</a>.</td></tr>
-<tr><td><strong>On-chain + off-chain</strong></td><td>Crypto balances live on-chain in the Kii Wallet; fiat and reserved balances are tracked in KiiChain Pay's internal double-entry ledger (<code>available</code> / <code>locked</code>).</td></tr>
-<tr><td><strong>KYC-gated</strong></td><td>Wallets, limits and provider access all unlock through KYC. See <a href="kyc.md">KYC</a>.</td></tr>
-<tr><td><strong>API keys</strong></td><td>Every API call is authenticated with an API key; write calls are additionally signed. See <a href="generating-api-keys.md">Generating API keys</a>.</td></tr>
+<tr><td><strong>On-chain + off-chain</strong></td><td>Crypto balances live on-chain in the user's wallet (Kii or external); fiat and reserved balances are tracked in KiiChain Pay's internal double-entry ledger (<code>available</code> / <code>locked</code>).</td></tr>
+<tr><td><strong>KYC-gated</strong></td><td>Kii Wallets, fiat rails, limits and provider access unlock through KYC. <strong>DEX swaps from an external wallet need no KYC.</strong> See <a href="kyc.md">KYC</a>.</td></tr>
+<tr><td><strong>API keys</strong></td><td>Every authenticated API call carries an API key; write calls are additionally signed. See <a href="generating-api-keys.md">Generating API keys</a>.</td></tr>
+<tr><td><strong>Permissionless DEX</strong></td><td>DEX swaps run on-chain directly from any external wallet — no account, KYC or authenticated user required, and no activity is recorded.</td></tr>
 </tbody></table>
 
 ## How the pieces fit together
@@ -33,12 +34,13 @@ flowchart LR
     You[Your backend] -->|API key + signature| API[KiiChain Pay API]
     API --> Ledger[(Off-chain ledger<br/>available / locked)]
     API --> Signer[Platform signer]
-    Signer -->|delegated| Wallet[Kii Wallet<br/>on-chain, non-custodial]
+    Signer -->|delegated Kii Wallet| Wallet[User wallet<br/>Kii or external]
+    You -.->|external wallet: user signs| Wallet
     API --> Providers[On-/off-ramp & FX providers]
     Wallet --> Chains[(EVM · Cosmos · Solana<br/>Tron · Bitcoin)]
 ```
 
-Crypto moves through the user's **Kii Wallet** on-chain; fiat moves through **provider rails** (on-ramps, off-ramps, virtual accounts); and KiiChain Pay keeps both sides reconciled in its **internal ledger**.
+Crypto moves on-chain through the user's wallet — a **Kii Wallet** or their **own external wallet**; fiat moves through **provider rails** (on-ramps, off-ramps, virtual accounts); and KiiChain Pay keeps both sides reconciled in its **internal ledger**.
 
 ## The integration journey
 
@@ -59,6 +61,10 @@ flowchart LR
 4. **Delegate your Kii Wallet** so the platform can sign wallet operations for you. See [Privy delegated access](privy-delegated-access.md).
 5. **Create an API key** and store the secret. See [Generating API keys](generating-api-keys.md).
 6. **Integrate** — build on-ramps, off-ramps and FX swaps via the API. See the [Guides](../guides/README.md) and [API Reference](../api-reference/README.md).
+
+{% hint style="info" %}
+This is the full path for server-driven flows that use a **Kii Wallet**. Users who bring their **own external wallet** sign transactions themselves, so they can skip delegation (step 4). And **DEX swaps** need none of it — no KYC and no authenticated user; a user can swap anonymously straight from an external wallet.
+{% endhint %}
 
 ## Environments
 

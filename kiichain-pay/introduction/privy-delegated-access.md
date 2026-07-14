@@ -11,6 +11,10 @@ Because Kii Wallets are [non-custodial](internal-wallets.md), KiiChain Pay canno
 
 Delegation is built on [Privy](https://privy.io)'s **session signers**. It is explicit, granted by the user, and required for any wallet-scoped API operation.
 
+{% hint style="info" %}
+Delegation applies **only to Kii Wallets**. If a user transacts with their own external wallet, they sign each transaction themselves — no delegation needed — and **DEX swaps** need neither delegation nor KYC.
+{% endhint %}
+
 ## Why delegate
 
 Without delegation, every on-chain action would need the user to sign in real time — impractical for automated, server-driven payments and FX. With delegation:

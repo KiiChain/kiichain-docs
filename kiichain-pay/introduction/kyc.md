@@ -7,7 +7,11 @@ description: >-
 
 # KYC
 
-KYC (Know Your Customer) is the gate that unlocks KiiChain Pay for an account. Until an account is verified it has **no wallets, no limits, and no access** to move funds. Completing KYC provisions the account's [Kii Wallets](internal-wallets.md) and sets its transaction limits.
+KYC (Know Your Customer) is the gate that unlocks KiiChain Pay for an account. Until an account is verified it has **no Kii Wallets, no limits, and no access** to fiat rails. Completing KYC provisions the account's [Kii Wallets](internal-wallets.md) and sets its transaction limits.
+
+{% hint style="info" %}
+KYC gates **Kii Wallets, fiat on-/off-ramps and limits** — not the chain itself. A user can still run **DEX swaps** anonymously from their own external wallet with no account and no KYC. See [Internal wallets](internal-wallets.md#how-funds-move).
+{% endhint %}
 
 There are **two independent verification flows**:
 

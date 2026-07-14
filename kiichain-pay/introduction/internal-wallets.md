@@ -1,15 +1,17 @@
 ---
 description: >-
-  Every KiiChain Pay account gets non-custodial embedded wallets — the Kii
-  Wallet — provisioned automatically after KYC, with gas sponsored by the
-  platform.
+  The Kii Wallet is an optional, non-custodial embedded wallet with sponsored
+  gas. Users can just as well bring their own external wallet — on-ramps,
+  off-ramps and FX swaps work the same either way.
 ---
 
 # Internal wallets
 
-KiiChain Pay gives every account a set of **embedded wallets**, branded the **Kii Wallet** in the product. These are the on-chain accounts users transact from — and they are **non-custodial**: the private keys are managed by [Privy](https://privy.io) and owned by the user. KiiChain Pay never holds a private key.
+The **Kii Wallet** is a set of **embedded wallets** that KiiChain Pay can provision for an account. They are **non-custodial**: the private keys are managed by [Privy](https://privy.io) and owned by the user — KiiChain Pay never holds a private key.
 
-Alongside these on-chain wallets, KiiChain Pay keeps an **internal ledger** that tracks fiat and reserved balances off-chain. Together they let you mix on-chain and off-chain operations seamlessly.
+Using a Kii Wallet is **optional**. A user can transact with their **own external wallet** instead, and on-ramps, off-ramps and FX swaps work exactly the same either way. The Kii Wallet is simply a convenience for users who'd rather not manage private keys and wallet tooling — and it comes with **sponsored gas**.
+
+Alongside on-chain wallets, KiiChain Pay keeps an **internal ledger** that tracks fiat and reserved balances off-chain. Together they let you mix on-chain and off-chain operations seamlessly.
 
 ## What a Kii Wallet is
 
@@ -35,12 +37,12 @@ This split is why a swap or off-ramp can reserve funds (`locked`) the instant yo
 
 ## How funds move
 
-The Kii Wallet is the on-chain endpoint for every value flow:
+Every flow works with **either** a Kii Wallet or a user's own external wallet:
 
 - **Deposits** — receive crypto to the wallet address, or fund a fiat **virtual account** via an on-ramp provider.
 - **Withdrawals** — send crypto to an external address, or off-ramp to a bank account through a provider.
-- **Swaps / FX** — settle on-chain through KiiChain Pay's settlement contracts, with the platform signing on the delegated wallet's behalf.
-- **On-ramps / off-ramps** — bridge fiat and crypto through integrated providers.
+- **On-ramps, off-ramps & FX swaps** — bridge fiat and crypto, or swap between assets. These settle on-chain through KiiChain Pay's settlement contracts and are tracked as an **activity** (internally, a _ticket_). With a delegated Kii Wallet the platform signs on the user's behalf; with an external wallet the user signs.
+- **DEX swaps** — swap tokens directly on-chain through the DEX. **No authenticated user and no KYC are required**: a user can run a DEX swap anonymously from any external wallet, and it creates **no activity**. Sponsored gas applies only to Kii Wallets.
 
 See the [Guides](../guides/README.md) for end-to-end [on-ramp](../guides/quick-start/creating-an-on-ramp.md), [off-ramp](../guides/quick-start/creating-an-off-ramp.md), and [FX swap](../guides/quick-start/creating-an-fx-swap.md) walkthroughs.
 
