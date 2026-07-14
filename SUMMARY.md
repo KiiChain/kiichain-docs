@@ -41,6 +41,13 @@
     * [Creating an off-ramp](kiichain-pay/guides/quick-start/creating-an-off-ramp.md)
     * [Creating an FX swap](kiichain-pay/guides/quick-start/creating-an-fx-swap.md)
 * [API Reference](kiichain-pay/api-reference/README.md)
+  * [Accounts](kiichain-pay/api-reference/accounts.md)
+  * [Blockchain](kiichain-pay/api-reference/blockchain.md)
+  * [Ledger](kiichain-pay/api-reference/ledger.md)
+  * [Market](kiichain-pay/api-reference/market.md)
+  * [Notifications](kiichain-pay/api-reference/notifications.md)
+  * [Reports](kiichain-pay/api-reference/reports.md)
+  * [Tickets](kiichain-pay/api-reference/tickets.md)
   * [Users](kiichain-pay/api-reference/users.md)
 
 ## CONNECT TO KIIEX
