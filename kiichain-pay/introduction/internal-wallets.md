@@ -7,7 +7,7 @@ description: >-
 
 # Internal wallets
 
-KiiChain Pay gives every account a set of **embedded wallets**, branded the **Kii Wallet** in the product. These are the on-chain accounts your users transact from — and they are **non-custodial**: the private keys are managed by [Privy](https://privy.io) and owned by the user. KiiChain Pay never holds a private key.
+KiiChain Pay gives every account a set of **embedded wallets**, branded the **Kii Wallet** in the product. These are the on-chain accounts users transact from — and they are **non-custodial**: the private keys are managed by [Privy](https://privy.io) and owned by the user. KiiChain Pay never holds a private key.
 
 Alongside these on-chain wallets, KiiChain Pay keeps an **internal ledger** that tracks fiat and reserved balances off-chain. Together they let you mix on-chain and off-chain operations seamlessly.
 
