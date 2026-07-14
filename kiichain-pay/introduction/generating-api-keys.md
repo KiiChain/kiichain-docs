@@ -12,7 +12,7 @@ Every request to the KiiChain Pay API is authenticated with an **API key**. Writ
 
 API keys are created and managed in the KiiChain Pay app. Sign in at [pay.kiichain.io](https://pay.kiichain.io) and go to **Settings → API Keys**.
 
-<figure><img src="../../.gitbook/assets/kiichain-pay-api-keys-list.png" alt=""><figcaption><p><strong>📸 Screenshot needed:</strong> Settings → API Keys page (empty state or with an existing key), showing the "Create API Key" button.</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/kiichain-pay-api-keys-list.png" alt="Settings → API Keys page"><figcaption><p>Settings → API Keys, with the <strong>Create New API Key</strong> button and any existing keys.</p></figcaption></figure>
 
 Click **Create API Key** and fill in:
 
@@ -22,7 +22,7 @@ Click **Create API Key** and fill in:
 <tr><td><strong>Expires at</strong></td><td>Optional expiry date. If omitted, the key does not expire. We recommend setting one and rotating regularly.</td></tr>
 </tbody></table>
 
-<figure><img src="../../.gitbook/assets/kiichain-pay-create-api-key.png" alt=""><figcaption><p><strong>📸 Screenshot needed:</strong> The "Create API Key" dialog with the name filled in and the scope list expanded.</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/kiichain-pay-create-api-key.png" alt="Create API Key dialog"><figcaption><p>The <strong>Create API Key</strong> dialog: name, scope quick-select, and the grouped scope list.</p></figcaption></figure>
 
 ## 2. Store the secret — shown only once
 
@@ -36,11 +36,11 @@ When the key is created you'll see three values:
 The **API key** and **private key** are displayed **only once**, at creation. KiiChain Pay does not store the private key and cannot recover it. Copy both into a secure secret store before closing the dialog. If you lose them, rotate the key.
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/kiichain-pay-api-key-secret.png" alt=""><figcaption><p><strong>📸 Screenshot needed:</strong> The one-time reveal dialog showing the API key and private key with their copy buttons (blur/redact the actual values).</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/kiichain-pay-api-key-secret.png" alt="One-time secret reveal dialog"><figcaption><p>The one-time reveal: copy the <strong>API Key</strong> and <strong>Private Key</strong> before closing — they're never shown again.</p></figcaption></figure>
 
 After you close the dialog, the key appears in the list showing only a **masked prefix** (`abc123def456***`) and its public key. From the key's card you can **copy the public key**, **rotate**, or **delete** the key.
 
-<figure><img src="../../.gitbook/assets/kiichain-pay-api-key-card.png" alt=""><figcaption><p><strong>📸 Screenshot needed:</strong> An existing API key card showing the masked key, scopes accordion, and the Rotate / Delete actions.</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/kiichain-pay-api-key-card.png" alt="API key card with scopes expanded"><figcaption><p>An existing key: masked value, the expanded <strong>Scopes</strong> list, and the copy / rotate / delete actions.</p></figcaption></figure>
 
 - **Rotate** issues a new API key and private key for the same key entry (the old credentials stop working immediately). The new secret is shown once, exactly like creation.
 - **Delete** revokes the key immediately.

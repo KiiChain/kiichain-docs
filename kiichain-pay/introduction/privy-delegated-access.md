@@ -47,11 +47,11 @@ The user grants delegation once, from the dashboard. In **Settings → API Keys*
 The Kii Wallet must exist first, which means **KYC must be complete** (wallets are provisioned on KYC approval). See [KYC](kyc.md).
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/kiichain-pay-delegate-wallet.png" alt=""><figcaption><p><strong>📸 Screenshot needed:</strong> Settings → API Keys, the "Delegate Wallet" button (inactive state, before delegation).</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/kiichain-pay-delegate-wallet.png" alt="Delegate Wallet button"><figcaption><p>Settings → API Keys: the <strong>Delegate Wallet</strong> action, before delegation.</p></figcaption></figure>
 
 After confirming, the wallet shows a **delegation active** state:
 
-<figure><img src="../../.gitbook/assets/kiichain-pay-delegation-active.png" alt=""><figcaption><p><strong>📸 Screenshot needed:</strong> The "delegation active" state indicating the Kii Wallet is delegated for server-side signing.</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/kiichain-pay-delegation-active.png" alt="Delegation active state"><figcaption><p>Once delegated, the panel confirms the Kii Wallet can be used for server-side signing.</p></figcaption></figure>
 
 ## What delegation unlocks
 

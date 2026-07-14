@@ -41,11 +41,11 @@ System KYC uses the **Sumsub** identity platform, embedded directly in the KiiCh
 
 In the app, go to **Settings → KYC** and choose **Individual** or **Company** verification.
 
-<figure><img src="../../.gitbook/assets/kiichain-pay-kyc-page.png" alt=""><figcaption><p><strong>📸 Screenshot needed:</strong> Settings → KYC page showing the Individual and Company verification options (unverified state).</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/kiichain-pay-kyc-page.png" alt="Settings → KYC page, unverified"><figcaption><p>Settings → KYC: the <strong>Individual</strong> and <strong>Company</strong> verification options, before starting.</p></figcaption></figure>
 
 Starting verification opens the Sumsub flow, where the user completes identity checks (and, for companies, company documents).
 
-<figure><img src="../../.gitbook/assets/kiichain-pay-sumsub.png" alt=""><figcaption><p><strong>📸 Screenshot needed:</strong> The Sumsub verification dialog embedded in the app (document upload / selfie step).</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/kiichain-pay-sumsub.png" alt="Sumsub verification dialog"><figcaption><p>The embedded Sumsub flow — here, the document-upload step.</p></figcaption></figure>
 
 ```mermaid
 flowchart LR
@@ -57,7 +57,7 @@ flowchart LR
 
 When the review is approved, the account's level and type are set and its **Kii Wallets are provisioned automatically**. The verified level and current limits are then shown in the dashboard.
 
-<figure><img src="../../.gitbook/assets/kiichain-pay-kyc-level-limits.png" alt=""><figcaption><p><strong>📸 Screenshot needed:</strong> The verified state showing account level, type, and the limits table — including the "upgrade limits" action to move from level 1 to level 2.</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/kiichain-pay-kyc-level-limits.png" alt="Verified account level and limits"><figcaption><p>Verified: account type, level, the per-action limits table, and the <strong>Upgrade Limits</strong> action (level 1 → 2).</p></figcaption></figure>
 
 ### Individual vs. company
 
@@ -78,7 +78,7 @@ Some on- and off-ramp providers are third parties with their **own** compliance 
 
 When it applies, the **KYC** page's **Providers** tab lists the relevant provider with its verification status (e.g. _pending_, _processing_, _verified_, _rejected_).
 
-<figure><img src="../../.gitbook/assets/kiichain-pay-provider-kyc.png" alt=""><figcaption><p><strong>📸 Screenshot needed:</strong> The Providers tab of the KYC page, listing providers with their KYC status badges.</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/kiichain-pay-provider-kyc.png" alt="Provider KYC tab"><figcaption><p>The <strong>Provider KYC</strong> tab, listing each relevant provider with its verification status.</p></figcaption></figure>
 
 When prompted, starting provider verification opens the provider's flow (a redirect rather than an embedded SDK). **Company (KYB)** accounts complete an extra step — an authorized-representative flow plus a basic company-data step — whereas individuals complete a single flow.
 

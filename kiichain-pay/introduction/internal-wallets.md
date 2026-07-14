@@ -48,9 +48,11 @@ See the [Guides](../guides/README.md) for end-to-end [on-ramp](../guides/quick-s
 
 ## Viewing your wallets
 
-In the app, the Kii Wallet and its balances are shown in the wallet area of the dashboard.
+In the app, the wallet switcher (top-right) lists the Kii Wallet's address on each supported chain, and the dashboard shows balances across all of them.
 
-<figure><img src="../../.gitbook/assets/kiichain-pay-kii-wallet.png" alt=""><figcaption><p><strong>📸 Screenshot needed:</strong> The Kii Wallet view in the dashboard showing the wallet address and balances.</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/kiichain-pay-kii-wallet-addresses.png" alt="Kii Wallet address switcher"><figcaption><p>The wallet switcher: per-chain Kii Wallet addresses (EVM, Tron, …), with an external wallet as the alternative.</p></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/kiichain-pay-kii-wallet-balances.png" alt="Dashboard balances"><figcaption><p>The dashboard's available balance and per-token portfolio for the connected wallet.</p></figcaption></figure>
 
 ## Accessing wallets via the API
 
