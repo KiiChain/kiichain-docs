@@ -28,9 +28,9 @@ Click **Create API Key** and fill in:
 
 When the key is created you'll see three values:
 
-* **API key** (`api_key`) — the opaque token you send in the `Authorization` header.
-* **Private key** (`priv_key`) — the Ed25519 private key used to sign write requests.
-* **Public key** (`pub_key`) — stored by KiiChain Pay to verify your signatures; also visible later on the key's card.
+- **API key** (`api_key`) — the opaque token you send in the `Authorization` header.
+- **Private key** (`priv_key`) — the Ed25519 private key used to sign write requests.
+- **Public key** (`pub_key`) — stored by KiiChain Pay to verify your signatures; also visible later on the key's card.
 
 {% hint style="danger" %}
 The **API key** and **private key** are displayed **only once**, at creation. KiiChain Pay does not store the private key and cannot recover it. Copy both into a secure secret store before closing the dialog. If you lose them, rotate the key.
@@ -42,8 +42,8 @@ After you close the dialog, the key appears in the list showing only a **masked 
 
 <figure><img src="../../.gitbook/assets/kiichain-pay-api-key-card.png" alt=""><figcaption><p><strong>📸 Screenshot needed:</strong> An existing API key card showing the masked key, scopes accordion, and the Rotate / Delete actions.</p></figcaption></figure>
 
-* **Rotate** issues a new API key and private key for the same key entry (the old credentials stop working immediately). The new secret is shown once, exactly like creation.
-* **Delete** revokes the key immediately.
+- **Rotate** issues a new API key and private key for the same key entry (the old credentials stop working immediately). The new secret is shown once, exactly like creation.
+- **Delete** revokes the key immediately.
 
 ## 3. Authenticate your requests
 
@@ -67,7 +67,7 @@ curl https://backend.pay.kiichain.io/accounts/v1/countries \
 Write requests carry two extra headers:
 
 <table><thead><tr><th width="180">Header</th><th>Value</th></tr></thead><tbody>
-<tr><td><code>x-timestamp</code></td><td>Current time as Unix epoch <strong>milliseconds</strong>, as a string (e.g. <code>1739471625123</code>).</td></tr>
+<tr><td><code>x-timestamp</code></td><td>The current time, as a string. Unix seconds (<code>1739471625</code>) or milliseconds (<code>1739471625123</code>) both work — the server signs whatever string you send. Use the <strong>same value</strong> in the signed payload.</td></tr>
 <tr><td><code>x-signature</code></td><td>Base64url (no padding) Ed25519 signature of the canonical payload below.</td></tr>
 </tbody></table>
 
@@ -77,12 +77,12 @@ The signed **payload** is four lines joined by `\n`:
 payload = timestamp + "\n" + method + "\n" + uri + "\n" + bodyHash
 ```
 
-| Part | Value |
-| --- | --- |
-| `timestamp` | The exact value you put in the `x-timestamp` header. |
-| `method` | The HTTP method, uppercase (`POST`, `PATCH`, `PUT`, `DELETE`). |
-| `uri` | The request URI **including path and query string** (e.g. `/users/v1/api/create`). |
-| `bodyHash` | Lowercase **hex** SHA-256 of the raw request body bytes. For an empty body, use the SHA-256 of the empty string: `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`. |
+| Part        | Value                                                                                                                                                                                |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `timestamp` | The exact string you put in the `x-timestamp` header (Unix seconds or milliseconds — just keep it identical in both places).                                                         |
+| `method`    | The HTTP method, uppercase (`POST`, `PATCH`, `PUT`, `DELETE`).                                                                                                                       |
+| `uri`       | The request URI **including path and query string** (e.g. `/users/v1/api/create`).                                                                                                   |
+| `bodyHash`  | Lowercase **hex** SHA-256 of the raw request body bytes. For an empty body, use the SHA-256 of the empty string: `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`. |
 
 Sign the UTF-8 bytes of `payload` with your Ed25519 **private key** and send the base64url-encoded signature in `x-signature`.
 
@@ -90,22 +90,34 @@ Sign the UTF-8 bytes of `payload` with your Ed25519 **private key** and send the
 Sign exactly the bytes you send. The signature covers the timestamp, method, URI (with query string) and a hash of the request body — any mismatch is rejected. Use a **fresh `x-timestamp` per request** to avoid replay rejection.
 {% endhint %}
 
-### Reference implementation (TypeScript / Node.js)
+### Reference implementation
 
-This helper adds the correct headers and signs write requests. It uses [`tweetnacl`](https://www.npmjs.com/package/tweetnacl), whose 64-byte secret-key format matches the `priv_key` you were given.
+These helpers add the correct headers and sign write requests using only each language's **standard library** — no third-party dependencies.
+
+{% tabs %}
+{% tab title="Node.js" %}
+Requires Node.js 18+ (for the global `fetch` and `base64url` encoding). The `priv_key` is the raw 64-byte Ed25519 key (`seed || publicKey`), which `node:crypto` imports via a JWK.
 
 ```typescript
-import nacl from "tweetnacl";
-import { createHash } from "node:crypto";
+import { createHash, createPrivateKey, sign } from "node:crypto";
 
 const BASE_URL = "https://backend.pay.kiichain.io";
-const API_KEY = process.env.KII_API_KEY!;   // the opaque "api_key"
-const PRIV_KEY = process.env.KII_PRIV_KEY!;  // base64url "priv_key", shown once
-
-const b64urlDecode = (s: string) => new Uint8Array(Buffer.from(s, "base64url"));
-const b64urlEncode = (b: Uint8Array) => Buffer.from(b).toString("base64url");
+const API_KEY = process.env.KII_API_KEY!; // the opaque "api_key"
+const PRIV_KEY = process.env.KII_PRIV_KEY!; // base64url "priv_key", shown once
 
 const WRITE_METHODS = new Set(["POST", "PATCH", "PUT", "DELETE"]);
+
+// The priv_key is the raw 64-byte Ed25519 key: seed (first 32) || public key (last 32).
+const rawPrivKey = Buffer.from(PRIV_KEY, "base64url");
+const signingKey = createPrivateKey({
+  format: "jwk",
+  key: {
+    kty: "OKP",
+    crv: "Ed25519",
+    d: rawPrivKey.subarray(0, 32).toString("base64url"), // private seed
+    x: rawPrivKey.subarray(32).toString("base64url"), // public key
+  },
+});
 
 /**
  * `path` must include the query string, e.g. "/market/v1/quotes?type=onramp".
@@ -123,11 +135,11 @@ export async function kiiFetch(method: string, path: string, body?: unknown) {
   if (WRITE_METHODS.has(method)) {
     const bodyHash = createHash("sha256").update(rawBody, "utf8").digest("hex");
     const payload = `${timestamp}\n${method}\n${path}\n${bodyHash}`;
-    const signature = nacl.sign.detached(
-      new TextEncoder().encode(payload),
-      b64urlDecode(PRIV_KEY),
-    );
-    headers["x-signature"] = b64urlEncode(signature);
+    headers["x-signature"] = sign(
+      null,
+      Buffer.from(payload, "utf8"),
+      signingKey,
+    ).toString("base64url");
     headers["Content-Type"] = "application/json";
   }
 
@@ -138,6 +150,71 @@ export async function kiiFetch(method: string, path: string, body?: unknown) {
   });
 }
 ```
+
+{% endtab %}
+
+{% tab title="Go" %}
+
+```go
+package kiipay
+
+import (
+	"bytes"
+	"crypto/ed25519"
+	"crypto/sha256"
+	"encoding/base64"
+	"encoding/hex"
+	"fmt"
+	"net/http"
+	"os"
+	"strconv"
+	"time"
+)
+
+const baseURL = "https://backend.pay.kiichain.io"
+
+var writeMethods = map[string]bool{
+	http.MethodPost: true, http.MethodPatch: true,
+	http.MethodPut: true, http.MethodDelete: true,
+}
+
+// KiiRequest builds and sends a signed KiiChain Pay API request.
+// path must include the query string, e.g. "/market/v1/quotes?type=onramp".
+func KiiRequest(method, path string, body []byte) (*http.Response, error) {
+	apiKey := os.Getenv("KII_API_KEY")   // the opaque "api_key"
+	privKey := os.Getenv("KII_PRIV_KEY") // base64url "priv_key", shown once
+
+	timestamp := strconv.FormatInt(time.Now().Unix(), 10) // seconds or millis both work
+
+	req, err := http.NewRequest(method, baseURL+path, bytes.NewReader(body))
+	if err != nil {
+		return nil, err
+	}
+	req.Header.Set("Authorization", "APIKey "+apiKey)
+	req.Header.Set("x-timestamp", timestamp)
+
+	// Sign write requests (POST, PATCH, PUT, DELETE).
+	if writeMethods[method] {
+		sum := sha256.Sum256(body)
+		bodyHash := hex.EncodeToString(sum[:])
+		payload := fmt.Sprintf("%s\n%s\n%s\n%s", timestamp, method, path, bodyHash)
+
+		// priv_key decodes to the raw 64-byte Ed25519 private key.
+		priv, err := base64.RawURLEncoding.DecodeString(privKey)
+		if err != nil {
+			return nil, err
+		}
+		sig := ed25519.Sign(ed25519.PrivateKey(priv), []byte(payload))
+		req.Header.Set("x-signature", base64.RawURLEncoding.EncodeToString(sig))
+		req.Header.Set("Content-Type", "application/json")
+	}
+
+	return http.DefaultClient.Do(req)
+}
+```
+
+{% endtab %}
+{% endtabs %}
 
 ### Signing in other languages
 
@@ -175,6 +252,6 @@ The dashboard's create dialog always lists the full, current set of scopes avail
 
 ## Next steps
 
-* [Internal wallets](internal-wallets.md) — the Kii Wallet model your API operations act on.
-* [Privy delegated access](privy-delegated-access.md) — required before your key can drive wallet operations.
-* [API Reference](../api-reference/README.md) — per-endpoint scopes and payloads.
+- [Internal wallets](internal-wallets.md) — the Kii Wallet model your API operations act on.
+- [Privy delegated access](privy-delegated-access.md) — required before your key can drive wallet operations.
+- [API Reference](../api-reference/README.md) — per-endpoint scopes and payloads.
