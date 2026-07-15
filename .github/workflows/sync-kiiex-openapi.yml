@@ -48,7 +48,7 @@ jobs:
         with:
           repository: KiiEx/kiiex-backend
           ref: ${{ steps.ref.outputs.value }}
-          token: ${{ secrets.` }}
+          token: ${{ secrets.KIIEX_BACKEND_TOKEN }}
           path: ../kiiex-backend-src
           persist-credentials: false
 
@@ -63,6 +63,22 @@ jobs:
         run: |
           python3 scripts/generate_api_reference.py \
             --swagger ../kiiex-backend-src/docs/openapi/kiiex_openapi_public.swagger.json
+
+      # Publish the raw OpenAPI spec to GitBook
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Publish OpenAPI spec to GitBook
+        env:
+          GITBOOK_TOKEN: ${{ secrets.GITBOOK_TOKEN }}
+        run: |
+          npm install -g @gitbook/cli
+          gitbook openapi publish \
+            --spec kiichain-pay-swagger \
+            --organization ks86i4iqH9J4cIKjsWqx \
+            ../kiiex-backend-src/docs/openapi/kiiex_openapi_public.swagger.json
 
       # Commit and push changes if any
       - name: Open PR with any changes
