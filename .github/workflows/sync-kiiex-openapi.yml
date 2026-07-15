@@ -14,21 +14,13 @@ on:
         description: "kiiex-backend tag or release to sync (e.g. v1.9.1)"
         required: true
         type: string
-  # Lets you test workflow/script changes on a PR without waiting for a real
-  # dispatch from kiiex-backend. Only fires when this workflow or the
-  # generation script itself changes, and only has secrets on same-repo PRs
-  # (fork PRs run without them and fail safely at the checkout/publish steps).
-  pull_request:
-    paths:
-      - .github/workflows/sync-kiiex-openapi.yml
-      - scripts/generate_api_reference.py
 
 permissions:
   contents: write
   pull-requests: write
 
 concurrency:
-  group: sync-kiiex-openapi-${{ github.event.client_payload.tag_name || inputs.ref || github.event.pull_request.number }}
+  group: sync-kiiex-openapi-${{ github.event.client_payload.tag_name || inputs.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -43,11 +35,6 @@ jobs:
         id: ref
         run: |
           REF="${{ github.event.client_payload.tag_name || inputs.ref }}"
-          if [ -z "$REF" ] && [ "${{ github.event_name }}" = "pull_request" ]; then
-            # PR-triggered test runs don't carry a tag; pin to a known-good
-            # kiiex-backend release instead
-            REF="v1.38.0"
-          fi
           if [ -z "$REF" ]; then
             echo "No tag/release was provided by the trigger" >&2
             exit 1
