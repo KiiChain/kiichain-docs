@@ -9,7 +9,7 @@ description: >-
 
 **KiiChain Pay** (formerly KiiEx) is the payments and foreign-exchange layer of the Kii ecosystem. It lets you move value between **fiat and crypto**, run **FX** and **DEX** swaps, and operate **on-ramps** and **off-ramps** — mixing on-chain and off-chain operations behind one programmatic interface.
 
-The product is **non-custodial**: every KYC-verified account gets its own embedded **Kii Wallet** whose keys are held by our wallet provider and owned by the user, never by KiiChain Pay. To automate on-chain operations from a Kii Wallet, the user grants the platform an explicit **delegation** to sign on its behalf.
+Every KYC-verified account gets its own embedded **crypto Kii Wallet** whose keys are held by our wallet provider and owned by the user, never by KiiChain Pay. To automate on-chain operations from a Kii Wallet, the user grants the platform an explicit **delegation** to sign on its behalf.
 
 {% hint style="info" %}
 The KiiChain Pay web app lives at [https://pay.kiichain.io](https://pay.kiichain.io). This documentation is mainly aimed at API usage. You'll generate API keys, delegate your wallet, and drive FX, ramps and swaps from your own backend.
