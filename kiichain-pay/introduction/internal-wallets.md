@@ -56,13 +56,87 @@ In the app, the wallet switcher (top-right) lists the Kii Wallet's address on ea
 
 ## Accessing wallets via the API
 
-{% hint style="warning" %}
-**Upcoming.** A dedicated endpoint to fetch a logged-in user's Kii Wallet addresses across all supported chain types is in development. This section will be updated with the endpoint and payload once it ships.
-{% endhint %}
+Two endpoints expose Kii Wallets to your backend. Both authenticate with an [API key](generating-api-keys.md); the examples assume `KII_API_KEY` holds your key.
 
-{% hint style="warning" %}
-**Upcoming.** An endpoint to **send tokens from a Kii Wallet to another wallet** is in development. It will require the wallet to be [delegated](privy-delegated-access.md). This section will be updated when it ships.
-{% endhint %}
+### List your Kii Wallets
+
+`GET /blockchain/v1/wallets/internal` returns the caller's Kii Wallets across **every supported chain type**, one entry per chain. This is a read request, so it needs only the `Authorization` header. Requires the `blockchain.wallets.read` scope.
+
+```bash
+curl https://backend.pay.kiichain.io/blockchain/v1/wallets/internal \
+  -H "Authorization: APIKey $KII_API_KEY"
+```
+
+```json
+{
+  "wallets": [
+    {
+      "id": "b1c3f0a2-7e4d-4c8a-9f21-0a5b6c7d8e9f",
+      "address": "0x1A2b3C4d5E6f7A8b9C0d1E2f3A4b5C6d7E8f9A0b",
+      "chainType": "ethereum"
+    },
+    {
+      "id": "d4e5f6a7-8b9c-4d0e-a1f2-3b4c5d6e7f80",
+      "address": "TQn9Y2khEsLJW1ChVWFMSMeRDow5KcbfSL",
+      "chainType": "tron"
+    }
+  ]
+}
+```
+
+### Send tokens from a Kii Wallet
+
+`POST /blockchain/v1/wallets/internal/send` builds a transfer from the caller's Kii Wallet to another address, then signs and broadcasts it using the [delegated](privy-delegated-access.md) wallet — so the wallet **must be delegated** first. It works on any supported chain given its `chain_id`. Requires the `blockchain.wallets.send` scope.
+
+This is a **write request**, so it must also carry the `x-timestamp` and `x-signature` headers described in [Sign write requests](generating-api-keys.md#4.-sign-write-requests). The examples below show the request shape — compute the signature over the exact body you send.
+
+Request body:
+
+<table><thead><tr><th width="150">Field</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>chain_id</code></td><td>Numeric network ID, as a string (e.g. <code>"1"</code> for Ethereum mainnet). Required.</td></tr>
+<tr><td><code>to</code></td><td>Destination address that receives the balance. Required.</td></tr>
+<tr><td><code>asset</code></td><td>Token contract address to send. Omit (or use the zero address) to send the <strong>native gas token</strong>. Optional.</td></tr>
+<tr><td><code>amount</code></td><td>Amount in the token's <strong>smallest unit</strong> (wei / atoms), as a string. Required.</td></tr>
+</tbody></table>
+
+**Send the native gas token** (omit `asset`) — here, 0.01 ETH (`10000000000000000` wei):
+
+```bash
+curl -X POST https://backend.pay.kiichain.io/blockchain/v1/wallets/internal/send \
+  -H "Authorization: APIKey $KII_API_KEY" \
+  -H "x-timestamp: $KII_TIMESTAMP" \
+  -H "x-signature: $KII_SIGNATURE" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "chain_id": "1",
+    "to": "0x1A2b3C4d5E6f7A8b9C0d1E2f3A4b5C6d7E8f9A0b",
+    "amount": "10000000000000000"
+  }'
+```
+
+**Send an ERC-20 token** (set `asset` to the token contract) — here, 25 USDC (6 decimals → `25000000`):
+
+```bash
+curl -X POST https://backend.pay.kiichain.io/blockchain/v1/wallets/internal/send \
+  -H "Authorization: APIKey $KII_API_KEY" \
+  -H "x-timestamp: $KII_TIMESTAMP" \
+  -H "x-signature: $KII_SIGNATURE" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "chain_id": "1",
+    "to": "0x1A2b3C4d5E6f7A8b9C0d1E2f3A4b5C6d7E8f9A0b",
+    "asset": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    "amount": "25000000"
+  }'
+```
+
+Both return the broadcast transaction hash:
+
+```json
+{
+  "txHash": "0x9f8e7d6c5b4a39281706f5e4d3c2b1a09f8e7d6c5b4a39281706f5e4d3c2b1a0"
+}
+```
 
 ## Next steps
 
