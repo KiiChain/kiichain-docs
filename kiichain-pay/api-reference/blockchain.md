@@ -26,3 +26,9 @@
 
 {% openapi-operation spec="kiichain-pay-swagger" path="/blockchain/v1/transactions/execute" method="post" %}
 {% endopenapi-operation %}
+
+{% openapi-operation spec="kiichain-pay-swagger" path="/blockchain/v1/wallets/internal" method="get" %}
+{% endopenapi-operation %}
+
+{% openapi-operation spec="kiichain-pay-swagger" path="/blockchain/v1/wallets/internal/send" method="post" %}
+{% endopenapi-operation %}
