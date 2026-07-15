@@ -12,7 +12,7 @@ description: >-
 The product is **non-custodial**: every KYC-verified account gets its own embedded **Kii Wallet** whose keys are held by our wallet provider and owned by the user, never by KiiChain Pay. To automate on-chain operations from a Kii Wallet, the user grants the platform an explicit **delegation** to sign on its behalf.
 
 {% hint style="info" %}
-The KiiChain Pay web app lives at [https://pay.kiichain.io](https://pay.kiichain.io). This documentation is for **third parties automating KiiChain Pay** — integrating it into your own systems. You'll generate API keys, delegate your wallet, and drive FX, ramps and swaps from your own backend.
+The KiiChain Pay web app lives at [https://pay.kiichain.io](https://pay.kiichain.io). This documentation is mainly aimed at API usage. You'll generate API keys, delegate your wallet, and drive FX, ramps and swaps from your own backend.
 {% endhint %}
 
 ## Core concepts
@@ -45,15 +45,6 @@ Crypto moves on-chain through the user's wallet — a **Kii Wallet** or their **
 ## The integration journey
 
 Setup is **dashboard-first**: a few one-time steps in [pay.kiichain.io](https://pay.kiichain.io) unlock the API for everything that follows.
-
-```mermaid
-flowchart LR
-    A[1 · Sign up] --> B[2 · Complete KYC]
-    B --> C[3 · Kii Wallets provisioned]
-    C --> D[4 · Delegate wallet]
-    D --> E[5 · Create API key]
-    E --> F[6 · Integrate via API]
-```
 
 1. **Sign up** for a KiiChain Pay account at [pay.kiichain.io](https://pay.kiichain.io).
 2. **Complete KYC** — choose individual or company. This sets your account level and limits. See [KYC](kyc.md).
