@@ -36,7 +36,7 @@ jobs:
   sync-api-reference:
     runs-on: ubuntu-latest
     env:
-      SWAGGER_PATH: ../kiiex-backend-src/docs/openapi/kiiex_openapi_public.swagger.json
+      SWAGGER_PATH: kiiex-backend-src/docs/openapi/kiiex_openapi_public.swagger.json
     steps:
       # Resolve the target reference
       - name: Resolve target ref
@@ -64,7 +64,7 @@ jobs:
           repository: KiiEx/kiiex-backend
           ref: ${{ steps.ref.outputs.value }}
           token: ${{ secrets.KIIEX_BACKEND_TOKEN }}
-          path: ../kiiex-backend-src
+          path: kiiex-backend-src
           persist-credentials: false
 
       # Set up Python 3.12
@@ -94,6 +94,10 @@ jobs:
             --spec kiichain-pay-swagger \
             --organization ks86i4iqH9J4cIKjsWqx \
             "$SWAGGER_PATH"
+
+      # Drop the cloned kiiex-backend
+      - name: Remove kiiex-backend checkout
+        run: rm -rf kiiex-backend-src
 
       # Commit and push changes if any
       - name: Open PR with any changes
