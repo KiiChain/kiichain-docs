@@ -27,6 +27,8 @@ jobs:
   # Sync API reference from KiiEx Backend
   sync-api-reference:
     runs-on: ubuntu-latest
+    env:
+      SWAGGER_PATH: ../kiiex-backend-src/docs/openapi/kiiex_openapi_public.swagger.json
     steps:
       # Resolve the target reference
       - name: Resolve target ref
@@ -62,7 +64,7 @@ jobs:
       - name: Generate API reference
         run: |
           python3 scripts/generate_api_reference.py \
-            --swagger ../kiiex-backend-src/docs/openapi/kiiex_openapi_public.swagger.json
+            --swagger "$SWAGGER_PATH"
 
       # Publish the raw OpenAPI spec to GitBook
       - name: Set up Node.js
@@ -78,7 +80,7 @@ jobs:
           gitbook openapi publish \
             --spec kiichain-pay-swagger \
             --organization ks86i4iqH9J4cIKjsWqx \
-            ../kiiex-backend-src/docs/openapi/kiiex_openapi_public.swagger.json
+            "$SWAGGER_PATH"
 
       # Commit and push changes if any
       - name: Open PR with any changes
