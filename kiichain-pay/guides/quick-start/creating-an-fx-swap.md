@@ -31,7 +31,7 @@ An **FX swap** exchanges one crypto asset for another as a **custodial, tracked 
 Quote the instrument for the **crypto amount** in **atoms**, and specify a `side` — `buy` or `sell` — relative to the instrument's base asset.
 
 ```bash
-curl "https://backend.pay.kiichain.io/market/v1/instruments/$KII_INSTRUMENT_ID/quote?amount=25000000&account_id=$KII_ACCOUNT_ID&side=sell" \
+curl "https://backend.pay.kiichain.io/market/v1/instruments/$KII_INSTRUMENT_ID/quote?amount=25000000&account_id=$KII_ACCOUNT_ID&side=buy" \
   -H "Authorization: APIKey $KII_API_KEY"
 ```
 
@@ -140,7 +140,7 @@ const INSTRUMENT_ID = process.env.KII_INSTRUMENT_ID!;
 // 1 · Quote the instrument (sell 25 units of the base asset, in atoms).
 const { quote } = await kiiFetch(
   "GET",
-  `/market/v1/instruments/${INSTRUMENT_ID}/quote?amount=25000000&account_id=${ACCOUNT_ID}&side=sell`,
+  `/market/v1/instruments/${INSTRUMENT_ID}/quote?amount=25000000&account_id=${ACCOUNT_ID}&side=buy`,
 ).then((r) => r.json());
 
 // 2 · Create the swap — returns the ticket and the tx to execute.
