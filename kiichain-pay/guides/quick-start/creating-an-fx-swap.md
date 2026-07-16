@@ -28,7 +28,7 @@ An **FX swap** exchanges one crypto asset for another as a **custodial, tracked 
 
 ## Step 1 — Get a quote
 
-Quote the instrument for the **crypto amount** in **atoms**, and specify a `side` — `buy` or `sell` — relative to the instrument's base asset.
+Quote the instrument for the **crypto amount** in **atoms**, and specify a `side` — `buy` or `sell` — relative to the instrument's quote asset.
 
 ```bash
 curl "https://backend.pay.kiichain.io/market/v1/instruments/$KII_INSTRUMENT_ID/quote?amount=25000000&account_id=$KII_ACCOUNT_ID&side=buy" \
@@ -137,7 +137,7 @@ const ACCOUNT_ID = process.env.KII_ACCOUNT_ID!;
 const ADDRESS = process.env.KII_ADDRESS!;
 const INSTRUMENT_ID = process.env.KII_INSTRUMENT_ID!;
 
-// 1 · Quote the instrument (sell 25 units of the base asset, in atoms).
+// 1 · Quote the instrument (buy 25 units of the quote asset, in atoms).
 const { quote } = await kiiFetch(
   "GET",
   `/market/v1/instruments/${INSTRUMENT_ID}/quote?amount=25000000&account_id=${ACCOUNT_ID}&side=buy`,

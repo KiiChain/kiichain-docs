@@ -78,7 +78,7 @@ The response describes the route and — crucially — includes an **unsigned tr
 <tr><td><code>evm_tx</code></td><td>An RLP-serialized <strong>unsigned EIP-1559 transaction</strong> (0x hex) — the swap itself, ready for you to sign and broadcast.</td></tr>
 <tr><td><code>estimated_amount_out</code></td><td>Minimum output after slippage, in the destination token's base units.</td></tr>
 <tr><td><code>approval_token</code> / <code>approval_address</code> / <code>approval_amount</code></td><td>The ERC-20 allowance the router needs. Present only when an approval is required (empty for native-token swaps).</td></tr>
-<tr><td><code>txs_required</code></td><td>How many transactions the route needs (an approval may add one).</td></tr>
+<tr><td><code>txs_required</code></td><td>How many transactions the route needs.</td></tr>
 <tr><td><code>swap_price_impact_percent</code></td><td>Estimated price impact, so you can reject a bad route.</td></tr>
 </tbody></table>
 
