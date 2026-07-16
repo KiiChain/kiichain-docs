@@ -183,7 +183,17 @@ const { ticket, transactions } = await kiiFetch("POST", "/tickets/v1/offramp", {
 const { tx_hashes } = await kiiFetch("POST", "/blockchain/v1/transactions/execute", {
   transactions,
 }).then((r) => r.json());
-console.log("broadcast:", tx_hashes);
+
+// A "0x00" hash marks a transaction that failed to broadcast. Stop if any did,
+// and only keep the ones that actually went out.
+const failed = tx_hashes.filter((h: string) => h === "0x00");
+if (failed.length > 0) {
+  throw new Error(
+    `${failed.length} of ${tx_hashes.length} transaction(s) failed to broadcast`,
+  );
+}
+const broadcast = tx_hashes.filter((h: string) => h !== "0x00");
+console.log("broadcast:", broadcast);
 
 // 4 · Poll until terminal.
 const TERMINAL = new Set(["fulfilled", "failed", "canceled", "refunded", "expired"]);
