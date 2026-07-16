@@ -56,7 +56,7 @@ In the app, the wallet switcher (top-right) lists the Kii Wallet's address on ea
 
 ## Accessing wallets via the API
 
-Two endpoints expose Kii Wallets to your backend. Both authenticate with an [API key](generating-api-keys.md); the examples assume `KII_API_KEY` holds your key.
+Three endpoints expose Kii Wallets to your backend. All authenticate with an [API key](generating-api-keys.md); the examples assume `KII_API_KEY` holds your key.
 
 ### List your Kii Wallets
 
@@ -137,6 +137,57 @@ Both return the broadcast transaction hash:
   "txHash": "0x9f8e7d6c5b4a39281706f5e4d3c2b1a09f8e7d6c5b4a39281706f5e4d3c2b1a0"
 }
 ```
+
+### Execute prepared transactions
+
+`POST /blockchain/v1/transactions/execute` signs and broadcasts a **batch of prepared transactions** from the caller's Kii Wallet — again using the [delegated](privy-delegated-access.md) wallet, with gas sponsored. Unlike `send`, you don't describe a transfer; you hand it transactions that were **built for you elsewhere** and just need signing. The two common sources are:
+
+- The `transactions` returned when you create an [off-ramp](../guides/quick-start/creating-an-off-ramp.md) or [FX swap](../guides/quick-start/creating-an-fx-swap.md) activity.
+- A [DEX swap](../guides/quick-start/creating-a-dex-swap.md) quote's `evm_tx`, decoded into its fields.
+
+The wallet **must be delegated**, and this requires the `blockchain.transactions.execute` scope. It is a **write request**, so it also carries the `x-timestamp` and `x-signature` headers from [Sign write requests](generating-api-keys.md#4.-sign-write-requests).
+
+Request body — a `transactions` array. Each entry wraps a chain-specific transaction; for EVM chains that's an `evm` object:
+
+<table><thead><tr><th width="150">Field</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>chain_id</code></td><td>Numeric network ID, as a string. Required.</td></tr>
+<tr><td><code>to</code></td><td>Destination — usually a contract address. Required.</td></tr>
+<tr><td><code>value</code></td><td>Native token amount in wei, as a string (<code>"0"</code> for pure contract calls). Required.</td></tr>
+<tr><td><code>data</code></td><td>Hex-encoded call data (<code>0x…</code>). Required for contract calls.</td></tr>
+<tr><td><code>from</code></td><td>The Kii Wallet address the transaction is signed from.</td></tr>
+</tbody></table>
+
+```bash
+curl -X POST https://backend.pay.kiichain.io/blockchain/v1/transactions/execute \
+  -H "Authorization: APIKey $KII_API_KEY" \
+  -H "x-timestamp: $KII_TIMESTAMP" \
+  -H "x-signature: $KII_SIGNATURE" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "transactions": [
+      {
+        "evm": {
+          "chain_id": "1",
+          "to": "0xRouterContractAddress…",
+          "value": "0",
+          "data": "0xa9059cbb…"
+        }
+      }
+    ]
+  }'
+```
+
+Transactions are signed and broadcast **in order**, so an approval placed before a swap in the array is settled first. The response returns one hash per transaction:
+
+```json
+{
+  "tx_hashes": ["0x9f8e7d6c5b4a39281706f5e4d3c2b1a09f8e7d6c5b4a39281706f5e4d3c2b1a0"]
+}
+```
+
+{% hint style="info" %}
+A hash of `"0x00"` marks a transaction that failed to broadcast. Check each entry before treating the batch as settled.
+{% endhint %}
 
 ## Next steps
 
