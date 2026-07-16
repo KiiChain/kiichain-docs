@@ -181,7 +181,9 @@ Transactions are signed and broadcast **in order**, so an approval placed before
 
 ```json
 {
-  "tx_hashes": ["0x9f8e7d6c5b4a39281706f5e4d3c2b1a09f8e7d6c5b4a39281706f5e4d3c2b1a0"]
+  "txHashes": [
+    "0x9f8e7d6c5b4a39281706f5e4d3c2b1a09f8e7d6c5b4a39281706f5e4d3c2b1a0"
+  ]
 }
 ```
 

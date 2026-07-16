@@ -104,7 +104,7 @@ curl -X POST "https://backend.pay.kiichain.io/blockchain/v1/transactions/execute
   -d '{ "transactions": [ … the transactions from step 2 … ] }'
 ```
 
-KiiChain Pay signs and broadcasts from your delegated Kii Wallet (gas sponsored) and returns `{ "tx_hashes": [...] }`. A `"0x00"` entry means that transaction failed.
+KiiChain Pay signs and broadcasts from your delegated Kii Wallet (gas sponsored) and returns `{ "txHashes": [...] }`. A `"0x00"` entry means that transaction failed.
 
 ### With an external wallet
 
@@ -152,7 +152,7 @@ const { ticket, transactions } = await kiiFetch("POST", "/tickets/v1/swap", {
 }).then((r) => r.json());
 
 // 3 · Execute on-chain from the delegated Kii Wallet.
-const { tx_hashes } = await kiiFetch(
+const { txHashes } = await kiiFetch(
   "POST",
   "/blockchain/v1/transactions/execute",
   {
@@ -162,13 +162,13 @@ const { tx_hashes } = await kiiFetch(
 
 // A "0x00" hash marks a transaction that failed to broadcast. Stop if any did,
 // and only keep the ones that actually went out.
-const failed = tx_hashes.filter((h: string) => h === "0x00");
+const failed = txHashes.filter((h: string) => h === "0x00");
 if (failed.length > 0) {
   throw new Error(
-    `${failed.length} of ${tx_hashes.length} transaction(s) failed to broadcast`,
+    `${failed.length} of ${txHashes.length} transaction(s) failed to broadcast`,
   );
 }
-const broadcast = tx_hashes.filter((h: string) => h !== "0x00");
+const broadcast = txHashes.filter((h: string) => h !== "0x00");
 console.log("broadcast:", broadcast);
 
 // 4 · Poll until terminal.

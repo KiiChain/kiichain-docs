@@ -113,7 +113,7 @@ curl -X POST "https://backend.pay.kiichain.io/blockchain/v1/transactions/execute
 ```
 
 ```json
-{ "tx_hashes": ["0x9f8e7d6c5b4a…"] }
+{ "txHashes": ["0x9f8e7d6c5b4a…"] }
 ```
 
 A hash of `"0x00"` in the array means that transaction failed to broadcast.
@@ -180,31 +180,45 @@ const { ticket, transactions } = await kiiFetch("POST", "/tickets/v1/offramp", {
 }).then((r) => r.json());
 
 // 3 · Execute on-chain from the delegated Kii Wallet.
-const { tx_hashes } = await kiiFetch("POST", "/blockchain/v1/transactions/execute", {
-  transactions,
-}).then((r) => r.json());
+const { txHashes } = await kiiFetch(
+  "POST",
+  "/blockchain/v1/transactions/execute",
+  {
+    transactions,
+  },
+).then((r) => r.json());
 
 // A "0x00" hash marks a transaction that failed to broadcast. Stop if any did,
 // and only keep the ones that actually went out.
-const failed = tx_hashes.filter((h: string) => h === "0x00");
+const failed = txHashes.filter((h: string) => h === "0x00");
 if (failed.length > 0) {
   throw new Error(
-    `${failed.length} of ${tx_hashes.length} transaction(s) failed to broadcast`,
+    `${failed.length} of ${txHashes.length} transaction(s) failed to broadcast`,
   );
 }
-const broadcast = tx_hashes.filter((h: string) => h !== "0x00");
+const broadcast = txHashes.filter((h: string) => h !== "0x00");
 console.log("broadcast:", broadcast);
 
 // 4 · Poll until terminal.
-const TERMINAL = new Set(["fulfilled", "failed", "canceled", "refunded", "expired"]);
+const TERMINAL = new Set([
+  "fulfilled",
+  "failed",
+  "canceled",
+  "refunded",
+  "expired",
+]);
 let status = ticket.display_status;
 while (!TERMINAL.has(status)) {
   await new Promise((r) => setTimeout(r, 5000));
-  const res = await kiiFetch("GET", `/tickets/v1/${ticket.id}`).then((r) => r.json());
+  const res = await kiiFetch("GET", `/tickets/v1/${ticket.id}`).then((r) =>
+    r.json(),
+  );
   status = res.ticket.display_status;
   console.log("status:", status);
 }
-console.log(status === "fulfilled" ? "Fiat on its way 🎉" : `Ended as ${status}`);
+console.log(
+  status === "fulfilled" ? "Fiat on its way 🎉" : `Ended as ${status}`,
+);
 ```
 
 ## Related
