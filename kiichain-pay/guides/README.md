@@ -47,7 +47,7 @@ flowchart LR
 | **Create**              | `POST …/products-providers/{id}/onramp` <br/>_(market module)_ | `POST /tickets/v1/offramp`            | `POST /tickets/v1/swap`            | — _(no activity)_                         |
 | **How the user acts**   | Pay fiat off-platform                                          | Execute on-chain tx                   | Execute on-chain tx                | Sign & broadcast the returned tx yourself |
 | **On-chain signing**    | None                                                           | `execute` (delegated) or self-sign    | `execute` (delegated) or self-sign | Self-sign (external wallet)               |
-| **Destination needed**  | `destination_id` (receives crypto)                             | `withdraw_destination_id` (bank)      | None                               | None                                      |
+| **Destination needed**  | `destination_id` (receives crypto)                             | `withdraw_destination_id` (bank)      | Optional `withdraw_destination_id` (defaults to executing wallet) | None                                      |
 | **Tracking**            | Poll `display_status`                                          | Poll `display_status`                 | Poll `display_status`              | On-chain only (watch the tx hash)         |
 | **KYC / activity**      | KYC-gated · creates activity                                   | KYC-gated · creates activity          | KYC-gated · creates activity       | No KYC · no activity                      |
 | **Provider settlement** | Always                                                         | Always                                | Sometimes (auto-fulfill or OTC)    | On-chain DEX (routed via LiFi)            |

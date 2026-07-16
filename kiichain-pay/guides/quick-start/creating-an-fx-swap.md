@@ -7,7 +7,7 @@ description: >-
 
 # Creating an FX swap
 
-An **FX swap** exchanges one crypto asset for another as a **custodial, tracked activity**. You quote an **instrument** (a swap pair), open the swap, and execute an on-chain transaction — just like an off-ramp, but with no bank destination and no fiat leg. Depending on the instrument, the swap either **settles automatically** on-chain or routes through provider settlement.
+An **FX swap** exchanges one crypto asset for another as a **custodial, tracked activity**. You quote an **instrument** (a swap pair), open the swap, and execute an on-chain transaction — just like an off-ramp, but with no fiat leg. By default the swapped funds land on the wallet that executes the trade; you can optionally redirect them to a registered destination. Depending on the instrument, the swap either **settles automatically** on-chain or routes through provider settlement.
 
 ## At a glance
 
@@ -16,7 +16,7 @@ An **FX swap** exchanges one crypto asset for another as a **custodial, tracked 
 <tr><td><strong>Create endpoint</strong></td><td><code>POST /tickets/v1/swap</code></td></tr>
 <tr><td><strong>User acts</strong></td><td>On-chain — executes the returned transaction</td></tr>
 <tr><td><strong>On-chain signing</strong></td><td>Delegated Kii Wallet (server-side) or external wallet (self-sign)</td></tr>
-<tr><td><strong>You need</strong></td><td>A KYC-verified account, an <code>instrument_id</code>, and a delegated Kii Wallet (for the primary path)</td></tr>
+<tr><td><strong>You need</strong></td><td>A KYC-verified account, an <code>instrument_id</code>, a delegated Kii Wallet (for the primary path), and optionally a <code>withdraw_destination_id</code> to redirect the output</td></tr>
 <tr><td><strong>Tracks via</strong></td><td><code>display_status</code> on the activity</td></tr>
 </tbody></table>
 
@@ -58,6 +58,10 @@ curl -X POST "https://backend.pay.kiichain.io/tickets/v1/swap" \
     "quote": { … the quote object from step 1 … }
   }'
 ```
+
+{% hint style="info" %}
+**Where the swapped funds land.** By default the output asset goes to the wallet that executes the transaction (`user_chain_address`). To send it somewhere else, add an optional `withdraw_destination_id` — the `id` of a registered [withdrawal destination](../README.md#discovering-rails-and-ids) — and the funds settle there instead, regardless of which wallet executed the trade.
+{% endhint %}
 
 The response holds the new `ticket` and the `transactions` to execute on-chain:
 
