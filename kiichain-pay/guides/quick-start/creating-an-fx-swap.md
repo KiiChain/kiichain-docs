@@ -7,7 +7,7 @@ description: >-
 
 # Creating an FX swap
 
-An **FX swap** exchanges one crypto asset for another as a **custodial, tracked activity**. You quote an **instrument** (a swap pair), open the swap, and execute an on-chain transaction — just like an off-ramp, but with no fiat leg. By default the swapped funds land on the wallet that executes the trade; you can optionally redirect them to a registered destination. Depending on the instrument, the swap either **settles automatically** on-chain or routes through provider settlement.
+An **FX swap** exchanges one crypto asset for another as a **custodial, tracked activity**. You quote an **instrument** (a swap pair), open the swap, and execute an on-chain transaction. By default the swapped funds land on the wallet that executes the trade; you can optionally redirect them to a registered destination. Depending on the instrument, the swap either **settles automatically** on-chain or routes through provider settlement.
 
 ## At a glance
 

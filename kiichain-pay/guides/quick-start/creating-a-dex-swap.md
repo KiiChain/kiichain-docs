@@ -7,6 +7,10 @@ description: >-
 
 # Creating a DEX swap
 
+{% hint style="warning" %}
+DEX swaps will change heavily in the upcoming months, especially once the beta phase is done.
+{% endhint %}
+
 A **DEX swap** exchanges one token for another **on-chain**, routed through a decentralized exchange. It is **permissionless**: no account, no KYC, and **no activity** is created. You ask for a quote, and KiiChain Pay returns a ready-to-sign transaction (plus any ERC-20 approval) that **you sign and broadcast from your own wallet**. Routing is handled for you across chains.
 
 {% hint style="info" %}
