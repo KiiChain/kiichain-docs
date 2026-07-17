@@ -40,6 +40,7 @@
     * [Creating an on-ramp](kiichain-pay/guides/quick-start/creating-an-on-ramp.md)
     * [Creating an off-ramp](kiichain-pay/guides/quick-start/creating-an-off-ramp.md)
     * [Creating an FX swap](kiichain-pay/guides/quick-start/creating-an-fx-swap.md)
+    * [Creating a DEX swap](kiichain-pay/guides/quick-start/creating-a-dex-swap.md)
 * [API Reference](kiichain-pay/api-reference/README.md)
   * [Accounts](kiichain-pay/api-reference/accounts.md)
   * [Blockchain](kiichain-pay/api-reference/blockchain.md)
