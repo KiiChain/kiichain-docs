@@ -47,7 +47,7 @@
   * [Ledger](kiichain-pay/api-reference/ledger.md)
   * [Market](kiichain-pay/api-reference/market.md)
   * [Notifications](kiichain-pay/api-reference/notifications.md)
-  * [Reports](kiichain-pay/api-reference/reports.md)
+  * [Portfolio](kiichain-pay/api-reference/portfolio.md)
   * [Tickets](kiichain-pay/api-reference/tickets.md)
   * [Users](kiichain-pay/api-reference/users.md)
 
