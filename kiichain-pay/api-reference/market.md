@@ -48,8 +48,14 @@
 {% openapi-operation spec="kiichain-pay-swagger" path="/market/v1/providers/{providerId}" method="get" %}
 {% endopenapi-operation %}
 
-{% openapi-operation spec="kiichain-pay-swagger" path="/market/v1/providers/{providerId}/kyc/{accountId}" method="get" %}
+{% openapi-operation spec="kiichain-pay-swagger" path="/market/v1/providers/{providerId}/kyc/{accountId}" method="post" %}
 {% endopenapi-operation %}
 
 {% openapi-operation spec="kiichain-pay-swagger" path="/market/v1/providers/{providerId}/kyc/{accountId}/start" method="post" %}
+{% endopenapi-operation %}
+
+{% openapi-operation spec="kiichain-pay-swagger" path="/market/v1/trade-instruments" method="get" %}
+{% endopenapi-operation %}
+
+{% openapi-operation spec="kiichain-pay-swagger" path="/market/v1/trade-instruments/{id}/quote" method="get" %}
 {% endopenapi-operation %}
