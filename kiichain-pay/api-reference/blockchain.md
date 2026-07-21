@@ -18,9 +18,6 @@
 {% openapi-operation spec="kiichain-pay-swagger" path="/blockchain/v1/tokens" method="get" %}
 {% endopenapi-operation %}
 
-{% openapi-operation spec="kiichain-pay-swagger" path="/blockchain/v1/tokens-by-wallet" method="get" %}
-{% endopenapi-operation %}
-
 {% openapi-operation spec="kiichain-pay-swagger" path="/blockchain/v1/tokens/{symbol}" method="get" %}
 {% endopenapi-operation %}
 
