@@ -46,12 +46,12 @@ Q3:
 * EVM gas fee abstraction for stablecoins.
 * First Audit with Webisoft conducted.
 * KIIEX mobile app pushed into staging.
-* KIIEX 3.0 rebuild started.&#x20;
+* KIIEX 3.0 rebuild started.
 
 Q4:
 
 * Private mainnet complete.
-* Webisoft audit recommendations and bugs fixed.&#x20;
+* Webisoft audit recommendations and bugs fixed.
 * KIIEX mobile app available in production.
 
 ### 2026
@@ -59,20 +59,20 @@ Q4:
 Q1:
 
 * Hacken Audit on Private Mainnet.
-* KIIEX 3.0 Beta.
+* The KiiChain App 3.0 Beta.
 
 Q2:
 
-* Public Mainnet, public sale and TGE.
-* KIIEX 3.0 Prod.
+* The KiiChain App Prod.
+* International expansion, supporting new onchain FX territories.
+* Hacken Dual Defense Audit.
 
 Q3:
 
-* International expansion, supporting new onchain FX territories.
 * Smart contract enabled debit cards.
+* Public Mainnet, public sale and TGE.
 
 Q4:
 
-* KiiChain ecosystem development and module feature add-ons.&#x20;
+* KiiChain ecosystem development and module feature add-ons.
 * Kii product growth.
-
