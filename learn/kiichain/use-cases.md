@@ -9,7 +9,7 @@ description: >-
 
 ### Stablecoin FX powerhouse
 
-Traditional FX operations are hindered by TradeFi banking hours (often times 8am to 1pm local). Essentially, only 25% of the day, on business banking days, can businesses or users engage in FX operations. Users can now engage in compliant, fast and affordable FX transactions on KiiChain and receive their funds real-time. FX-related functionality is available only where permitted by applicable law and, where required, is delivered through locally licensed partners. Availability differs by jurisdiction, and certain jurisdictions are excluded."
+Traditional FX operations are hindered by TradeFi banking hours (often times 8am to 1pm local). Essentially, only 25% of the day, on business banking days, can businesses or users engage in FX operations. Users can now engage in compliant, fast and affordable FX transactions on KiiChain and receive their funds real-time. FX-related functionality is available only where permitted by applicable law and, where required, is delivered through locally licensed partners. Availability differs by jurisdiction, and certain jurisdictions are excluded.
 
 ### Unified Liquidity for Trading and Payments
 
