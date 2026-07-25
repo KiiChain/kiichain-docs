@@ -19,11 +19,15 @@ At the core of Kii is a hybrid matching engine that is able to source onchain li
 
 Kii has a full suite of on and off ramps enabling instant payins and payouts from its system. These ramps are both UI and API enabled with the ability to disperse directly or to third-party accounts. On and Off ramp functionality is available only where permitted by applicable law and, where required, is delivered through licensed issuers and distributors. Availability differs by jurisdiction, and certain jurisdictions — absent local licensing — are excluded.
 
+### Sign up for an account
+
+Use KiiChain by logging in or signing up [here](https://pay.kiichain.io/).&#x20;
+
 ### Connect to APIs
 
 Kii has developed a suite of APIs that embed all centralized and decentralized functionalities into a single set of APIs that any application can use. For more information on the APIs, visit:
 
-* [Kii APIs](https://docs.kiiglobal.io/docs/connect-to-kiiex/stablecoin-fx-quick-start)
+* [Kii APIs](https://docs.kiiglobal.io/docs/kiichain-pay/introduction)
 
 ### KYC / AML
 
