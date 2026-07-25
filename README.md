@@ -26,4 +26,5 @@ Kii has developed a suite of APIs that embed all centralized and decentralized f
 
 ### KYC / AML
 
-Kii complies fully with regulations in each jurisdiction. Users must adhere to KYC and AML standards and requirements.
+Kii operates only where permitted by applicable law and, where required, through locally licensed partners; availability differs by jurisdiction. Users must complete applicable KYC/AML requirements.
+
