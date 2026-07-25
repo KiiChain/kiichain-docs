@@ -18,10 +18,7 @@
   * [Download a Mobile Wallet](learn/getting-started/download-a-mobile-wallet.md)
   * [Set Up a Web Wallet](learn/getting-started/set-up-a-web-wallet.md)
   * [Connect Wallet to Explorer App](learn/getting-started/connect-wallet-to-explorer-app.md)
-
-***
-
-* [Kii Ambassadors](kii-ambassadors.md)
+* [Kii Ambassadors](learn/kii-ambassadors.md)
 
 ## KiiChain Pay
 

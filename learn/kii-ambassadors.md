@@ -57,7 +57,7 @@ At the end of each month, top-performing ambassadors will be rewarded based on t
 
 In the table below, you can see how the points system is structured.
 
-<figure><img src=".gitbook/assets/KIIAmbassadorPOINTS_Junio_2025 (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/KIIAmbassadorPOINTS_Junio_2025 (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Rewards
 
@@ -84,7 +84,7 @@ For every 3 new KOLs (Key Opinion Leaders) you refer who are accepted into the p
 
 To remain active in the program, ambassadors are also required to publish at least 4 pieces of original content per month.
 
-<figure><img src=".gitbook/assets/AmbassadorsRoleProgression_Kii_2025 (2).jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/AmbassadorsRoleProgression_Kii_2025 (2).jpg" alt=""><figcaption></figcaption></figure>
 
 How to Qualify a Referral
 
