@@ -141,3 +141,7 @@
   * [Incentive to stake](validate-the-network/delegator-information/incentive-to-stake.md)
   * [Security considerations](validate-the-network/delegator-information/security-considerations.md)
   * [Risks to consider](validate-the-network/delegator-information/risks-to-consider.md)
+
+***
+
+* [Legal & Risk Disclaimer](legal-and-risk-disclaimer.md)
