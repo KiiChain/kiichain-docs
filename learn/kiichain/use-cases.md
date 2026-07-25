@@ -25,7 +25,7 @@ Imported and exported goods are one of the major drivers of GDP within Latin Ame
 
 ### Tokenization of Real Estate (RWA)
 
-Asset fractionalization and ownership is becoming more imperative than ever before in markets with wealth fragmentation, high inflation and high interest rates. Real estate and asset infrastructure fractionalization allows users to own yield bearing, inflation protected, assets that cannot be owned by these users in whole. By democratizing the ownership process, liquidity can extend to other markets and users who would not otherwise have access prior.
+Asset fractionalization and ownership is becoming more imperative than ever before in markets with wealth fragmentation, high inflation and high interest rates. Real estate and asset infrastructure fractionalization allows users to own assets that generally cannot be owned by these users in whole. By democratizing the ownership process, liquidity can extend to other markets and users who would not otherwise have access prior.
 
 ### Tokenization of Debt and Equities (RWA)
 
@@ -33,7 +33,7 @@ Public equities, debt instruments, or exchange traded funds that are trading on 
 
 ### DeFi Lending and Borrowing for Open Credit System
 
-Credit is a huge issue in developing countries with strict underwriting standards, toxic level interest rates and lack of available capital. DeFi lending will provide secure ways for users in developed countries to extend safe credit terms to participants in emerging markets.
+Credit is a huge issue in developing countries with strict underwriting standards, toxic level interest rates and lack of available capital. DeFi lending will provide ways for users in developed countries to extend credit terms to participants in emerging markets.
 
 ### Payment Finance
 
