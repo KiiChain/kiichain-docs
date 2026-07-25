@@ -13,6 +13,6 @@ description: >-
 4. Pricing of Assets on Kii: Tokenized commodities and products can be priced in KII to create instant/easier liquidity in our hybrid CEX/DEX from native liquidity pools.
 5. Collateral: KII will be used as a collateral on DeFi apps, liquid staking, and lending.
 6. Staking: KII is required for validators and delegators to participate in the network. KII is the only token eligible for validating and delegating in KiiChain.
-7. Rewards: Rewards: KII is rewarded to validators and delegators for their service to the network. Staking rewards are paid from pre-allocated reward reserves, transaction fees, and the Utility Rewards Module — not from new issuance."
+7. Rewards: KII is rewarded to validators and delegators for their service to the network. Staking rewards are paid from pre-allocated reward reserves, transaction fees, and the Utility Rewards Module — not from new issuance."
 8. Gas fees: KII is used for transaction fees. All transactions such as deployment of new smart contracts, creation of user accounts, or token transfer, require the payer to pay transaction fees in KII.
 9. Governance: KII will be used for voting for protocol and ecosystem governance.
