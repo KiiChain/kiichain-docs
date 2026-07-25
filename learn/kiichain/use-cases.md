@@ -45,4 +45,4 @@ Emerging markets suffer from a multi-trillion dollar credit gap. When businesses
 
 ### Spot and Forward Settlement
 
-The B2B remittance market transacts over hundreds of billions USD annually. These importers and exporters either win or lose on spot or forward contract settlements. By each counterparty posting liquidity via a smart contract on the blockchain, users can eliminate losses by sharing in any FX swings.
+The B2B remittance market transacts over hundreds of billions USD annually. These importers and exporters either win or lose on spot or forward contract settlements. By each counterparty posting liquidity via a smart contract on the blockchain, users can hedge losses by sharing in any FX swings.

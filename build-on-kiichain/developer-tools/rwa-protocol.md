@@ -4,11 +4,11 @@ description: T-REX Protocol on KiiChain
 
 # RWA Protocol
 
-**Note: This project is still under development so future changes will be made.**&#x20;
+**Note: This project is still under development so future changes will be made.**
 
 ### Overview
 
-This document outlines the detailed implementation plan for the T-REX (Token for Regulated EXchanges) protocol using CosmWasm smart contracts on KiiChain. The T-REX protocol is designed for compliant issuance and management of security tokens on blockchain networks.
+This document outlines the detailed implementation plan for the T-REX (Token for Regulated EXchanges) protocol using CosmWasm smart contracts on KiiChain. The T-REX protocol is designed for compliant issuance and management of tokens on blockchain networks.
 
 ### Important Links
 
