@@ -16,7 +16,7 @@ At the core of Kii is a hybrid matching engine that is able to source onchain li
 
 ### Ramps
 
-Kii has a full suite of on and off ramps enabling instant payins and payouts from its system. These ramps are both UI and API enabled with the ability to disperse directly or to third-party accounts while remaining 100% compliant.
+Kii has a full suite of on and off ramps enabling instant payins and payouts from its system. These ramps are both UI and API enabled with the ability to disperse directly or to third-party accounts. On and Off ramp functionality is available only where permitted by applicable law and, where required, is delivered through licensed issuers and distributors. Availability differs by jurisdiction, and certain jurisdictions — absent local licensing — are excluded.
 
 ### Connect to APIs
 
