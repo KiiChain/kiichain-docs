@@ -2,8 +2,7 @@
 
 ## Learn
 
-* [What is Kii?](README.md)
-* [What is KiiChain?](learn/readme-1.md)
+* [What is KiiChain?](README.md)
 * [KiiChain](learn/kiichain/README.md)
   * [Vision of KiiChain](learn/kiichain/vision-of-kiichain.md)
   * [Use Cases](learn/kiichain/use-cases.md)
