@@ -9,7 +9,7 @@ description: >-
 
 ### Stablecoin FX powerhouse
 
-Traditional FX operations are hindered by TradeFi banking hours (often times 8am to 1pm local). Essentially, only 25% of the day, on business banking days, can businesses or users engage in FX operations. Users can now engage in compliant, fast and affordable FX transactions on KiiChain and receive their funds real-time.
+Traditional FX operations are hindered by TradeFi banking hours (often times 8am to 1pm local). Essentially, only 25% of the day, on business banking days, can businesses or users engage in FX operations. Users can now engage in compliant, fast and affordable FX transactions on KiiChain and receive their funds real-time. FX-related functionality is available only where permitted by applicable law and, where required, is delivered through locally licensed partners. Availability differs by jurisdiction, and certain jurisdictions are excluded."
 
 ### Unified Liquidity for Trading and Payments
 
@@ -29,7 +29,7 @@ Asset fractionalization and ownership is becoming more imperative than ever befo
 
 ### Tokenization of Debt and Equities (RWA)
 
-Public equities, debt instruments, or exchange traded funds that are trading on traditional exchanges can be tokenized to expand, democratize and fractionalize their access cross-border, to individuals who do not have access to these opportunities.
+Public equities, debt instruments, or exchange traded funds that are trading on traditional exchanges can be tokenized to expand, democratize and fractionalize their access cross-border, to individuals who do not have access to these opportunities. Tokenization of regulated financial instruments will occur only through licensed issuers and distributors, geo-restricted to jurisdictions where lawful, and will not be offered to residents of the Republic of Korea absent local licensing."
 
 ### DeFi Lending and Borrowing for Open Credit System
 

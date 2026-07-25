@@ -99,7 +99,7 @@ After writing the smart contract, go to the Solidity Compiler section and select
 
 Then press “Compile” button under the Compiler selector.
 
-<figure><img src="../../.gitbook/assets/image (17) (2).png" alt="" width="320"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (17) (1).png" alt="" width="320"><figcaption></figcaption></figure>
 
 #### 3. Select your Metamask wallet as Deploy environment
 

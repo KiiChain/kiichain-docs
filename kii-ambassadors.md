@@ -4,13 +4,13 @@ description: Become a Kii Ambassador
 
 # Kii Ambassadors
 
-### What does it mean to become a KiiAmbassador?&#x20;
+### What does it mean to become a KiiAmbassador?
 
 Welcome to the KiiAmbassadors Program, our exclusive initiative to spotlight and reward the most committed voices in the KiiChain community.
 
 This is not just a title — it's a role of influence and responsibility, for those who believe in our vision and want to help us grow the project both on-chain and online.
 
-_All information, tasks, and rewards are shared through the **Private Ambassadors Channel** on our official Discord_.&#x20;
+_All information, tasks, and rewards are shared through the **Private Ambassadors Channel** on our official Discord_.
 
 You can apply to join the Ambassadors Program through the official KiiChain Discord (Official Links Channel): [https://discord.gg/kiichain](https://discord.gg/kiichain)
 
@@ -70,7 +70,7 @@ In the table below, you can see how the points system is structured.
   * Be active in public Discord channels with at least 3 helpful messages per week.
   * Complete and submit weekly tasks through our tracking system
 
-&#x20;       _Rewards are vested with a 3-month cliff followed by 18-month linear vesting, and are based on a $100M fully diluted valuation (FDV) for $KII._
+_Rewards are vested with a 3-month cliff followed by 18-month linear vesting, and are based on a $100M fully diluted valuation (FDV) for $KII._
 
 ### Ambassador Incentives & Referral-Based Role System
 
@@ -84,7 +84,7 @@ For every 3 new KOLs (Key Opinion Leaders) you refer who are accepted into the p
 
 To remain active in the program, ambassadors are also required to publish at least 4 pieces of original content per month.
 
-<figure><img src=".gitbook/assets/AmbassadorsRoleProgression_Kii_2025 (2) (1).jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/AmbassadorsRoleProgression_Kii_2025 (2).jpg" alt=""><figcaption></figcaption></figure>
 
 How to Qualify a Referral
 

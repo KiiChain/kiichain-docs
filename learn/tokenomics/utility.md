@@ -7,7 +7,7 @@ description: >-
 
 # Utility
 
-1. Kii Benefits: KII holders will pay maker/taker fees on kiiex.io in native token and will have reduced trading fees and cash-in/cash-out rates within the ecosystem. Users who remit funds in KII will have priority to liquidity and rates, especially within our ecosystem of partners.
+1. Kii Benefits: KII holders will pay maker/taker fees on pay.kiichain.io in native token and will have reduced trading fees and cash-in/cash-out rates within the ecosystem. Users who remit funds in KII will have priority to liquidity and rates, especially within our ecosystem of partners.
 2. Kii Incentives: KII will be used to create incentives for on-chain PayFi liquidity pools, designed specially to incentivize stablecoin liquidity when creating pools on the less demanded side of the trade. (ie: USDT / COP – higher need for COP liquidity than USDT liquidity, therefore those that create COP liquidity pools will receive KII incentives and greater spreads).
 3. Payment for the use of the KiiChain RWA protocol: Payment for use of the RWA protocol and “unified liquidity” swaps to over 100+ networks will be in KII token relative to bps on total AUM of for permissioned tokens. Example: 10bps of the nominal asset value paid in KII from the liquidity sourced from an RWA purchase.
 4. Pricing of Assets on Kii: Tokenized commodities and products can be priced in KII to create instant/easier liquidity in our hybrid CEX/DEX from native liquidity pools.
