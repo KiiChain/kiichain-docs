@@ -29,7 +29,7 @@ Asset fractionalization and ownership is becoming more imperative than ever befo
 
 ### Tokenization of Debt and Equities (RWA)
 
-Public equities, debt instruments, or exchange traded funds that are trading on traditional exchanges can be tokenized to expand, democratize and fractionalize their access cross-border, to individuals who do not have access to these opportunities. Tokenization of regulated financial instruments will occur only through licensed issuers and distributors, geo-restricted to jurisdictions where lawful, and will not be offered to residents of the Republic of Korea absent local licensing."
+Public equities, debt instruments, or exchange traded funds that are trading on traditional exchanges can be tokenized to expand, democratize and fractionalize their access cross-border, to individuals who do not have access to these opportunities. Tokenization of regulated financial instruments will occur only through licensed issuers and distributors, geo-restricted to jurisdictions where lawful, and will not be offered to residents of the Republic of Korea absent local licensing.
 
 ### DeFi Lending and Borrowing for Open Credit System
 
