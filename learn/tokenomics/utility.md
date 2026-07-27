@@ -7,12 +7,30 @@ description: >-
 
 # Utility
 
-1. Kii Benefits: KII holders will pay maker/taker fees on pay.kiichain.io in native token and will have reduced trading fees and cash-in/cash-out rates within the ecosystem. Users who remit funds in KII will have priority to liquidity and rates, especially within our ecosystem of partners.
-2. Kii Incentives: KII will be used to create incentives for on-chain PayFi liquidity pools, designed specially to incentivize stablecoin liquidity when creating pools on the less demanded side of the trade. (ie: USDT / COP – higher need for COP liquidity than USDT liquidity, therefore those that create COP liquidity pools will receive KII incentives and greater spreads).
-3. Payment for the use of the KiiChain RWA protocol: Payment for use of the RWA protocol and “unified liquidity” swaps to over 100+ networks will be in KII token relative to bps on total AUM of for permissioned tokens. Example: 10bps of the nominal asset value paid in KII from the liquidity sourced from an RWA purchase.
-4. Pricing of Assets on Kii: Tokenized commodities and products can be priced in KII to create instant/easier liquidity in our hybrid CEX/DEX from native liquidity pools.
-5. Collateral: KII will be used as a collateral on DeFi apps, liquid staking, and lending.
-6. Staking: KII is required for validators and delegators to participate in the network. KII is the only token eligible for validating and delegating in KiiChain.
-7. Rewards: KII is rewarded to validators and delegators for their service to the network. Staking rewards are paid from pre-allocated reward reserves, transaction fees, and the Utility Rewards Module — not from new issuance."
-8. Gas fees: KII is used for transaction fees. All transactions such as deployment of new smart contracts, creation of user accounts, or token transfer, require the payer to pay transaction fees in KII.
-9. Governance: KII will be used for voting for protocol and ecosystem governance.
+KII is the native gas and utility token of KiiChain, a sovereign proof-of-stake Layer 1. Total supply is fixed at 1,800,000,000 KII; no further tokens can be minted.
+
+\
+1\. Gas\
+All network transactions (transfers, account creation, contract deployment) are paid in KII. Fees accrue to validators.\
+\
+2\. Staking\
+KII is the only asset eligible for validator bonding and delegation, securing network consensus. Rewards are paid from pre-allocated reward reserves, transaction fees, and the Utility Rewards Module, not from new issuance.\
+\
+3\. Governance\
+KII is the voting asset for on-chain proposals. Governance is live from genesis and controls system parameters, validator-set size, and protocol upgrades.
+
+\
+4\. Protocol usage fees\
+Applications using the KiiChain RWA protocol pay usage fees in KII. The RWA protocol is available only through licensed issuers and distributors, and is geo-restricted.\
+\
+5\. Ecosystem incentives\
+KII may be allocated from pre-allocated reserves to incentivize stablecoin liquidity provision. Allocations are discretionary. They are not a deposit, a yield product, or a promised return.\
+\
+6\. Affiliated application discounts\
+Holders receive reduced fees on the KiiChain App, operated by KiiGlobal S.A.S. (Colombia). The App is available only in jurisdictions where its operation is legally permitted. KII's function as a listed asset does not depend on it.\
+\
+7\. Rights not conferred\
+KII carries no dividend, profit-sharing, redemption, or repurchase rights; no claim on the revenue, profits, or assets of KiiGlobal S.A.S. or any affiliate; and no equity or debt interest. Funding of the Utility Rewards Module is voluntary and non-binding.\
+\
+Gas, staking, and governance are available to holders in any jurisdiction and do not require interaction with any Kii Global-operated service.
+
