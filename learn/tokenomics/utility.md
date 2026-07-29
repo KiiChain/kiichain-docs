@@ -15,10 +15,12 @@ Gas, staking and governance are protocol level functions, available to holders i
    All network transactions, including transfers, account creation and contract\
    deployment, are paid in KII. Fees accrue to validators. Gas use is\
    permissionless.
-2. Staking\
-   KII is the only asset eligible for validator bonding and delegation, securing network consensus. Staking rewards are generated at protocol level and distributed automatically by consensus to validators and delegators in proportion to bonded stake, as compensation for the validation service performed. Rewards are drawn from transaction fees and a pre allocated on chain reward reserve, not from new issuance.\
-   \
-   Rewards are not funded by and do not depend on the revenue, profits or discretionary decisions of KiiGlobal S.A.S. or any affiliate. No rate of return is promised or projected. Staking carries risk of loss through slashing and an unbonding period during which staked KII cannot be transferred.
+2.  Staking\
+    KII is the only asset eligible for validator bonding and delegation, securing network consensus. Validators, and delegators bonded to them, are paid a validation fee for the consensus service performed. Fees are assessed at protocol level and disbursed automatically by consensus, in proportion to bonded stake.<br>
+
+    Validation fees are paid from two sources: transaction fees, borne by the users submitting the transactions processed; and a separate pre-allocated on-chain fee pool. Neither source involves new issuance. Validation fees are not funded by and do not depend on the revenue, profits or discretionary decisions of KiiGlobal S.A.S. or any affiliate. The fee is consideration for work performed, not a return on capital, and no rate of return is promised or projected.<br>
+
+    Bonding carries risk of loss through slashing, and an unbonding period during which bonded KII cannot be transferred.
 3. Governance\
    KII is the voting asset for on chain protocol governance, which is live from genesis. Governance covers technical protocol matters: network parameters, validator set size, and protocol upgrades. It confers no shareholder, membership or management right in any company and no right to direct the business of any company.
 4. Protocol Usage Fees\
