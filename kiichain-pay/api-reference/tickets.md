@@ -9,6 +9,9 @@
 {% openapi-operation spec="kiichain-pay-swagger" path="/tickets/v1/swap" method="post" %}
 {% endopenapi-operation %}
 
+{% openapi-operation spec="kiichain-pay-swagger" path="/tickets/v1/trade" method="post" %}
+{% endopenapi-operation %}
+
 {% openapi-operation spec="kiichain-pay-swagger" path="/tickets/v1/{ticketId}" method="get" %}
 {% endopenapi-operation %}
 
