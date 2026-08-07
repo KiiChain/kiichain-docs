@@ -21,7 +21,7 @@ Revenue received by a validator's pool is split between the validator and their 
 
 Validators earn proportionally more revenue than their delegators because of the commission they take on the staking rewards from their delegators.
 
-Validators also play a major role in governance. If a delegator does not vote, they inherit the vote from their validator. This voting inheritance gives validators a major responsibility in the ecosystem. Kiichain will migrate to open governance after launch.&#x20;
+Validators also play a major role in governance. If a delegator does not vote, they inherit the vote from their validator. This voting inheritance gives validators a major responsibility in the ecosystem. On-chain governance is live from genesis and covers technical protocol matters such as network parameters, validator set size, and protocol upgrades.&#x20;
 
 ### How are block rewards distributed? <a href="#how-are-block-rewards-distributed" id="how-are-block-rewards-distributed"></a>
 

@@ -17,6 +17,7 @@
   * [Download a Mobile Wallet](learn/getting-started/download-a-mobile-wallet.md)
   * [Set Up a Web Wallet](learn/getting-started/set-up-a-web-wallet.md)
   * [Connect Wallet to Explorer App](learn/getting-started/connect-wallet-to-explorer-app.md)
+  * [Bridge](learn/getting-started/bridge.md)
 * [Kii Ambassadors](learn/kii-ambassadors.md)
 
 ## KiiChain Pay
@@ -64,6 +65,7 @@
 ## BUILD ON KIICHAIN
 
 * [Developer Hub](build-on-kiichain/developer-hub.md)
+* [Kiichain Mainnet](build-on-kiichain/kiichain-mainnet.md)
 * [Testnet Oro](build-on-kiichain/testnet-oro.md)
 * [Endpoints - EVM](build-on-kiichain/endpoints-evm.md)
 * [Endpoints - Cosmos](build-on-kiichain/endpoints-cosmos/README.md)

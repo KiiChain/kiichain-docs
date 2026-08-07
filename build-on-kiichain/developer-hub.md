@@ -6,17 +6,29 @@ description: >-
 
 # Developer Hub
 
-## **Testnets**
+## Networks
 
-Testnet Oro is our public testnet that is currently active.
+### Mainnet
 
-Testnet Oro is the permanent testnet with smart contract functionality and EVM compatibility. All Hackathons, Builds, Airdrops, and test deployments should be done on this network. You can find more information such as endpoints, chain data, and general guides here:
+Kiichain mainnet is the production network (`kiichain_1783-1`, EVM chain ID `1783`). Use it for production deployments and mainnet validator operations:
+
+* [Kiichain Mainnet](kiichain-mainnet.md)
+
+### Testnets
+
+Testnet Oro is the permanent public testnet with smart contract functionality and EVM compatibility. Use it for hackathons, builds, airdrops, and test deployments:
 
 * [Testnet Oro](testnet-oro.md)
 
+## Bridge
+
+Bridge KII between Kiichain and supported chains via Hyperlane:
+
+* [Bridge](../learn/getting-started/bridge.md)
+
 ## Developer Tools
 
-If you are a developer we also have our official SKDs for development:
+If you are a developer we also have our official SDKs for development:
 
 * [Rust SDK](developer-tools/rust-sdk.md)
 * [JS/TS SDK](developer-tools/js-ts-sdk/)
@@ -31,7 +43,8 @@ Kii protocols can be found at these links:
 
 Generally, our chains (testnets and mainnet) follow the same set of endpoints. More information about our endpoints can be found here:
 
-* [Endpoints](endpoints-cosmos/)
+* [Endpoints - EVM](endpoints-evm.md)
+* [Endpoints - Cosmos](endpoints-cosmos/)
 
 ## **KiiChain Discord Server**
 
