@@ -44,7 +44,7 @@ Here you can find further information about Testnet Oro:
 * **Total Supply:** `1.8b Kii`
 * **Token Denom:** `akii`
 * **EVM Chain ID:** `1336`
-* **Bench32 Prefix:** `kii`
+* **Bech32 Prefix:** `kii`
 
 ## How to chain the network
 
@@ -82,9 +82,10 @@ You can find guides to the testnet at our [Developer Tools](testnet-oro.md#devel
 
 ## Endpoints
 
-Rest endpoints for the testnet Oro can be found here:
+Rest and EVM endpoints for Testnet Oro can be found here:
 
-* [Endpoints](/broken/pages/eFlbymQFODJfNUyUpyRT)
+* [Endpoints - Cosmos](endpoints-cosmos/)
+* [Endpoints - EVM](endpoints-evm.md)
 
 ## **EVM / CW Addresses**
 

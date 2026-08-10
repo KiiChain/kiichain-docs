@@ -27,7 +27,7 @@ $request {address}
 Example EVM:
 
 ```
-$request Ox12345abcde…
+$request 0x12345abcde…
 ```
 
 Example CW:&#x20;

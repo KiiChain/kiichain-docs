@@ -69,10 +69,12 @@ Q2:
 
 Q3:
 
+* Public sale of KII (Sonar).
+* Token Generation Event (TGE).
+* Public Mainnet readiness and Hyperlane bridging for KII.
 * Smart contract enabled debit cards.
-* Public Mainnet, public sale and TGE.
 
 Q4:
 
 * KiiChain ecosystem development and module feature add-ons.
-* Kii product growth.
+* Kii product growth across onchain FX routes and liquidity.

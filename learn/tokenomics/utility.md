@@ -16,7 +16,7 @@ Gas, staking and governance are protocol level functions, available to holders i
    deployment, are paid in KII. Fees accrue to validators. Gas use is\
    permissionless.
 2. Staking \
-   KII is the only asset eligible for validator bonding and delegation, securing networkconsensus. Validators, and delegators bonded to them, are paid a validation fee for the consensus service performed. Fees are assessed at protocol level and disbursed automatically by consensus, in proportion to bonded stake.\
+   KII is the only asset eligible for validator bonding and delegation, securing network consensus. Validators, and delegators bonded to them, are paid a validation fee for the consensus service performed. Fees are assessed at protocol level and disbursed automatically by consensus, in proportion to bonded stake.\
    \
    Validation fees are paid from two sources: transaction fees borne by users submitting transactions; and a pre-allocated on-chain fee pool, which is finite, was fully allocated at genesis, and depletes according to a public schedule after which validation fees derive from transaction fees alone. Distribution from both sources is automatic and determined by consensus rules. Neither source involves new issuance. Validation fees are not funded by and do not depend on the revenue, profits or discretionary decisions of KiiGlobal S.A.S. or any affiliate. The fee is consideration for work performed, not a return on capital, and no rate of return is promised or projected. \
    \
@@ -30,7 +30,7 @@ Gas, staking and governance are protocol level functions, available to holders i
    KII confers no interest in, claim on or economic exposure to any asset tokenized through the protocol, and holders receive no share of protocol revenue.
 5. Ecosystem Incentives\
    KII may be allocated from pre allocated reserves as development grants to third party developers and infrastructure operators building on KiiChain. Grants are discretionary and are not available to holders by virtue of holding KII. They are not a deposit, a yield product or a promised return.
-6. Affiliated Applicaiton Discount. \
+6. Affiliated Application Discount. \
    Holders receive a flat service fee discount on the KiiChain App, operated by KiiGlobal S.A.S. (Colombia). The discount is the same for every eligible holder and does not increase with the amount held. It is a commercial promotion, not a distribution of revenue or profit, and may be modified or withdrawn at any time. The App is available only in jurisdictions where its operation is legally permitted. KII's function as a network asset does not depend on it.
 7. Rights not Conferred\
    KII carries no dividend, profit sharing, interest, redemption, buy back or repurchase rights; no claim on the revenue, profits or assets of KiiGlobal S.A.S. or any affiliate; no equity or debt interest; and no contractual right to share in the profits or losses of any common enterprise. No token burn or buy back is funded from the revenue or profits of KiiGlobal S.A.S. or any affiliate.

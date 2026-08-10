@@ -9,7 +9,7 @@ description: >-
 
 ### What is Kii?
 
-Kii is an onchain FX layer powering global payments, trading and finance solutions in an easy-to-use platform designed for everyone. Users, businesses or builders can use Kii by signing up for an account or connecting to APIs. Kii differs from other traditional platforms by its hybrid approach of sourcing liquidity and maintaining balances onchain exposed to local currencies. Kii supports fiat swaps and payins/payouts via the pricing of local, non-dollar stablecoins and other tokenized real-world assets.
+Kii is an onchain FX layer that connects global stablecoin liquidity such as USDT and USDC with locally denominated stablecoins and markets across emerging economies. Users, businesses or builders can use Kii by signing up for an account or connecting to APIs. Kii differs from other traditional platforms by its hybrid approach of sourcing liquidity and maintaining balances onchain exposed to local currencies. Kii supports cross-border payments, remittances, trade settlement, fiat swaps and payins/payouts via the pricing of local, non-dollar stablecoins and other tokenized real-world assets.
 
 ### Hybrid Matching Engine
 
