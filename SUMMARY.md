@@ -36,6 +36,7 @@
 * [API Reference](kiichain-pay/api-reference/README.md)
   * [Accounts](kiichain-pay/api-reference/accounts.md)
   * [Blockchain](kiichain-pay/api-reference/blockchain.md)
+  * [Geofence](kiichain-pay/api-reference/geofence.md)
   * [Ledger](kiichain-pay/api-reference/ledger.md)
   * [Market](kiichain-pay/api-reference/market.md)
   * [Notifications](kiichain-pay/api-reference/notifications.md)
