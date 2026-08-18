@@ -20,7 +20,7 @@ Together they move Kii from a place to settle an FX swap to a place to hold, ear
 * Under assessment: being evaluated; no date attached.
 * Exploratory: concept only; no commitment, no date.
 
-Status at a glance
+**Status at a glance**
 
 | What                                                                  | Status    | When     |
 | --------------------------------------------------------------------- | --------- | -------- |
@@ -40,5 +40,6 @@ Status at a glance
 | Additional Asian corridors            | Under assessment | No date    |
 | Debit cards; collateral-free credit   | Exploratory      | No date    |
 
-Where Kii stands today\
-[$600M+](https://x.com/search?q=%24600M%2B\&src=cashtag_click)cumulative transaction volume, growing roughly 10% month over month · 350,000+ users · 200+ enterprise clients · $26M raised from institutional investors · $5.4B notional covered by signed tokenization agreements (contracted pipeline).Note on dates. Dates are targets based on current plans. “Committed” means planned, resourced and in build; it is not a guarantee of delivery. Every item depends on technical, commercial and licensing conditions in each market and may change.
+**Where Kii stands today**\
+\
+$500m+ cumulative transaction volume, growing roughly 10% month over month · 350,000+ users · 200+ enterprise clients · $26M raised from institutional investors · $5.4B notional covered by signed tokenization agreements (contracted pipeline).Note on dates. Dates are targets based on current plans. “Committed” means planned, resourced and in build; it is not a guarantee of delivery. Every item depends on technical, commercial and licensing conditions in each market and may change.
