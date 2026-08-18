@@ -1,5 +1,7 @@
 # Part II: Pillar 3
 
+### **Pillar 3: On-Chain Financial Services**
+
 **Problem**. In emerging markets, the hard part is not spending dollars. It is receiving and holding them.\
 \
 **Kii’s insight.** Bankable US account details on top of an on-chain balance solve the receiving problem; the rest of the stack already solves what happens next.\
