@@ -1,5 +1,6 @@
 ---
 description: Become a Kii Ambassador
+hidden: true
 ---
 
 # Kii Ambassadors
