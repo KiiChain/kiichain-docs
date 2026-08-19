@@ -13,7 +13,7 @@
     * [Part II: Pillar 3](learn/kiichain/roadmap/part-ii-pillar-3.md)
   * [Whitepaper](learn/kiichain/whitepaper.md)
 * [Tokenomics](learn/tokenomics/README.md)
-  * [Intro Coin Details](learn/tokenomics/intro-coin-details.md)
+  * [KiiChain Tokenomics](learn/tokenomics/intro-coin-details.md)
   * [Utility](learn/tokenomics/utility.md)
   * [Evergreen Model](learn/tokenomics/evergreen-model.md)
 * [Getting Started](learn/getting-started/README.md)
