@@ -21,7 +21,7 @@ Move KII between Kiichain and supported chains (BSC, Polygon, Base, Ethereum, Ma
 
 Kiichain supports wallet connections with EVM and Cosmos based wallets like MetaMask and Keplr. To set up a wallet, make sure you have the MetaMask or Keplr wallet extension downloaded in your web browser. MetaMask supports extension downloads for the following web browsers: Chrome, Firefox, Brave, Edge and Opera. Keplr supports wallets in Chrome, Firefox and Edge.
 
-For further explanation of how to set up your wallet, follow the steps [here](set-up-a-web-wallet.md) or connect your wallet to our explorer app automatically by following the steps [here](connect-wallet-to-explorer-app.md).
+For further explanation of how to set up your wallet, follow the steps [here](set-up-a-web-wallet/) or connect your wallet to our explorer app automatically by following the steps [here](connect-wallet-to-explorer-app.md).
 
 ### Get Testnet tokens
 
