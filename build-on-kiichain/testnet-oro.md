@@ -70,7 +70,7 @@ More information about how to use our discord Faucet can be found at:
 
 The testnet Oro also has its own Explorer, it can be found here:
 
-* [Testnet Oro Explorer](https://explorer.kiichain.io)
+* [Testnet Oro Explorer](https://testnet.explorer.kiichain.io/)
 
 ## Developer Tools
 
