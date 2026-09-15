@@ -75,6 +75,9 @@
 {% openapi-operation spec="kiichain-pay-swagger" path="/market/v1/yields/vaults" method="get" %}
 {% endopenapi-operation %}
 
+{% openapi-operation spec="kiichain-pay-swagger" path="/market/v1/yields/vaults/{vaultId}/deposit-preview" method="get" %}
+{% endopenapi-operation %}
+
 {% openapi-operation spec="kiichain-pay-swagger" path="/market/v1/yields/vaults/{vaultId}/withdrawal-preview" method="get" %}
 {% endopenapi-operation %}
 
