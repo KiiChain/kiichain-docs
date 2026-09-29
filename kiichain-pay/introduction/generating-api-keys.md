@@ -1,7 +1,8 @@
 ---
 description: >-
   Create an API key in the KiiChain Pay dashboard, understand scopes and
-  expiry, and learn how to authenticate and sign your API requests.
+  expiry, and learn how to authenticate, sign and safely retry your API
+  requests.
 ---
 
 # Generating API keys
@@ -229,6 +230,34 @@ The scheme is language-agnostic — reproduce these steps with any Ed25519 and S
 4. Send headers `Authorization: APIKey <api_key>`, `x-timestamp: <timestamp>`, `x-signature: <signature>`.
 
 Base64url-decode `priv_key` to obtain the raw 64-byte Ed25519 private key.
+
+## 5. Retry write requests safely
+
+A write request can time out or lose its connection after the server has already processed it. To retry without running the operation twice (for example creating two tickets), send an optional **`Idempotency-Key`** header:
+
+```
+Idempotency-Key: 3f1c9a52-7d4e-4b8a-9e21-6c0f5d2b8a17
+```
+
+Generate a new unique key (a UUID v4 works well) for each operation, and send **the same key** on every retry of that operation.
+
+<table><thead><tr><th width="260">Retry</th><th>Result</th></tr></thead><tbody>
+<tr><td>Same key, same request, first attempt succeeded</td><td>The stored response is returned. The operation is <strong>not</strong> run again.</td></tr>
+<tr><td>Same key, first attempt still running</td><td><code>409 Conflict</code>. Wait and retry with the same key.</td></tr>
+<tr><td>Same key, different body or parameters</td><td><code>400 Bad Request</code>. Use a new key for a new operation.</td></tr>
+<tr><td>Same key, first attempt failed</td><td>Nothing was stored, so the request runs again as a new one.</td></tr>
+</tbody></table>
+
+- The key must be between 1 and 255 characters; anything else is rejected with `400 Bad Request`.
+- A key is scoped to your user and the endpoint: the same key sent to two different endpoints is treated as two separate keys.
+- Keys are kept for **24 hours**. After that, a request with the same key runs as a new one.
+- Read requests ignore the header.
+
+{% hint style="warning" %}
+The idempotency check runs **after** authentication. Every retry still needs a **fresh `x-timestamp` and a new `x-signature`**, and a valid `X-Mfa-Code` on endpoints that require one. Don't replay the original request's headers byte for byte.
+{% endhint %}
+
+`Idempotency-Key` has no effect on [creating or rotating an API key](../api-reference/users.md). A retry of those runs again.
 
 ## Scopes
 
