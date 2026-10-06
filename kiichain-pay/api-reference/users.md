@@ -24,6 +24,12 @@
 {% openapi-operation spec="kiichain-pay-swagger" path="/users/v1/users/me/change_profile" method="patch" %}
 {% endopenapi-operation %}
 
+{% openapi-operation spec="kiichain-pay-swagger" path="/users/v1/users/me/email/change" method="post" %}
+{% endopenapi-operation %}
+
+{% openapi-operation spec="kiichain-pay-swagger" path="/users/v1/users/me/email/current-code" method="post" %}
+{% endopenapi-operation %}
+
 {% openapi-operation spec="kiichain-pay-swagger" path="/users/v1/users/{userId}" method="get" %}
 {% endopenapi-operation %}
 
