@@ -24,5 +24,8 @@
 {% openapi-operation spec="kiichain-pay-swagger" path="/tickets/v1/{ticketId}/pending_user_actions" method="get" %}
 {% endopenapi-operation %}
 
+{% openapi-operation spec="kiichain-pay-swagger" path="/tickets/v1/{ticketId}/signature" method="post" %}
+{% endopenapi-operation %}
+
 {% openapi-operation spec="kiichain-pay-swagger" path="/tickets/v1/{ticketId}/user_txs" method="get" %}
 {% endopenapi-operation %}
