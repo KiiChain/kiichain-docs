@@ -3,6 +3,9 @@
 {% openapi-operation spec="kiichain-pay-swagger" path="/tickets/v1/accounts/{accountId}" method="get" %}
 {% endopenapi-operation %}
 
+{% openapi-operation spec="kiichain-pay-swagger" path="/tickets/v1/accounts/{accountId}/summary" method="get" %}
+{% endopenapi-operation %}
+
 {% openapi-operation spec="kiichain-pay-swagger" path="/tickets/v1/dex" method="post" %}
 {% endopenapi-operation %}
 
