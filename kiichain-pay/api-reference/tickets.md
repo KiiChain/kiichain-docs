@@ -12,6 +12,9 @@
 {% openapi-operation spec="kiichain-pay-swagger" path="/tickets/v1/offramp" method="post" %}
 {% endopenapi-operation %}
 
+{% openapi-operation spec="kiichain-pay-swagger" path="/tickets/v1/subscription_payment" method="post" %}
+{% endopenapi-operation %}
+
 {% openapi-operation spec="kiichain-pay-swagger" path="/tickets/v1/swap" method="post" %}
 {% endopenapi-operation %}
 
@@ -28,6 +31,9 @@
 {% endopenapi-operation %}
 
 {% openapi-operation spec="kiichain-pay-swagger" path="/tickets/v1/{ticketId}/signature" method="post" %}
+{% endopenapi-operation %}
+
+{% openapi-operation spec="kiichain-pay-swagger" path="/tickets/v1/{ticketId}/subscription_payment/cancel" method="post" %}
 {% endopenapi-operation %}
 
 {% openapi-operation spec="kiichain-pay-swagger" path="/tickets/v1/{ticketId}/user_txs" method="get" %}
