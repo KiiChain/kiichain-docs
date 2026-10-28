@@ -9,6 +9,15 @@
 {% openapi-operation spec="kiichain-pay-swagger" path="/accounts/v1/accounts/{accountId}/limits" method="get" %}
 {% endopenapi-operation %}
 
+{% openapi-operation spec="kiichain-pay-swagger" path="/accounts/v1/accounts/{accountId}/subaccounts" method="get" %}
+{% endopenapi-operation %}
+
+{% openapi-operation spec="kiichain-pay-swagger" path="/accounts/v1/accounts/{accountId}/subaccounts" method="post" %}
+{% endopenapi-operation %}
+
+{% openapi-operation spec="kiichain-pay-swagger" path="/accounts/v1/accounts/{accountId}/subaccounts/{subaccountId}" method="get" %}
+{% endopenapi-operation %}
+
 {% openapi-operation spec="kiichain-pay-swagger" path="/accounts/v1/accounts/{accountId}/user" method="get" %}
 {% endopenapi-operation %}
 
