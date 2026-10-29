@@ -1,8 +1,8 @@
 ---
 description: >-
   KYC gates wallets, limits and provider access in KiiChain Pay. Learn the
-  account levels, individual vs. company verification, and the separate
-  provider KYC/KYB for on- and off-ramps.
+  account levels, individual vs. company verification, the separate
+  provider KYC/KYB for on- and off-ramps, and which assets an account can use.
 ---
 
 # KYC
@@ -85,6 +85,55 @@ When prompted, starting provider verification opens the provider's flow (a redir
 {% hint style="info" %}
 Provider verification is per provider: verifying with one provider does not verify you with another. When a provider is required, check its status before routing a transaction through it.
 {% endhint %}
+
+## What your account can use
+
+KYC decides which assets and rails an account can use, not just whether it can use KiiChain Pay at all. Rails, swap pairs and fiat holdings each carry an **`availability`** object that tells you, for the requesting account, whether it can be used and, if not, why.
+
+```json
+{
+  "allowed": false,
+  "reason": "fiat_country_required",
+  "requiredCountries": ["BRA"]
+}
+```
+
+<table><thead><tr><th width="200">Field</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>allowed</code></td><td>Whether the account can use the row. Always present.</td></tr>
+<tr><td><code>reason</code></td><td>Why the row is blocked. Unset when <code>allowed</code> is <code>true</code>.</td></tr>
+<tr><td><code>requiredCountries</code></td><td>ISO 3166-1 alpha-3 codes that would unlock the row. Only set for <code>fiat_country_required</code>.</td></tr>
+<tr><td><code>providerId</code>, <code>providerName</code></td><td>The provider whose onboarding is pending. Only set for <code>provider_kyc_required</code>.</td></tr>
+</tbody></table>
+
+### Blocking reasons
+
+<table><thead><tr><th width="230">Reason</th><th>Meaning</th><th>What to do</th></tr></thead><tbody>
+<tr><td><code>kyc_required</code></td><td>The account hasn't completed system KYC (level 0).</td><td>Complete <a href="#system-kyc">system KYC</a>.</td></tr>
+<tr><td><code>country_not_supported</code></td><td>The provider doesn't serve the account's country.</td><td>Use another rail for the same asset, if one is allowed.</td></tr>
+<tr><td><code>fiat_country_required</code></td><td>The fiat can only be used by accounts from its issuing country, and none of the account's countries match.</td><td>The account needs one of the <code>requiredCountries</code>. Contact support if its countries are wrong.</td></tr>
+<tr><td><code>provider_kyc_required</code></td><td>The provider runs its own onboarding and hasn't approved the account yet.</td><td>Complete <a href="#provider-kyc-kyb">provider KYC</a> with <code>providerName</code>.</td></tr>
+<tr><td><code>not_offered</code></td><td>No provider currently offers deposits into this fiat.</td><td>Nothing on your side. The balance can still be held.</td></tr>
+</tbody></table>
+
+Each fiat is tied to its issuing countries: **BRL** to Brazil, **COP** to Colombia, **MXN** to Mexico, **USD** to the United States, and **EUR** to the euro area members. `GET /accounts/v1/accounts/{accountId}/countries` lists the countries on an account.
+
+### Where it appears
+
+<table><thead><tr><th width="300">Endpoint</th><th>Field</th><th>Possible reasons</th></tr></thead><tbody>
+<tr><td><code>GET /market/v1/products-providers</code></td><td><code>productsProviders[].availability</code></td><td><code>kyc_required</code>, <code>country_not_supported</code>, <code>fiat_country_required</code></td></tr>
+<tr><td><code>GET /market/v1/instruments</code></td><td><code>instruments[].availability</code></td><td><code>kyc_required</code>, <code>country_not_supported</code></td></tr>
+<tr><td><code>GET /market/v1/trade-instruments</code></td><td><code>tradeInstruments[].products[].availability</code></td><td><code>kyc_required</code>, <code>country_not_supported</code></td></tr>
+<tr><td><code>GET /portfolio/v1/portfolio</code></td><td>each fiat holding's <code>availability</code></td><td>all five</td></tr>
+</tbody></table>
+
+### In your portfolio
+
+The portfolio's fiat holdings list every fiat the account **holds or can deposit into**, each with its `availability`:
+
+- A fiat is allowed when **any** provider lets the account deposit into it. When none does, the first blocking reason is reported, and it stays the same between calls.
+- A fiat the account can deposit into but doesn't hold yet appears with a **zero balance**, so you can show it before the first deposit.
+- A fiat the account holds but no provider offers anymore still appears, marked `not_offered`.
+- A fiat the account neither holds nor can be offered is left out.
 
 ## Next steps
 
