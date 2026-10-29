@@ -85,6 +85,7 @@ Each entry in `products_providers[]` carries:
 <tr><td><code>fiat_asset</code></td><td>The fiat leg — <code>{ code, name, symbol }</code> (ISO 4217).</td></tr>
 <tr><td><code>provider</code></td><td>The provider — <code>provider.name</code>, etc.</td></tr>
 <tr><td><code>enabled</code></td><td>Whether the rail is currently available.</td></tr>
+<tr><td><code>availability</code></td><td>Whether <strong>your account</strong> can use the rail: <code>allowed</code>, and a <code>reason</code> when it can't. See <a href="../introduction/kyc.md#what-your-account-can-use">What your account can use</a>.</td></tr>
 </tbody></table>
 
 Min/max amounts live on a separate call: `GET /market/v1/products-providers/{id}/limits` returns `limits` with `min_fiat_amount`, `max_fiat_amount`, `min_token_amount`, `max_token_amount`.
@@ -98,7 +99,7 @@ curl "https://backend.pay.kiichain.io/market/v1/instruments?account_id=$KII_ACCO
   -H "Authorization: APIKey $KII_API_KEY"
 ```
 
-Each entry in `instruments[]` has `id`, `name`, `description`, `product_base` (input) and `product_quote` (output) — each a full `Product` with its `chain_token`/`fiat_asset` — plus `provider`, `spread`, and `enabled`. Limits come from `GET /market/v1/instruments/{id}/limits?side=buy|sell` (`min_base_amount`, `max_base_amount`, `min_quote_amount`, `max_quote_amount`).
+Each entry in `instruments[]` has `id`, `name`, `description`, `product_base` (input) and `product_quote` (output) — each a full `Product` with its `chain_token`/`fiat_asset` — plus `provider`, `spread`, `enabled`, and `availability` (whether your account can use the pair, see [What your account can use](../introduction/kyc.md#what-your-account-can-use)). Limits come from `GET /market/v1/instruments/{id}/limits?side=buy|sell` (`min_base_amount`, `max_base_amount`, `min_quote_amount`, `max_quote_amount`).
 
 ### Fiat assets
 
