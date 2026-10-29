@@ -133,7 +133,6 @@ The portfolio's fiat holdings list every fiat the account **holds or can deposit
 - A fiat is allowed when **any** provider lets the account deposit into it. When none does, the first blocking reason is reported, and it stays the same between calls.
 - A fiat the account can deposit into but doesn't hold yet appears with a **zero balance**, so you can show it before the first deposit.
 - A fiat the account holds but no provider offers anymore still appears, marked `not_offered`.
-- A fiat the account neither holds nor can be offered is left out.
 
 ## Next steps
 
