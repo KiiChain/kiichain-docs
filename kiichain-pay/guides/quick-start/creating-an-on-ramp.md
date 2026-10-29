@@ -26,7 +26,7 @@ An **on-ramp** converts **fiat into crypto**. You quote a rail, open the on-ramp
 - Your `account_id` and a **wallet destination** that will receive the crypto — see [Discovering rails & IDs](../README.md#discovering-rails-and-ids). The examples assume `KII_API_KEY`, `KII_ACCOUNT_ID`, and `KII_DESTINATION_ID` are set.
 
 {% hint style="info" %}
-Some providers require their own KYC in certain countries. If so, the create call will tell you — see [Provider KYC / KYB](../../introduction/kyc.md#provider-kyc-kyb).
+Check the rail's `availability.allowed` before quoting. When it's `false`, its `reason` tells you what's missing, such as KYC or a country the fiat requires — see [What your account can use](../../introduction/kyc.md#what-your-account-can-use). Some providers also require their own KYC in certain countries. If so, the create call will tell you — see [Provider KYC / KYB](../../introduction/kyc.md#provider-kyc-kyb).
 {% endhint %}
 
 ## Step 1 — Get a quote
@@ -155,6 +155,7 @@ const rail = products_providers.find(
   (pp: any) =>
     pp.type === "onramp" &&
     pp.enabled &&
+    pp.availability.allowed &&
     pp.fiat_asset.code === "BRL" &&
     pp.product.chain_token?.token.symbol === "USDC",
 );
