@@ -146,18 +146,18 @@ const ACCOUNT_ID = process.env.KII_ACCOUNT_ID!;
 const DESTINATION_ID = process.env.KII_DESTINATION_ID!; // wallet that receives the crypto
 
 // 1 · Find an on-ramp rail (BRL → USDC in this example).
-const { products_providers } = await kiiFetch(
+const { productsProviders } = await kiiFetch(
   "GET",
   `/market/v1/products-providers?account_id=${ACCOUNT_ID}`,
 ).then((r) => r.json());
 
-const rail = products_providers.find(
+const rail = productsProviders.find(
   (pp: any) =>
     pp.type === "onramp" &&
     pp.enabled &&
     pp.availability.allowed &&
-    pp.fiat_asset.code === "BRL" &&
-    pp.product.chain_token?.token.symbol === "USDC",
+    pp.fiatAsset.code === "BRL" &&
+    pp.product.chainToken?.token.symbol === "USDC",
 );
 if (!rail) throw new Error("no matching on-ramp rail");
 
