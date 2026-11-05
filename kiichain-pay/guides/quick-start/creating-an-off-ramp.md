@@ -31,7 +31,7 @@ An **off-ramp** converts **crypto into fiat**, paid out to a bank account. Unlik
 The fiat payout goes to a confirmed **bank** destination. If you don't have one yet, create it (see [Discovering rails & IDs](../README.md#discovering-rails-and-ids) for the full flow):
 
 1. `GET /accounts/v1/rails/schemas?country={country}` — read the bank rail's required `payload` fields.
-2. `POST /accounts/v1/users/{userId}/accounts/{accountId}/withdrawal_destinations` — register it with `{ rail_code, rail_version, payload, name }`.
+2. `POST /accounts/v1/accounts/{accountId}/withdrawal_destinations` — register it with `{ rail_code, rail_version, payload, name }`.
 3. `POST …/withdrawal_destinations/{destinationId}:confirm` — confirm with the `verify_code` you receive.
 
 Then list your destinations and pick the `id` of the `"bank"` one — that's your `withdraw_destination_id`. The examples assume `KII_API_KEY`, `KII_ACCOUNT_ID`, `KII_ADDRESS` (your `0x…` wallet address), and `KII_WITHDRAW_DEST_ID` are set.
@@ -104,7 +104,7 @@ KiiChain Pay does **not** sign for you at create time — the transactions come 
 Hand the returned `transactions` straight to the blockchain execute endpoint. KiiChain Pay signs and broadcasts them from your delegated Kii Wallet, with gas sponsored. This is a signed **write** request.
 
 ```bash
-curl -X POST "https://backend.pay.kiichain.io/blockchain/v1/transactions/execute" \
+curl -X POST "https://backend.pay.kiichain.io/blockchain/v1/accounts/$KII_ACCOUNT_ID/transactions/execute" \
   -H "Authorization: APIKey $KII_API_KEY" \
   -H "x-timestamp: $KII_TIMESTAMP" \
   -H "x-signature: $KII_SIGNATURE" \
@@ -182,7 +182,7 @@ const { ticket, transactions } = await kiiFetch("POST", "/tickets/v1/offramp", {
 // 3 · Execute on-chain from the delegated Kii Wallet.
 const { txHashes } = await kiiFetch(
   "POST",
-  "/blockchain/v1/transactions/execute",
+  `/blockchain/v1/accounts/${ACCOUNT_ID}/transactions/execute`,
   {
     transactions,
   },

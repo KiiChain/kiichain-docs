@@ -114,7 +114,7 @@ console.log("swap broadcast:", hash);
 ```
 
 {% hint style="info" %}
-**Prefer to have KiiChain Pay sign it?** If you hold a [delegated Kii Wallet](../../introduction/privy-delegated-access.md), you can instead decode `evm_tx` into its `to` / `value` / `data` / `chain_id` fields and submit it through `POST /blockchain/v1/transactions/execute` (authenticated, gas-sponsored). That routes the same swap through your Kii Wallet rather than an external one. Check out the [actions you can take with internal wallets](../../introduction/internal-wallets.md#accessing-wallets-via-the-api).
+**Prefer to have KiiChain Pay sign it?** If you hold a [delegated Kii Wallet](../../introduction/privy-delegated-access.md), you can instead decode `evm_tx` into its `to` / `value` / `data` / `chain_id` fields and submit it through `POST /blockchain/v1/accounts/{accountId}/transactions/execute` (authenticated, gas-sponsored). That routes the same swap through your Kii Wallet rather than an external one. Check out the [actions you can take with internal wallets](../../introduction/internal-wallets.md#accessing-wallets-via-the-api).
 {% endhint %}
 
 ## Step 4 — Confirm on-chain

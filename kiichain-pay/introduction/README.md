@@ -67,3 +67,4 @@ All REST endpoints are versioned and namespaced by module — for example `/user
 * [Internal wallets](internal-wallets.md) — understand the Kii Wallet model.
 * [Privy delegated access](privy-delegated-access.md) — enable server-side signing.
 * [KYC](kyc.md) — levels, limits, and provider verification.
+* [Subaccounts](subaccounts.md) — onboard and operate your own customers' accounts.

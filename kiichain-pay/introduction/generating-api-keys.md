@@ -121,7 +121,7 @@ const signingKey = createPrivateKey({
 });
 
 /**
- * `path` must include the query string, e.g. "/market/v1/quotes?type=onramp".
+ * `path` must include the query string, e.g. "/market/v1/products-providers?account_id=…".
  */
 export async function kiiFetch(method: string, path: string, body?: unknown) {
   method = method.toUpperCase();
@@ -180,7 +180,7 @@ var writeMethods = map[string]bool{
 }
 
 // KiiRequest builds and sends a signed KiiChain Pay API request.
-// path must include the query string, e.g. "/market/v1/quotes?type=onramp".
+// path must include the query string, e.g. "/market/v1/products-providers?account_id=…".
 func KiiRequest(method, path string, body []byte) (*http.Response, error) {
 	apiKey := os.Getenv("KII_API_KEY")   // the opaque "api_key"
 	privKey := os.Getenv("KII_PRIV_KEY") // base64url "priv_key", shown once
@@ -278,6 +278,7 @@ Commonly used scopes:
 <tr><td><code>market.providers_virtual_accounts.read</code> / <code>write</code></td><td>Create and read virtual accounts for fiat on-/off-ramps.</td></tr>
 <tr><td><code>tickets.tickets.read</code> / <code>write</code></td><td>Create and track on-ramp, off-ramp and swap tickets.</td></tr>
 <tr><td><code>ledger.entries.read</code></td><td>Read ledger balances and transaction history.</td></tr>
+<tr><td><code>accounts.subaccounts.read</code> / <code>write</code></td><td>Manage your company's <a href="subaccounts.md">subaccounts</a> and act on them, on top of each endpoint's own scope.</td></tr>
 </tbody></table>
 
 The dashboard's create dialog always lists the full, current set of scopes available to your account.

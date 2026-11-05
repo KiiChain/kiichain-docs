@@ -32,6 +32,7 @@
   * [Internal wallets](kiichain-pay/introduction/internal-wallets.md)
   * [Privy delegated access](kiichain-pay/introduction/privy-delegated-access.md)
   * [KYC](kiichain-pay/introduction/kyc.md)
+  * [Subaccounts](kiichain-pay/introduction/subaccounts.md)
 * [Guides](kiichain-pay/guides/README.md)
   * [Quick Start](kiichain-pay/guides/quick-start/README.md)
     * [Creating an on-ramp](kiichain-pay/guides/quick-start/creating-an-on-ramp.md)

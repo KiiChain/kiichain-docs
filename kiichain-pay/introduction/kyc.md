@@ -138,3 +138,4 @@ The portfolio's fiat holdings list every fiat the account **holds or can deposit
 
 - [Internal wallets](internal-wallets.md) — provisioned automatically once system KYC is approved.
 - [Creating an on-ramp](../guides/quick-start/creating-an-on-ramp.md) — where provider KYC may come into play.
+- [Subaccounts](subaccounts.md) — verify your own customers with a KYC link instead of the dashboard.
