@@ -120,7 +120,7 @@ To **create** one, first read the rail schema so you know which fields the `payl
 
 1. `GET /accounts/v1/rails/schemas?country={country}` → `schemas[]` of `{ rail_code, rail_version, country, type, schema }`, where `schema.fields[]` describes each required field (`name`, `type`, `optional`, `pattern`, `options`).
 2. `POST /accounts/v1/accounts/{accountId}/withdrawal_destinations` with `{ rail_code, rail_version, payload, name }`.
-3. `POST /accounts/v1/accounts/{accountId}/withdrawal_destinations/{destinationId}:confirm` with the `{ verify_code }` sent to you after registration.
+3. `POST /accounts/v1/accounts/{accountId}/withdrawal_destinations/{destinationId}:confirm` with the `{ verify_code }` sent to you after registration. Skip this step on a [subaccount](../introduction/subaccounts.md#withdrawal-destinations): its destinations are confirmed on registration and no code is sent.
 
 ### DEX-enabled tokens
 

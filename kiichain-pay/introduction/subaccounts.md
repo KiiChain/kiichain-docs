@@ -39,17 +39,6 @@ For example, sending from a subaccount's Kii Wallet needs `blockchain.wallets.se
 
 Some endpoints only make sense on the company account itself and are refused when called with a subaccount's ID: account deletion, billing and subscriptions, system KYC (`StartKyc`, subaccounts use the [KYC link](#2.-send-the-customer-a-kyc-link) instead), and managing subaccounts.
 
-### MFA
-
-The company's integration has no authenticator code to send, so these endpoints skip the `X-Mfa-Code` check when they're called **on a subaccount with an API key**:
-
-- `POST /blockchain/v1/accounts/{accountId}/wallets/internal/send`
-- `POST /blockchain/v1/accounts/{accountId}/transactions/execute`
-- `POST /blockchain/v1/accounts/{accountId}/wallets/internal/sign-typed-data`
-- `POST /accounts/v1/accounts/{accountId}/withdrawal_destinations`
-
-The same calls from a dashboard login, or on the company's own account, still require MFA.
-
 ## Onboarding a customer
 
 The examples assume `KII_API_KEY` holds the company's API key and `KII_ACCOUNT_ID` the company's account ID. Write requests also carry the `x-timestamp` and `x-signature` headers described in [Sign write requests](generating-api-keys.md#4.-sign-write-requests).
@@ -167,16 +156,16 @@ The [guides](../guides/README.md) apply as they are: pass the subaccount's ID as
 # Sign the typed data with the subaccount's Kii Wallet
 curl -X POST "https://backend.pay.kiichain.io/blockchain/v1/accounts/$KII_SUBACCOUNT_ID/wallets/internal/sign-typed-data" \
   -H "Authorization: APIKey $KII_API_KEY" \
-  -H "x-timestamp: $KII_TIMESTAMP" \
-  -H "x-signature: $KII_SIGNATURE" \
+  -H "x-timestamp: $KII_TIMESTAMP_1" \
+  -H "x-signature: $KII_SIGNATURE_1" \
   -H "Content-Type: application/json" \
   -d '{ "typed_data": "… the typedData.typedData string from the activity …" }'
 
 # Submit it on the activity
 curl -X POST "https://backend.pay.kiichain.io/tickets/v1/$KII_TICKET_ID/signature" \
   -H "Authorization: APIKey $KII_API_KEY" \
-  -H "x-timestamp: $KII_TIMESTAMP" \
-  -H "x-signature: $KII_SIGNATURE" \
+  -H "x-timestamp: $KII_TIMESTAMP_2" \
+  -H "x-signature: $KII_SIGNATURE_2" \
   -H "Content-Type: application/json" \
   -d '{
     "account_id": "'"$KII_SUBACCOUNT_ID"'",
@@ -186,6 +175,8 @@ curl -X POST "https://backend.pay.kiichain.io/tickets/v1/$KII_TICKET_ID/signatur
 ```
 
 `sign-typed-data` requires `blockchain.transactions.execute` and returns `{ "signature": "0x…" }`, the 65-byte EIP-712 signature.
+
+Each request is signed on its own: the signature covers the timestamp, method, path and body, so compute a fresh `x-timestamp` and `x-signature` for the second call rather than reusing the first one's.
 
 ### Provider KYC
 
@@ -201,6 +192,17 @@ curl -X POST "https://backend.pay.kiichain.io/market/v1/providers/$KII_PROVIDER_
 ```
 
 The provider account is opened under the subaccount's `name`, the customer, not under your company. Calling `start` again while the verification is in progress returns the same link, and `POST /market/v1/providers/{providerId}/kyc/{accountId}` returns the current status.
+
+## MFA
+
+You don't need to do anything for this. Because the company's integration has no authenticator code to send, these endpoints skip the `X-Mfa-Code` check when they're called **on a subaccount with an API key**:
+
+- `POST /blockchain/v1/accounts/{accountId}/wallets/internal/send`
+- `POST /blockchain/v1/accounts/{accountId}/transactions/execute`
+- `POST /blockchain/v1/accounts/{accountId}/wallets/internal/sign-typed-data`
+- `POST /accounts/v1/accounts/{accountId}/withdrawal_destinations`
+
+The same calls from a dashboard login, or on the company's own account, still require MFA.
 
 ## Next steps
 

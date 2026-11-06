@@ -32,7 +32,7 @@ The fiat payout goes to a confirmed **bank** destination. If you don't have one 
 
 1. `GET /accounts/v1/rails/schemas?country={country}` — read the bank rail's required `payload` fields.
 2. `POST /accounts/v1/accounts/{accountId}/withdrawal_destinations` — register it with `{ rail_code, rail_version, payload, name }`.
-3. `POST …/withdrawal_destinations/{destinationId}:confirm` — confirm with the `verify_code` you receive.
+3. `POST …/withdrawal_destinations/{destinationId}:confirm` — confirm with the `verify_code` you receive. On a [subaccount](../../introduction/subaccounts.md#withdrawal-destinations) skip this step: the destination is confirmed on registration.
 
 Then list your destinations and pick the `id` of the `"bank"` one — that's your `withdraw_destination_id`. The examples assume `KII_API_KEY`, `KII_ACCOUNT_ID`, `KII_ADDRESS` (your `0x…` wallet address), and `KII_WITHDRAW_DEST_ID` are set.
 
