@@ -96,7 +96,7 @@ The transactions come back unsigned; execute them one of two ways (same as an of
 ### With a delegated Kii Wallet (recommended)
 
 ```bash
-curl -X POST "https://backend.pay.kiichain.io/blockchain/v1/transactions/execute" \
+curl -X POST "https://backend.pay.kiichain.io/blockchain/v1/accounts/$KII_ACCOUNT_ID/transactions/execute" \
   -H "Authorization: APIKey $KII_API_KEY" \
   -H "x-timestamp: $KII_TIMESTAMP" \
   -H "x-signature: $KII_SIGNATURE" \
@@ -154,7 +154,7 @@ const { ticket, transactions } = await kiiFetch("POST", "/tickets/v1/swap", {
 // 3 · Execute on-chain from the delegated Kii Wallet.
 const { txHashes } = await kiiFetch(
   "POST",
-  "/blockchain/v1/transactions/execute",
+  `/blockchain/v1/accounts/${ACCOUNT_ID}/transactions/execute`,
   {
     transactions,
   },

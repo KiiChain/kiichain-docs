@@ -56,14 +56,14 @@ In the app, the wallet switcher (top-right) lists the Kii Wallet's address on ea
 
 ## Accessing wallets via the API
 
-Three endpoints expose Kii Wallets to your backend. All authenticate with an [API key](generating-api-keys.md); the examples assume `KII_API_KEY` holds your key.
+Three endpoints expose Kii Wallets to your backend. All authenticate with an [API key](generating-api-keys.md); the examples assume `KII_API_KEY` holds your key and `KII_ACCOUNT_ID` the account whose wallets you use.
 
 ### List your Kii Wallets
 
-`GET /blockchain/v1/wallets/internal` returns the caller's Kii Wallets across **every supported chain type**, one entry per chain. This is a read request, so it needs only the `Authorization` header. Requires the `blockchain.wallets.read` scope.
+`GET /blockchain/v1/accounts/{accountId}/wallets/internal` returns the account's Kii Wallets across **every supported chain type**, one entry per chain. This is a read request, so it needs only the `Authorization` header. Requires the `blockchain.wallets.read` scope.
 
 ```bash
-curl https://backend.pay.kiichain.io/blockchain/v1/wallets/internal \
+curl https://backend.pay.kiichain.io/blockchain/v1/accounts/$KII_ACCOUNT_ID/wallets/internal \
   -H "Authorization: APIKey $KII_API_KEY"
 ```
 
@@ -86,7 +86,7 @@ curl https://backend.pay.kiichain.io/blockchain/v1/wallets/internal \
 
 ### Send tokens from a Kii Wallet
 
-`POST /blockchain/v1/wallets/internal/send` builds a transfer from the caller's Kii Wallet to another address, then signs and broadcasts it using the [delegated](privy-delegated-access.md) wallet — so the wallet **must be delegated** first. It works on any supported chain given its `chain_id`. Requires the `blockchain.wallets.send` scope.
+`POST /blockchain/v1/accounts/{accountId}/wallets/internal/send` builds a transfer from the account's Kii Wallet to another address, then signs and broadcasts it using the [delegated](privy-delegated-access.md) wallet — so the wallet **must be delegated** first. It works on any supported chain given its `chain_id`. Requires the `blockchain.wallets.send` scope.
 
 This is a **write request**, so it must also carry the `x-timestamp` and `x-signature` headers described in [Sign write requests](generating-api-keys.md#4.-sign-write-requests). The examples below show the request shape — compute the signature over the exact body you send.
 
@@ -102,7 +102,7 @@ Request body:
 **Send the native gas token** (omit `asset`) — here, 0.01 ETH (`10000000000000000` wei):
 
 ```bash
-curl -X POST https://backend.pay.kiichain.io/blockchain/v1/wallets/internal/send \
+curl -X POST https://backend.pay.kiichain.io/blockchain/v1/accounts/$KII_ACCOUNT_ID/wallets/internal/send \
   -H "Authorization: APIKey $KII_API_KEY" \
   -H "x-timestamp: $KII_TIMESTAMP" \
   -H "x-signature: $KII_SIGNATURE" \
@@ -117,7 +117,7 @@ curl -X POST https://backend.pay.kiichain.io/blockchain/v1/wallets/internal/send
 **Send an ERC-20 token** (set `asset` to the token contract) — here, 25 USDC (6 decimals → `25000000`):
 
 ```bash
-curl -X POST https://backend.pay.kiichain.io/blockchain/v1/wallets/internal/send \
+curl -X POST https://backend.pay.kiichain.io/blockchain/v1/accounts/$KII_ACCOUNT_ID/wallets/internal/send \
   -H "Authorization: APIKey $KII_API_KEY" \
   -H "x-timestamp: $KII_TIMESTAMP" \
   -H "x-signature: $KII_SIGNATURE" \
@@ -140,7 +140,7 @@ Both return the broadcast transaction hash:
 
 ### Execute prepared transactions
 
-`POST /blockchain/v1/transactions/execute` signs and broadcasts a **batch of prepared transactions** from the caller's Kii Wallet — again using the [delegated](privy-delegated-access.md) wallet, with gas sponsored. Unlike `send`, you don't describe a transfer; you hand it transactions that were **built for you elsewhere** and just need signing. The two common sources are:
+`POST /blockchain/v1/accounts/{accountId}/transactions/execute` signs and broadcasts a **batch of prepared transactions** from the account's Kii Wallet — again using the [delegated](privy-delegated-access.md) wallet, with gas sponsored. Unlike `send`, you don't describe a transfer; you hand it transactions that were **built for you elsewhere** and just need signing. The two common sources are:
 
 - The `transactions` returned when you create an [off-ramp](../guides/quick-start/creating-an-off-ramp.md) or [FX swap](../guides/quick-start/creating-an-fx-swap.md) activity.
 - A [DEX swap](../guides/quick-start/creating-a-dex-swap.md) quote's `evm_tx`, decoded into its fields.
@@ -158,7 +158,7 @@ Request body — a `transactions` array. Each entry wraps a chain-specific trans
 </tbody></table>
 
 ```bash
-curl -X POST https://backend.pay.kiichain.io/blockchain/v1/transactions/execute \
+curl -X POST https://backend.pay.kiichain.io/blockchain/v1/accounts/$KII_ACCOUNT_ID/transactions/execute \
   -H "Authorization: APIKey $KII_API_KEY" \
   -H "x-timestamp: $KII_TIMESTAMP" \
   -H "x-signature: $KII_SIGNATURE" \

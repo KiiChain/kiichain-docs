@@ -110,7 +110,7 @@ Each entry in `instruments[]` has `id`, `name`, `description`, `productBase` (in
 Off-ramp needs a **bank** destination (`withdraw_destination_id`); on-ramp needs a **wallet** destination that receives the crypto (`destination_id`). Both come from the same list:
 
 ```bash
-curl "https://backend.pay.kiichain.io/accounts/v1/users/$KII_USER_ID/accounts/$KII_ACCOUNT_ID/withdrawal_destinations" \
+curl "https://backend.pay.kiichain.io/accounts/v1/accounts/$KII_ACCOUNT_ID/withdrawal_destinations" \
   -H "Authorization: APIKey $KII_API_KEY"
 ```
 
@@ -119,8 +119,8 @@ Each entry in `destinations[]` has `id`, `type` (`"bank"` or `"wallet"`), `name`
 To **create** one, first read the rail schema so you know which fields the `payload` needs, then register and confirm it:
 
 1. `GET /accounts/v1/rails/schemas?country={country}` → `schemas[]` of `{ rail_code, rail_version, country, type, schema }`, where `schema.fields[]` describes each required field (`name`, `type`, `optional`, `pattern`, `options`).
-2. `POST /accounts/v1/users/{userId}/accounts/{accountId}/withdrawal_destinations` with `{ rail_code, rail_version, payload, name }`.
-3. `POST /accounts/v1/users/{userId}/accounts/{accountId}/withdrawal_destinations/{destinationId}:confirm` with the `{ verify_code }` sent to you after registration.
+2. `POST /accounts/v1/accounts/{accountId}/withdrawal_destinations` with `{ rail_code, rail_version, payload, name }`.
+3. `POST /accounts/v1/accounts/{accountId}/withdrawal_destinations/{destinationId}:confirm` with the `{ verify_code }` sent to you after registration. Skip this step on a [subaccount](../introduction/subaccounts.md#withdrawal-destinations): its destinations are confirmed on registration and no code is sent.
 
 ### DEX-enabled tokens
 
