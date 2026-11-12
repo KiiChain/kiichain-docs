@@ -1,8 +1,8 @@
 ---
 description: >-
   KYC gates wallets, limits and provider access in KiiChain Pay. Learn the
-  account levels, individual vs. company verification, the separate
-  provider KYC/KYB for on- and off-ramps, and which assets an account can use.
+  account levels, individual vs. company verification, the separate provider
+  KYC/KYB for on- and off-ramps, and which assets an a
 ---
 
 # KYC
@@ -16,7 +16,7 @@ KYC gates **Kii Wallets, fiat on-/off-ramps and limits** — not the chain itsel
 There are **two independent verification flows**:
 
 1. **System KYC** — KiiChain Pay's own identity verification. Sets your **account level** and platform-wide limits. **Every account completes this.**
-2. **Provider KYC / KYB** — occasional extra verification a specific provider may require, and only in certain cases and countries. **Most integrators never need it.** Covered [below](#provider-kyc-kyb).
+2. **Provider KYC / KYB** — occasional extra verification a specific provider may require, and only in certain cases and countries. **Most integrators never need it.** Covered [below](kyc.md#provider-kyc-kyb).
 
 ## System KYC
 
@@ -24,12 +24,7 @@ There are **two independent verification flows**:
 
 An account has a **level** (0, 1, or 2) and a **type** (individual or company). Level 0 means no KYC — no access. Levels 1 and 2 unlock rising limits, applied **per action** (`deposit`, `withdraw`, `swap`) in **USD** over a **rolling 30-day** window.
 
-<table><thead><tr><th width="150">Account type</th><th width="100">Level</th><th>Limit per action (USD / 30 days)</th></tr></thead><tbody>
-<tr><td>Individual</td><td>1</td><td>1,000</td></tr>
-<tr><td>Individual</td><td>2</td><td>5,000</td></tr>
-<tr><td>Company</td><td>1</td><td>10,000</td></tr>
-<tr><td>Company</td><td>2</td><td>20,000</td></tr>
-</tbody></table>
+<table><thead><tr><th width="150">Account type</th><th width="100">Level</th><th>Limit per action (USD / 30 days)</th></tr></thead><tbody><tr><td>Individual</td><td>1</td><td>1,000</td></tr><tr><td>Individual</td><td>2</td><td>5,000</td></tr><tr><td>Company</td><td>1</td><td>10,000</td></tr><tr><td>Company</td><td>2</td><td>20,000</td></tr></tbody></table>
 
 {% hint style="info" %}
 Level 1 is granted on first successful verification. Level 2 is a limit upgrade you request after reaching level 1. Individual accounts that pass a company verification become company accounts.
@@ -61,8 +56,8 @@ When the review is approved, the account's level and type are set and its **Kii 
 
 ### Individual vs. company
 
-- **Individual** verification requires personal identity documents.
-- **Company** verification (KYB) additionally requires a **company name** and company documentation, and typically covers the authorized representative and the business itself. Company accounts receive higher limits (see the table above).
+* **Individual** verification requires personal identity documents.
+* **Company** verification (KYB) additionally requires a **company name** and company documentation, and typically covers the authorized representative and the business itself. Company accounts receive higher limits (see the table above).
 
 ### KYC status
 
@@ -98,44 +93,28 @@ KYC decides which assets and rails an account can use, not just whether it can u
 }
 ```
 
-<table><thead><tr><th width="200">Field</th><th>Meaning</th></tr></thead><tbody>
-<tr><td><code>allowed</code></td><td>Whether the account can use the row. Always present.</td></tr>
-<tr><td><code>reason</code></td><td>Why the row is blocked. Unset when <code>allowed</code> is <code>true</code>.</td></tr>
-<tr><td><code>requiredCountries</code></td><td>ISO 3166-1 alpha-3 codes that would unlock the row. Only set for <code>fiat_country_required</code>.</td></tr>
-<tr><td><code>providerId</code>, <code>providerName</code></td><td>The provider whose onboarding is pending. Only set for <code>provider_kyc_required</code>.</td></tr>
-</tbody></table>
+<table><thead><tr><th width="200">Field</th><th>Meaning</th></tr></thead><tbody><tr><td><code>allowed</code></td><td>Whether the account can use the row. Always present.</td></tr><tr><td><code>reason</code></td><td>Why the row is blocked. Unset when <code>allowed</code> is <code>true</code>.</td></tr><tr><td><code>requiredCountries</code></td><td>ISO 3166-1 alpha-3 codes that would unlock the row. Only set for <code>fiat_country_required</code>.</td></tr><tr><td><code>providerId</code>, <code>providerName</code></td><td>The provider whose onboarding is pending. Only set for <code>provider_kyc_required</code>.</td></tr></tbody></table>
 
 ### Blocking reasons
 
-<table><thead><tr><th width="230">Reason</th><th>Meaning</th><th>What to do</th></tr></thead><tbody>
-<tr><td><code>kyc_required</code></td><td>The account hasn't completed system KYC (level 0).</td><td>Complete <a href="#system-kyc">system KYC</a>.</td></tr>
-<tr><td><code>country_not_supported</code></td><td>The provider doesn't serve the account's country.</td><td>Use another rail for the same asset, if one is allowed.</td></tr>
-<tr><td><code>fiat_country_required</code></td><td>The fiat can only be used by accounts from its issuing country, and none of the account's countries match.</td><td>The account needs one of the <code>requiredCountries</code>. Contact support if its countries are wrong.</td></tr>
-<tr><td><code>provider_kyc_required</code></td><td>The provider runs its own onboarding and hasn't approved the account yet.</td><td>Complete <a href="#provider-kyc-kyb">provider KYC</a> with <code>providerName</code>.</td></tr>
-<tr><td><code>not_offered</code></td><td>No provider currently offers deposits into this fiat.</td><td>Nothing on your side. The balance can still be held.</td></tr>
-</tbody></table>
+<table><thead><tr><th width="230">Reason</th><th>Meaning</th><th>What to do</th></tr></thead><tbody><tr><td><code>kyc_required</code></td><td>The account hasn't completed system KYC (level 0).</td><td>Complete <a href="kyc.md#system-kyc">system KYC</a>.</td></tr><tr><td><code>country_not_supported</code></td><td>The provider doesn't serve the account's country.</td><td>Use another rail for the same asset, if one is allowed.</td></tr><tr><td><code>fiat_country_required</code></td><td>The fiat can only be used by accounts from its issuing country, and none of the account's countries match.</td><td>The account needs one of the <code>requiredCountries</code>. Contact support if its countries are wrong.</td></tr><tr><td><code>provider_kyc_required</code></td><td>The provider runs its own onboarding and hasn't approved the account yet.</td><td>Complete <a href="kyc.md#provider-kyc-kyb">provider KYC</a> with <code>providerName</code>.</td></tr><tr><td><code>not_offered</code></td><td>No provider currently offers deposits into this fiat.</td><td>Nothing on your side. The balance can still be held.</td></tr></tbody></table>
 
 Each fiat is tied to its issuing countries: **BRL** to Brazil, **COP** to Colombia, **MXN** to Mexico, **USD** to the United States, and **EUR** to the euro area members. `GET /accounts/v1/accounts/{accountId}/countries` lists the countries on an account.
 
 ### Where it appears
 
-<table><thead><tr><th width="300">Endpoint</th><th>Field</th><th>Possible reasons</th></tr></thead><tbody>
-<tr><td><code>GET /market/v1/products-providers</code></td><td><code>productsProviders[].availability</code></td><td><code>kyc_required</code>, <code>country_not_supported</code>, <code>fiat_country_required</code></td></tr>
-<tr><td><code>GET /market/v1/instruments</code></td><td><code>instruments[].availability</code></td><td><code>kyc_required</code>, <code>country_not_supported</code></td></tr>
-<tr><td><code>GET /market/v1/trade-instruments</code></td><td><code>tradeInstruments[].products[].availability</code></td><td><code>kyc_required</code>, <code>country_not_supported</code></td></tr>
-<tr><td><code>GET /portfolio/v1/portfolio</code></td><td>each fiat holding's <code>availability</code></td><td>all five</td></tr>
-</tbody></table>
+<table><thead><tr><th width="300">Endpoint</th><th>Field</th><th>Possible reasons</th></tr></thead><tbody><tr><td><code>GET /market/v1/products-providers</code></td><td><code>productsProviders[].availability</code></td><td><code>kyc_required</code>, <code>country_not_supported</code>, <code>fiat_country_required</code></td></tr><tr><td><code>GET /market/v1/instruments</code></td><td><code>instruments[].availability</code></td><td><code>kyc_required</code>, <code>country_not_supported</code></td></tr><tr><td><code>GET /market/v1/trade-instruments</code></td><td><code>tradeInstruments[].products[].availability</code></td><td><code>kyc_required</code>, <code>country_not_supported</code></td></tr><tr><td><code>GET /portfolio/v1/portfolio</code></td><td>each fiat holding's <code>availability</code></td><td>all five</td></tr></tbody></table>
 
 ### In your portfolio
 
 The portfolio's fiat holdings list every fiat the account **holds or can deposit into**, each with its `availability`:
 
-- A fiat is allowed when **any** provider lets the account deposit into it. When none does, the first blocking reason is reported, and it stays the same between calls.
-- A fiat the account can deposit into but doesn't hold yet appears with a **zero balance**, so you can show it before the first deposit.
-- A fiat the account holds but no provider offers anymore still appears, marked `not_offered`.
+* A fiat is allowed when **any** provider lets the account deposit into it. When none does, the first blocking reason is reported, and it stays the same between calls.
+* A fiat the account can deposit into but doesn't hold yet appears with a **zero balance**, so you can show it before the first deposit.
+* A fiat the account holds but no provider offers anymore still appears, marked `not_offered`.
 
 ## Next steps
 
-- [Internal wallets](internal-wallets.md) — provisioned automatically once system KYC is approved.
-- [Creating an on-ramp](../guides/quick-start/creating-an-on-ramp.md) — where provider KYC may come into play.
-- [Subaccounts](subaccounts.md) — verify your own customers with a KYC link instead of the dashboard.
+* [Internal wallets](internal-wallets.md) — provisioned automatically once system KYC is approved.
+* [Creating an on-ramp](../guides/quick-start/creating-an-on-ramp.md) — where provider KYC may come into play.
+* [Subaccounts](subaccounts.md) — verify your own customers with a KYC link instead of the dashboard.

@@ -14,7 +14,7 @@ To add KiiChain to Bybit, you first need to add a custom network. To add it, you
 
 1. On your extension, open the network selector in the top right corner
 
-<figure><img src="../../../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
 
 2. Go to `Add a custom network`
 
@@ -32,7 +32,7 @@ The information can be found here:
 * Network Name: `KiiChain`
 * Chain ID: `1783`
 * Native Token: `KII`
-* Blockchain Explorer: `https://blockscout.kiichain.io`&#x20;
+* Blockchain Explorer: `https://blockscout.kiichain.io`
 
 After you can click on `Add Now`.
 

@@ -1,8 +1,8 @@
 ---
 description: >-
   Subaccounts let a company onboard its own customers on KiiChain Pay and
-  operate their accounts through its API key: create them, send each customer
-  a KYC link, and move funds, swap and trade on their behalf.
+  operate their accounts through its API key: create them, send each customer a
+  KYC link, and move funds, swap and trade on their
 ---
 
 # Subaccounts
@@ -30,14 +30,11 @@ A subaccount is operated with the company's API key, by passing the **subaccount
 
 On top of the scope each endpoint already requires, acting on a subaccount needs one of these scopes on the key:
 
-<table><thead><tr><th width="280">Scope</th><th>Needed for</th></tr></thead><tbody>
-<tr><td><code>accounts.subaccounts.read</code></td><td>Read endpoints called on a subaccount, and listing or getting subaccounts.</td></tr>
-<tr><td><code>accounts.subaccounts.write</code></td><td>Every other endpoint called on a subaccount, and creating subaccounts or KYC links.</td></tr>
-</tbody></table>
+<table><thead><tr><th width="280">Scope</th><th>Needed for</th></tr></thead><tbody><tr><td><code>accounts.subaccounts.read</code></td><td>Read endpoints called on a subaccount, and listing or getting subaccounts.</td></tr><tr><td><code>accounts.subaccounts.write</code></td><td>Every other endpoint called on a subaccount, and creating subaccounts or KYC links.</td></tr></tbody></table>
 
 For example, sending from a subaccount's Kii Wallet needs `blockchain.wallets.send` **and** `accounts.subaccounts.write`.
 
-Some endpoints only make sense on the company account itself and are refused when called with a subaccount's ID: account deletion, billing and subscriptions, system KYC (`StartKyc`, subaccounts use the [KYC link](#2.-send-the-customer-a-kyc-link) instead), and managing subaccounts.
+Some endpoints only make sense on the company account itself and are refused when called with a subaccount's ID: account deletion, billing and subscriptions, system KYC (`StartKyc`, subaccounts use the [KYC link](subaccounts.md#2.-send-the-customer-a-kyc-link) instead), and managing subaccounts.
 
 ## Onboarding a customer
 
@@ -47,11 +44,7 @@ The examples assume `KII_API_KEY` holds the company's API key and `KII_ACCOUNT_I
 
 `POST /accounts/v1/accounts/{accountId}/subaccounts`, where `{accountId}` is the company's account. Requires `accounts.subaccounts.write`.
 
-<table><thead><tr><th width="150">Field</th><th>Description</th></tr></thead><tbody>
-<tr><td><code>name</code></td><td>The subaccount's name, usually the customer's name (1–64 characters). Required.</td></tr>
-<tr><td><code>country</code></td><td>The customer's country, ISO 3166-1 alpha-3 (e.g. <code>BRA</code>). Required.</td></tr>
-<tr><td><code>external_ref</code></td><td>Your own identifier for the customer, unique within your company (1–128 characters). Optional.</td></tr>
-</tbody></table>
+<table><thead><tr><th width="150">Field</th><th>Description</th></tr></thead><tbody><tr><td><code>name</code></td><td>The subaccount's name, usually the customer's name (1–64 characters). Required.</td></tr><tr><td><code>country</code></td><td>The customer's country, ISO 3166-1 alpha-3 (e.g. <code>BRA</code>). Required.</td></tr><tr><td><code>external_ref</code></td><td>Your own identifier for the customer, unique within your company (1–128 characters). Optional.</td></tr></tbody></table>
 
 ```bash
 curl -X POST "https://backend.pay.kiichain.io/accounts/v1/accounts/$KII_ACCOUNT_ID/subaccounts" \
@@ -94,9 +87,7 @@ To find subaccounts later, `GET /accounts/v1/accounts/{accountId}/subaccounts` l
 
 `POST /accounts/v1/accounts/{accountId}/subaccounts/{subaccountId}/kyc/link` returns a link to the hosted Sumsub verification page for that subaccount. Send it to your customer, by email, chat or inside your app. Requires `accounts.subaccounts.write`.
 
-<table><thead><tr><th width="150">Field</th><th>Description</th></tr></thead><tbody>
-<tr><td><code>lang</code></td><td>Two-letter language of the verification page (e.g. <code>en</code>, <code>es</code>, <code>pt</code>). Optional.</td></tr>
-</tbody></table>
+<table><thead><tr><th width="150">Field</th><th>Description</th></tr></thead><tbody><tr><td><code>lang</code></td><td>Two-letter language of the verification page (e.g. <code>en</code>, <code>es</code>, <code>pt</code>). Optional.</td></tr></tbody></table>
 
 ```bash
 curl -X POST "https://backend.pay.kiichain.io/accounts/v1/accounts/$KII_ACCOUNT_ID/subaccounts/$KII_SUBACCOUNT_ID/kyc/link" \
@@ -114,9 +105,9 @@ curl -X POST "https://backend.pay.kiichain.io/accounts/v1/accounts/$KII_ACCOUNT_
 }
 ```
 
-- The link is valid for **7 days**.
-- If the customer loses it or it expires, call the endpoint again. You get a new link to the **same** verification, and anything the customer already submitted is kept.
-- Once the subaccount is verified, the endpoint answers `KYC applicant already verified`.
+* The link is valid for **7 days**.
+* If the customer loses it or it expires, call the endpoint again. You get a new link to the **same** verification, and anything the customer already submitted is kept.
+* Once the subaccount is verified, the endpoint answers `KYC applicant already verified`.
 
 ### 3. Wait for the review
 
@@ -135,7 +126,7 @@ From here on, use the subaccount's ID as the account ID in the regular endpoints
 
 ### Wallets and transfers
 
-The [Kii Wallet endpoints](internal-wallets.md#accessing-wallets-via-the-api) work the same with the subaccount's ID: list its wallets, send from them, and execute prepared transactions, without MFA (see [MFA](#mfa)).
+The [Kii Wallet endpoints](internal-wallets.md#accessing-wallets-via-the-api) work the same with the subaccount's ID: list its wallets, send from them, and execute prepared transactions, without MFA (see [MFA](subaccounts.md#mfa)).
 
 ```bash
 curl "https://backend.pay.kiichain.io/blockchain/v1/accounts/$KII_SUBACCOUNT_ID/wallets/internal" \
@@ -144,11 +135,11 @@ curl "https://backend.pay.kiichain.io/blockchain/v1/accounts/$KII_SUBACCOUNT_ID/
 
 ### Withdrawal destinations
 
-Register destinations on the subaccount with `POST /accounts/v1/accounts/{subaccountId}/withdrawal_destinations`, as described in [Discovering rails & IDs](../guides/README.md#discovering-rails-and-ids). On a subaccount the destination is **confirmed right away**: there's no verification code to send back, because the code would go to the company's email rather than the customer's.
+Register destinations on the subaccount with `POST /accounts/v1/accounts/{subaccountId}/withdrawal_destinations`, as described in [Discovering rails & IDs](../guides/#discovering-rails-and-ids). On a subaccount the destination is **confirmed right away**: there's no verification code to send back, because the code would go to the company's email rather than the customer's.
 
 ### Ramps, swaps and trades
 
-The [guides](../guides/README.md) apply as they are: pass the subaccount's ID as `account_id`, and its Kii Wallet address as `user_chain_address`. When a guide signs with a delegated Kii Wallet, call `transactions/execute` with the subaccount's ID.
+The [guides](../guides/) apply as they are: pass the subaccount's ID as `account_id`, and its Kii Wallet address as `user_chain_address`. When a guide signs with a delegated Kii Wallet, call `transactions/execute` with the subaccount's ID.
 
 **Permit swaps.** Some swap providers take the input tokens with a signed permit instead of an on-chain transaction. Their swap activity returns a `typedData` action rather than `evm` transactions. Sign it with the subaccount's Kii Wallet, then submit the signature on the activity:
 
@@ -197,15 +188,15 @@ The provider account is opened under the subaccount's `name`, the customer, not 
 
 You don't need to do anything for this. Because the company's integration has no authenticator code to send, these endpoints skip the `X-Mfa-Code` check when they're called **on a subaccount with an API key**:
 
-- `POST /blockchain/v1/accounts/{accountId}/wallets/internal/send`
-- `POST /blockchain/v1/accounts/{accountId}/transactions/execute`
-- `POST /blockchain/v1/accounts/{accountId}/wallets/internal/sign-typed-data`
-- `POST /accounts/v1/accounts/{accountId}/withdrawal_destinations`
+* `POST /blockchain/v1/accounts/{accountId}/wallets/internal/send`
+* `POST /blockchain/v1/accounts/{accountId}/transactions/execute`
+* `POST /blockchain/v1/accounts/{accountId}/wallets/internal/sign-typed-data`
+* `POST /accounts/v1/accounts/{accountId}/withdrawal_destinations`
 
 The same calls from a dashboard login, or on the company's own account, still require MFA.
 
 ## Next steps
 
-- [KYC](kyc.md) — levels, limits, and what an account can use.
-- [Internal wallets](internal-wallets.md) — the wallet endpoints you call with the subaccount's ID.
-- [Guides](../guides/README.md) — on-ramps, off-ramps, swaps and trades.
+* [KYC](kyc.md) — levels, limits, and what an account can use.
+* [Internal wallets](internal-wallets.md) — the wallet endpoints you call with the subaccount's ID.
+* [Guides](../guides/) — on-ramps, off-ramps, swaps and trades.

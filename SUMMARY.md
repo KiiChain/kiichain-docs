@@ -132,25 +132,6 @@
   * [Security considerations](validate-the-network/delegator-information/security-considerations.md)
   * [Risks to consider](validate-the-network/delegator-information/risks-to-consider.md)
 
-## CONNECT TO KIIEX
-
-* [Set up your Kii Account](connect-to-kiiex/set-up-your-kiiex-account/README.md)
-  * [Upgrade your Account to Enterprise Level](connect-to-kiiex/set-up-your-kiiex-account/upgrade-your-account-to-enterprise-level.md)
-* [Authenticate with API Key](connect-to-kiiex/authenticate-with-api-key.md)
-* [Stablecoin FX Quick Start](connect-to-kiiex/stablecoin-fx-quick-start/README.md)
-  * [Swap USDT to COPM with UI](connect-to-kiiex/stablecoin-fx-quick-start/swap-usdt-to-copm-with-ui.md)
-* [Kii API's](connect-to-kiiex/kiiex-apis/README.md)
-  * ```yaml
-    props:
-      models: true
-    type: builtin:openapi
-    dependencies:
-      spec:
-        ref:
-          kind: openapi
-          spec: kiiex-all-calls
-    ```
-
 ***
 
 * [Legal & Risk Disclaimer](legal-and-risk-disclaimer.md)
