@@ -1,115 +1,130 @@
 # Rewards
 
-The rewards module adds the distribution of rewards from a specific community pool. Anyone can fund the pool but to change or initiate a reward distribution, a proposal needs to be passed.
+The rewards module (also called the Utility Rewards Module) pays staking rewards from a prefunded pool. Each block it moves tokens from its module account into the `fee_collector`, and the distribution module pays them out to validators and delegators in the same way as transaction fees.
+
+The amount released each block follows an inflation curve driven by the bonded ratio, the same model as the Cosmos SDK `x/mint` module.
+
+{% hint style="info" %}
+The rewards module **does not mint KII**. Every token it pays out must first be sent to the module account. Emissions stop when that account is empty.
+{% endhint %}
+
+Emissions are off by default (`supply_base = 0`). Governance turns them on.
 
 ### Flow
 
-1. Fund community pool with reward
-2. Create and pass a proposal to create a release schedule
-3. At the end of every block, a linear % of the reward will be forwarded for distribution
-4. When the end time of the release is reached, all rewards will have been given away, and it will go inactive
+1. Fund the pool: send tokens to the rewards module account with a normal bank send. Anyone can do this.
+2. Pass a governance proposal with `MsgUpdateParams` that sets `supply_base` above `0`.
+3. At the start of each block, the module releases `inflation(bondedRatio) × supply_base / blocks_per_year` into the fee collector.
+4. Emissions continue until the module account is empty or governance sets `supply_base` back to `0`.
+
+The rewards module runs before the distribution module in each block, so a block's release is paid out in that same block.
+
+### Module account
+
+| Format | Address                                      |
+| ------ | -------------------------------------------- |
+| Bech32 | `kii1245yut9zht8q4hz39sd0lzqtzkuw5us5rermc4` |
+| Hex    | `0x55684e2ca2bace0adc512c1aff880b15b8ea7214` |
+
+The address is derived from the module name, so it is the same on every KiiChain network.
 
 ### Interaction with other modules
 
-<table><thead><tr><th width="181.5">Module</th><th>Interaction</th></tr></thead><tbody><tr><td>Bank</td><td>Adds and removes funds from community pool; sends tokens from reward module to fee collector</td></tr><tr><td>Community pool</td><td>Specific pool for the module that receives and holds tokens for the module</td></tr><tr><td>Distribution</td><td>Reward is sent to fee collector that spreads it to validators</td></tr></tbody></table>
+<table><thead><tr><th width="181.5">Module</th><th>Interaction</th></tr></thead><tbody><tr><td>Bank</td><td>Holds the pool as the rewards module account balance; moves the release from the module account to the fee collector</td></tr><tr><td>Staking</td><td>Provides the bonded ratio that drives the emission curve</td></tr><tr><td>Distribution</td><td>Pays the fee collector balance out to validators and delegators</td></tr><tr><td>Governance</td><td>The only account that can change module params, including enabling and disabling emissions</td></tr></tbody></table>
+
+### Emission formula
+
+```
+inflation = clamp((1 - bondedRatio / goalBonded) × inflationRateChange × bondedRatio,
+                  inflationMin, inflationMax)
+amount    = inflation × supplyBase / blocksPerYear
+pay       = min(amount, moduleBalance)
+```
+
+| Term                            | Meaning                                                                    |
+| ------------------------------- | -------------------------------------------------------------------------- |
+| `bondedRatio`                   | Bonded tokens divided by total staking-token supply, read from the staking module |
+| `goalBonded`                    | Target bonded ratio (param `goal_bonded`)                                  |
+| `inflationRateChange`           | Steepness of the curve (param `inflation_rate_change`)                     |
+| `inflationMin` / `inflationMax` | Floor and ceiling on the annual emission rate                              |
+| `supplyBase`                    | Notional base used to size annual provisions (param `supply_base`)        |
+| `blocksPerYear`                 | Expected number of blocks per year (param `blocks_per_year`)               |
+| `moduleBalance`                 | Rewards module account balance in `token_denom`                            |
+
+If the calculated amount is larger than the module balance, the block pays only the balance.
+
+#### Curve shape
+
+Before clamping, the curve is a parabola in the bonded ratio:
+
+* It is `0` when nothing is bonded and when `bondedRatio = goalBonded`.
+* It peaks at `bondedRatio = goalBonded / 2`, with value `inflationRateChange × goalBonded / 4`.
+* Above `goalBonded` it would go negative, so the clamp returns `inflationMin`.
+
+With the default params, the peak rate is `0.13 × 0.67 / 4 = 2.1775%` per year. The default `inflation_max` of 20% does not come into play unless `inflation_rate_change` or `goal_bonded` is raised.
+
+{% hint style="warning" %}
+This curve is different from `x/mint`. Here the rate rises as the bonded ratio climbs toward `goalBonded / 2`, then falls to the floor as it approaches `goalBonded`.
+{% endhint %}
+
+#### `supply_base` is not the total supply
+
+The annual provision is `inflation × supply_base`. `supply_base` is a governance setting that controls the scale of emissions. It is **not** read from the chain's total supply. It is an integer in base units of `token_denom` (`akii`, 18 decimals).
+
+#### Per block, not per second
+
+Each block releases a fixed share of the annual provision (`annual / blocks_per_year`), as in `x/mint`. Release does not depend on elapsed time. If blocks are slower than `blocks_per_year` assumes, less is released per calendar year. The default `15778800` assumes 2-second blocks.
+
+#### Example
+
+Default params, with `supply_base = 1000000000000000000000000000` (1,000,000,000 KII):
+
+| Bonded ratio | Inflation  | Annual provision | Per block  |
+| ------------ | ---------- | ---------------- | ---------- |
+| 0.335 (peak) | 2.1775%    | 21,775,000 KII   | \~1.380 KII |
+| 0.50         | \~1.6493%  | \~16,492,537 KII | \~1.045 KII |
+| 0.67 or more | 0% (floor) | 0                | 0          |
+
+### Each block
+
+At the start of every block the module:
+
+1. Does nothing if `supply_base` is `0` or the module account is empty.
+2. Reads the bonded ratio and calculates the release.
+3. Caps the release at the module account balance.
+4. Sends the release to the fee collector.
+5. Adds the release to `total_released` and emits a `reward_distributed` event.
+
+If reading the bonded ratio or sending the funds fails, the module logs the error and skips that block. The chain does not halt.
+
+### Params
+
+| Param                   | Default    | Rule                     | Description                                         |
+| ----------------------- | ---------- | ------------------------ | --------------------------------------------------- |
+| `token_denom`           | `akii`     | Valid denom              | Denom paid out                                      |
+| `goal_bonded`           | `0.67`     | `0 < x ≤ 1`              | Target bonded ratio                                 |
+| `inflation_min`         | `0`        | `≥ 0`                    | Floor on the annual rate                            |
+| `inflation_max`         | `0.20`     | `≥ inflation_min`        | Ceiling on the annual rate                          |
+| `supply_base`           | `0`        | `≥ 0`                    | Emission scale in base units. `0` turns emissions off |
+| `inflation_rate_change` | `0.13`     | `0 < x ≤ 1`              | Curve steepness                                     |
+| `blocks_per_year`       | `15778800` | `> 0`                    | Expected blocks per year                            |
 
 ### Internal state
 
-To properly release on time, calculate rewards, and keep track, we have a RewardReleaser with the following internal information:
-
 ```go
-type RewardReleaser struct {
-    // Total amount to be rewarded
-    TotalAmount types.Coin `protobuf:"bytes,1,opt,name=total_amount,json=totalAmount,proto3" json:"total_amount" yaml:"total_amount"`
-    // Amount released
-    ReleasedAmount types.Coin `protobuf:"bytes,2,opt,name=released_amount,json=releasedAmount,proto3" json:"released_amount" yaml:"released_amount"`
-    // Timestamp of end of release
-    EndTime time.Time `protobuf:"bytes,3,opt,name=end_time,json=endTime,proto3,stdtime" json:"end_time" yaml:"end_time"`
-    // Last height released
-    LastReleaseTime time.Time `protobuf:"bytes,5,opt,name=last_release_time,json=lastReleaseTime,proto3,stdtime" json:"last_release_time" yaml:"last_release_time"`
-    // If reward pool is active
-    Active bool `protobuf:"varint,6,opt,name=active,proto3" json:"active,omitempty" yaml:"active"`
+type RewardPool struct {
+    // Cumulative amount sent to the fee collector
+    TotalReleased types.Coin `protobuf:"bytes,3,opt,name=total_released,json=totalReleased,proto3" json:"total_released" yaml:"total_released"`
 }
 ```
 
-At the end of each block, if the releaser is active:
-
-* It will calculate the amount to be distributed linearly across time based on the last release and the current block time.
-* If the amt to be distributed is zero, it goes inactive
-* It sends the amount from the pool to the fee collector
-* It increases the released amount, the last release time, and the community pool with the changes.
+`RewardPool` only tracks what has been released. The funds available to pay out are the module account balance in the bank module.
 
 ### Messages
 
-#### FundPool
-
-Sends funds to the community pool, to be used in a future release.
-
-```protobuf
-message MsgFundPool {
-  string sender = 1 [ (gogoproto.moretags) = "yaml:\"sender\"" ];
-  cosmos.base.v1beta1.Coin amount = 2 [
-    (gogoproto.moretags) = "yaml:\"amount\"",
-    (amino.encoding) = "legacy_coin"
-  ];
-}
-```
-
-**State Modifications:**
-
-* The community pool funds will increase, as well as the module's balance
-
-#### ChangeSchedule
-
-Set the schedule to match what is sent. Only the governor can utilize this call, others need to pass a proposal.
-
-```protobuf
-message MsgChangeSchedule {
-  // authority is the address of the governance account.
-  string authority = 1 [ (cosmos_proto.scalar) = "cosmos.AddressString" ];
-
-
-  // New information for the schedule
-  ReleaseSchedule schedule = 2 [ (gogoproto.nullable) = false ];
-}
-
-message ReleaseSchedule {
-  // Total amount to be rewarded
-  cosmos.base.v1beta1.Coin total_amount = 1 [
-    (gogoproto.moretags) = "yaml:\"total_amount\""
-  ];
-  // Amount released
-  cosmos.base.v1beta1.Coin released_amount = 2 [
-    (gogoproto.moretags) = "yaml:\"released_amount\""
-  ];
-  // Timestamp of end of release
-  google.protobuf.Timestamp end_time = 3 [
-    (gogoproto.stdtime) = true,
-    (gogoproto.moretags) = "yaml:\"end_time\""
-  ];
-  // Last height released
-  google.protobuf.Timestamp last_release_time = 5 [
-    (gogoproto.stdtime) = true,
-    (gogoproto.moretags) = "yaml:\"last_release_time\""
-  ];
-  // If reward pool is active
-  bool active = 6 [
-    (gogoproto.moretags) = "yaml:\"active\""
-  ];
-}
-```
-
-**State Modifications:**
-
-* Safety check the following
-  * Denom of the amt must be the one being used
-  * End time must be in the future
-  * Funds must be available in the pool
-* Changes the reward release schedule to match what is sent
-
 #### Update Params
 
-Changes module params. Only the governor can utilize this call; others need to pass a proposal.
+Changes module params. Only the governance module account can send it, so others need to pass a proposal. All params must be supplied.
 
 ```protobuf
 message MsgUpdateParams {
@@ -121,31 +136,95 @@ message MsgUpdateParams {
   // NOTE: All parameters must be supplied.
   Params params = 2 [ (gogoproto.nullable) = false ];
 }
-message Params {
-  // Minimal deposit
-  string governance_min_deposit = 1;
 
-  // Denom used
-  string token_denom = 2;
+message Params {
+  string token_denom = 1;
+  string goal_bonded = 2;           // LegacyDec, e.g. "0.67"
+  string inflation_min = 3;         // LegacyDec, e.g. "0.00"
+  string inflation_max = 4;         // LegacyDec, e.g. "0.20"
+  string supply_base = 5;           // Int, base units; 0 disables emissions
+  string inflation_rate_change = 6; // LegacyDec, e.g. "0.13"
+  uint64 blocks_per_year = 7;
 }
 ```
 
 **State Modifications:**
 
-* Changes the token\_denom and min deposit
+* Validates and replaces all module params
+* Setting `supply_base` above `0` starts emissions; setting it to `0` stops them. Funds stay in the module account.
+* Emits an `update_params` event
 
-### Other important flows
+#### Funding the pool
 
-The releaser has a few edge cases that happen when it is initializing or going inactive:
+There is no fund message. Send tokens to the module account with a bank send:
 
-#### First iteration
+```bash
+kiichaind tx bank send <from> kii1245yut9zht8q4hz39sd0lzqtzkuw5us5rermc4 1000000000000000000000akii
+```
 
-* There is no previous release time, so we cannot calculate a reward distribution
-* Instead of calculating the reward, we just set the last release as the block time
-* Next iteration will cover it well
+### Enabling emissions
 
-#### Last iteration
+Create `proposal.json`:
 
-* As the first release is delayed, so will be the last one
-* Once the EndTime is passed, all the remaining rewards will be distributed
-* The releaser will just go inactive a block after, when there is no amount to distribute
+```json
+{
+  "messages": [
+    {
+      "@type": "/kiichain.rewards.v1.MsgUpdateParams",
+      "authority": "kii10d07y265gmmuvt4z0w9aw880jnsr700jrff0qv",
+      "params": {
+        "token_denom": "akii",
+        "goal_bonded": "0.67",
+        "inflation_min": "0",
+        "inflation_max": "0.20",
+        "supply_base": "1000000000000000000000000000",
+        "inflation_rate_change": "0.13",
+        "blocks_per_year": "15778800"
+      }
+    }
+  ],
+  "metadata": "",
+  "deposit": "10000000akii",
+  "title": "Enable utility rewards emissions",
+  "summary": "Set supply_base to start x/rewards emissions"
+}
+```
+
+Submit it:
+
+```bash
+kiichaind tx gov submit-proposal proposal.json --from <key>
+```
+
+Set the deposit to at least the governance minimum deposit for the network. To stop emissions, submit the same proposal with `"supply_base": "0"`.
+
+### Queries
+
+| CLI                              | REST                                   | Returns                                                     |
+| -------------------------------- | -------------------------------------- | ----------------------------------------------------------- |
+| `kiichaind q rewards params`      | `GET /kiichain/rewards/v1/params`      | Module params                                               |
+| `kiichaind q rewards reward-pool` | `GET /kiichain/rewards/v1/reward-pool` | `total_released` and the module account balance (`balance`) |
+
+### Events
+
+| Type                 | Attributes                                                   | When                                    |
+| -------------------- | ------------------------------------------------------------ | --------------------------------------- |
+| `update_params`      | —                                                            | Params are updated                      |
+| `reward_distributed` | `amount`, `total_released`, `inflation_rate`, `bonded_ratio` | A release is sent to the fee collector  |
+
+### Upgrading from the release schedule
+
+Earlier versions of the module released a fixed budget linearly until an end date (`ReleaseSchedule`). That model was removed in consensus version 2, together with `MsgChangeSchedule`, `MsgFundPool`, and the release-schedule query and CLI.
+
+The upgrade migration deletes the old schedule, fills the new params with defaults, and keeps the existing `token_denom`. `supply_base` stays `0`, so emissions stay off until governance enables them.
+
+The API package is now `kiichain.rewards.v1`. The old `kiichain.rewards.v1beta1` types are still registered so existing transactions and proposals decode:
+
+| v1beta1                 | Behavior                                                   |
+| ----------------------- | ---------------------------------------------------------- |
+| `MsgUpdateParams`       | Updates only `token_denom`                                 |
+| `MsgFundPool`           | Returns an error. Use a bank send to the module account.   |
+| `MsgChangeSchedule`     | Returns an error                                           |
+| `Query/Params`          | Returns `token_denom` only                                 |
+| `Query/RewardPool`      | Reports the module account balance as `community_pool`     |
+| `Query/ReleaseSchedule` | Returns an error                                           |
